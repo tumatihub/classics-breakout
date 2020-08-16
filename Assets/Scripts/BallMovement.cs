@@ -12,16 +12,12 @@ public class BallMovement : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.velocity = new Vector2(1f, 1f).normalized * _speed;
-        Debug.Log(_rigidbody.velocity);
     }
 
     public void BounceBall(Vector2 inNormal)
     {
         Debug.DrawLine(transform.position, transform.position + new Vector3(inNormal.x, inNormal.y, transform.position.z) * 5f, Color.red, 2f);
-        Debug.Log("BouceBall Called");
-        Debug.Log(_rigidbody.velocity);
         _rigidbody.velocity = Vector2.Reflect(_rigidbody.velocity, inNormal);
-        Debug.Log(_rigidbody.velocity);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

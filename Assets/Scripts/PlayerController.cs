@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TreeEditor;
 using UnityEngine;
 
@@ -10,9 +11,12 @@ public class PlayerController : MonoBehaviour
     private float _xLimit = 8.40f;
 
     private Rigidbody2D _rigidbody;
+
+    [SerializeField] private PlayerStats _playerStats;
     
     void Start()
     {
+        _playerStats.Init();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 

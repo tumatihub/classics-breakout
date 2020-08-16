@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}
 --- !u!50 &6420929054478192817
 Rigidbody2D:
   serializedVersion: 4
@@ -142,5 +143,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93, y: 0.24}
+  m_Size: {x: 1.2, y: 0.28}
   m_EdgeRadius: 0

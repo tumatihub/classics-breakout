@@ -49,6 +49,7 @@ public class Block : MonoBehaviour
 
     private void RemoveBlock()
     {
+        _playerStats.ChargeUp();
         Destroy(gameObject);
     }
 }
