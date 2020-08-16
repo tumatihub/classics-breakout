@@ -24,11 +24,29 @@ public class PlayerStats : ScriptableObject
     public UnityAction ChargeCompleteEvent;
     public UnityAction ChargeResetEvent;
     public UnityAction ChargeConsumeEvent;
+    public UnityAction ChangeSpecialEvent;
 
     public bool CanBulletTime =>_charge >= _chargeAmmountConsume;
+
+    [SerializeField] private Special[] _specials;
+    private Special _special;
+    public Special Special => _special;
+    private int _specialIndex = 0;
+
     public void Init()
     {
         ResetCharge();
+        _special = null;
+    }
+
+    public void CicleSpecial()
+    {
+        if (_specials.Length == 0) return;
+
+        _specialIndex += 1;
+        if (_specialIndex >= _specials.Length) _specialIndex = 0;
+        _special = _specials[_specialIndex];
+        ChangeSpecialEvent?.Invoke();
     }
 
     public void LevelUpBallPower()

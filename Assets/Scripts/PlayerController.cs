@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour
             _bulletTime = BulletTime();
         }
 
+        if (Input.GetButtonDown("Fire2"))
+        {
+            _playerStats.CicleSpecial();
+        }
+
     }
 
     private void FixedUpdate()
