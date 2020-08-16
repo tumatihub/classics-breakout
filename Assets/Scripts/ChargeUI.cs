@@ -11,6 +11,7 @@ public class ChargeUI : MonoBehaviour
     private void OnEnable()
     {
         _playerStats.ChargeUpEvent += UpdateChargeValue;
+        _playerStats.ChargeConsumeEvent += UpdateChargeValue;
     }
 
     private void UpdateChargeValue()
@@ -21,5 +22,6 @@ public class ChargeUI : MonoBehaviour
     private void OnDisable()
     {
         _playerStats.ChargeUpEvent -= UpdateChargeValue;
+        _playerStats.ChargeConsumeEvent -= UpdateChargeValue;
     }
 }

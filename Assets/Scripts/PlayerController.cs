@@ -13,26 +13,34 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody;
 
     [SerializeField] private PlayerStats _playerStats;
-    
+
+    IEnumerator _bulletTime;
+
+    private void Awake()
+    {
+        _bulletTime = BulletTime();    
+    }
+
     void Start()
     {
         _playerStats.Init();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         _xAxis = Input.GetAxis("Horizontal");
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Time.timeScale = .5f;
+            StartCoroutine(_bulletTime);
         }
 
         if (Input.GetButtonUp("Fire1"))
         {
+            StopCoroutine(_bulletTime);
             Time.timeScale = 1f;
+            _bulletTime = BulletTime();
         }
 
     }
@@ -48,5 +56,16 @@ public class PlayerController : MonoBehaviour
         {
             _rigidbody.MovePosition(new Vector2(_xLimit*(Mathf.Sign(_xAxis)), nextPos.y));
         }
+    }
+
+    IEnumerator BulletTime()
+    {
+        while (_playerStats.CanBulletTime)
+        {
+            Time.timeScale = _playerStats.BulletTimeScale;
+            _playerStats.ConsumeCharge();
+            yield return new WaitForSeconds(_playerStats.BulletTimeConsumeRateInSeconds);
+        }
+        Time.timeScale = 1f;
     }
 }
