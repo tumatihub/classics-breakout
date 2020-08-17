@@ -404,7 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}
   _specialName: {fileID: 7743578780630530833}
-  _slideBar: {fileID: 8306939577566079903}
+  _progressBar: {fileID: 8306939577566079903}
 --- !u!1 &7481801877012347831
 GameObject:
   m_ObjectHideFlags: 0

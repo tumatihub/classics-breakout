@@ -34,10 +34,10 @@ public class PlayerStats : ScriptableObject
     public UnityAction ChangeSpecialEvent;
 
     public bool CanBulletTime => _charge >= _chargeAmmountConsume;
-    public bool CanUseSpecial => _charge >= _chargeMax;
 
     [SerializeField] private Special[] _specials;
     private Special _special;
+    public bool CanUseSpecial => _charge >= _chargeMax && _special != null;
     public Special Special => _special;
     private int _specialIndex = 0;
 
