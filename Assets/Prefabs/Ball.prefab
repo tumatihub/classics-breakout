@@ -134,3 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 7
+  _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}
+  PiercingCountLeft: 0
+  IsExplosionActivated: 0
+  _explosionFX: {fileID: 1112307003476689257, guid: dfaf91affc881944095c3512c6d90c61,
+    type: 3}

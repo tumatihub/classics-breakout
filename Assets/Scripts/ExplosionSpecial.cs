@@ -5,4 +5,10 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ExplosionSpecial : Special
 {
+    public override void BallActivatedAction(BallMovement ball)
+    {
+        base.BallActivatedAction(ball);
+        ball.IsExplosionActivated = true;
+
+    }
 }

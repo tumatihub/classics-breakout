@@ -40,6 +40,9 @@ public class PlayerStats : ScriptableObject
     public Special Special => _special;
     private int _specialIndex = 0;
 
+    [SerializeField] private float _explosionRadius;
+    public float ExplosionRadius => _explosionRadius;
+
     public void Init()
     {
         ResetCharge();

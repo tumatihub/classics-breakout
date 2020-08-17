@@ -10,6 +10,8 @@ public class BallMovement : MonoBehaviour
     [SerializeField] private PlayerStats _playerStats;
 
     public int PiercingCountLeft = 0;
+    public bool IsExplosionActivated = false;
+    [SerializeField] private ExplosionFX _explosionFX;
 
     void Start()
     {
@@ -46,8 +48,29 @@ public class BallMovement : MonoBehaviour
             }
 
             var normal = (new Vector2(transform.position.x, transform.position.y) - collision.ClosestPoint(transform.position)).normalized;
-            block.Hit();
             BounceBall(normal);
+            if (IsExplosionActivated)
+            {
+                Explode();
+                return;
+            }
+            block.Hit();
+        }
+    }
+
+    public void Explode()
+    {
+        IsExplosionActivated = false;
+        Instantiate(_explosionFX, transform.position, Quaternion.identity);
+        Collider2D[] blockList = Physics2D.OverlapCircleAll(
+            new Vector2(transform.position.x, transform.position.y), 
+            _playerStats.ExplosionRadius,
+            LayerMask.GetMask("Block")
+        );
+        foreach (var blockCollider in blockList)
+        {
+            Block block = blockCollider.GetComponent<Block>();
+            block.Hit();
         }
     }
 }
