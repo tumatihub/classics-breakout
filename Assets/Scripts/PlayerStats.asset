@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e6bb62ca499f14489469df56491565, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
+  _ballPower: 3
   _chargeAmmountPerHit: 5
   _chargeAmmountConsume: 5
   _bulletTimeConsumeRateInSeconds: 0.5
   _bulletTimeScale: 0.5
-  _piercingCount: 1
+  _piercingCount: 3
   _specials:
   - {fileID: 11400000, guid: 49ab6cdaaaad4fc41a2c3106e15b2598, type: 2}
   - {fileID: 11400000, guid: af64004bfcdfd9944825867a464f5e5c, type: 2}

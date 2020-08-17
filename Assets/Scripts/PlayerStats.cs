@@ -5,7 +5,7 @@ using UnityEngine.Events;
 [CreateAssetMenu]
 public class PlayerStats : ScriptableObject
 {
-    private int _ballPower = 1;
+    [SerializeField] private int _ballPower = 1;
     public int BallPower => _ballPower;
     private int _maxBallPower;
 

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6168cbab0d56f34a95ea0f927f678c7, type: 3}
+  m_Name: Block Sprites
+  m_EditorClassIdentifier: 
+  Sprites:
+  - {fileID: 21300000, guid: 5b4105aef2cf65e44b0edebd3fae1d54, type: 3}
+  - {fileID: 21300000, guid: 3596de32790e64d4787060982b79b832, type: 3}
+  - {fileID: 21300000, guid: b82630a833a91134ea361c5f862c2a4f, type: 3}
+  - {fileID: 21300000, guid: 57f43ea50ceb83044a1b0228ca90fad4, type: 3}
+  - {fileID: 21300000, guid: 0c08ea66ccd574343b41313e95876c0b, type: 3}
+  - {fileID: 21300000, guid: 6124ac4659e7c0141ba39b037f1c1e06, type: 3}

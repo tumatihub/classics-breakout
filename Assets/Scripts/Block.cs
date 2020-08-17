@@ -8,12 +8,16 @@ public class Block : MonoBehaviour
 {
 
     [SerializeField] private PlayerStats _playerStats;
-    private int _hitPoints = 1;
+    [SerializeField] private int _hitPoints = 1;
     private Collider2D _collider;
+    [SerializeField] private BlockSprites _blockSprites;
+    private SpriteRenderer _sprite;
 
     void Start()
     {
         _collider = GetComponent<Collider2D>();
+        _sprite = GetComponent<SpriteRenderer>();
+        UpdateSprite();
     }
 
     void Update()
@@ -63,7 +67,8 @@ public class Block : MonoBehaviour
 
     private void UpdateSprite()
     {
-        throw new NotImplementedException();
+        if (_hitPoints > _blockSprites.Sprites.Length) return;
+        _sprite.sprite = _blockSprites.Sprites[_hitPoints - 1];
     }
 
     private void RemoveBlock()
