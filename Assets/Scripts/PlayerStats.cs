@@ -10,6 +10,7 @@ public class PlayerStats : ScriptableObject
     private int _maxBallPower;
 
     [SerializeField] private int _chargeAmmountPerHit = 1;
+    [SerializeField] private int _chargeAmmountPerRemovedBlock = 5;
     [SerializeField] private int _chargeAmmountConsume = 5;
     [SerializeField] private float _bulletTimeConsumeRateInSeconds = 1f;
     public float BulletTimeConsumeRateInSeconds => _bulletTimeConsumeRateInSeconds;
@@ -61,9 +62,18 @@ public class PlayerStats : ScriptableObject
         _ballPower = Mathf.Min(_ballPower + 1, _maxBallPower);
     }
 
-    public void ChargeUp()
+    public void ChargePerHit()
     {
-        _charge = Mathf.Min(_charge + _chargeAmmountPerHit, _chargeMax);
+        ChargeUp(_chargeAmmountPerHit);
+    }
+
+    public void ChargePerRemovedBlock()
+    {
+        ChargeUp(_chargeAmmountPerRemovedBlock);
+    }
+    private void ChargeUp(int ammount)
+    {
+        _charge = Mathf.Min(_charge + ammount, _chargeMax);
         ChargeUpEvent?.Invoke();
         if (_charge == _chargeMax) ChargeCompleteEvent?.Invoke();
     }

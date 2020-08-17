@@ -20,38 +20,6 @@ public class Block : MonoBehaviour
         UpdateSprite();
     }
 
-    void Update()
-    {
-        
-    }
-
-
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ball"))
-        {
-            var normal = (new Vector2(collision.transform.position.x, collision.transform.position.y) - _collider.ClosestPoint(collision.transform.position)).normalized;
-
-            Hit();
-            if (_hitPoints <= 0)
-            {
-                var ball = collision.gameObject.GetComponent<BallMovement>();
-                RemoveBlock();
-                if (ball.PiercingCountLeft > 0)
-                {
-                    ball.PiercingCountLeft--;
-                    return;
-                }
-                ball.BounceBall(normal);
-            }
-            else
-            {
-                collision.gameObject.GetComponent<BallMovement>().BounceBall(normal);
-                UpdateSprite();
-            }
-        }
-    }*/
-
     public void Hit()
     {
         _hitPoints -= _playerStats.BallPower;
@@ -62,6 +30,7 @@ public class Block : MonoBehaviour
         else
         {
             UpdateSprite();
+            _playerStats.ChargePerHit();
         }
     }
 
@@ -73,7 +42,7 @@ public class Block : MonoBehaviour
 
     public void RemoveBlock()
     {
-        _playerStats.ChargeUp();
+        _playerStats.ChargePerRemovedBlock();
         Destroy(gameObject);
     }
 }
