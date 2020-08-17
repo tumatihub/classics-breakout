@@ -26,7 +26,7 @@ public class Block : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
@@ -50,9 +50,9 @@ public class Block : MonoBehaviour
                 UpdateSprite();
             }
         }
-    }
+    }*/
 
-    private void Hit()
+    public void Hit()
     {
         _hitPoints -= _playerStats.BallPower;
         if (_hitPoints <= 0)
@@ -71,7 +71,7 @@ public class Block : MonoBehaviour
         _sprite.sprite = _blockSprites.Sprites[_hitPoints - 1];
     }
 
-    private void RemoveBlock()
+    public void RemoveBlock()
     {
         _playerStats.ChargeUp();
         Destroy(gameObject);

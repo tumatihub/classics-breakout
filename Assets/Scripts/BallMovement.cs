@@ -32,4 +32,22 @@ public class BallMovement : MonoBehaviour
             collision.gameObject.GetComponent<PlayerController>().ActivateSpecial(this);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            var block = collision.gameObject.GetComponent<Block>();
+            if (PiercingCountLeft > 0)
+            {
+                PiercingCountLeft--;
+                block.RemoveBlock();
+                return;
+            }
+
+            var normal = (new Vector2(transform.position.x, transform.position.y) - collision.ClosestPoint(transform.position)).normalized;
+            block.Hit();
+            BounceBall(normal);
+        }
+    }
 }
