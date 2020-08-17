@@ -9,7 +9,7 @@ public class ChargeUI : MonoBehaviour
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] TMP_Text _specialName;
     [SerializeField] Image _progressBar;
-    private float _slideBarMaxWidth = 100f;
+    private float _slideBarMaxWidth;
 
     private void OnEnable()
     {
@@ -17,6 +17,11 @@ public class ChargeUI : MonoBehaviour
         _playerStats.ChargeConsumeEvent += UpdateChargeValue;
         _playerStats.ChangeSpecialEvent += ChangeSpecial;
         _playerStats.ChargeResetEvent += UpdateChargeValue;
+    }
+
+    private void Awake()
+    {
+        _slideBarMaxWidth = _progressBar.rectTransform.sizeDelta.x;
     }
 
     private void UpdateChargeValue()
