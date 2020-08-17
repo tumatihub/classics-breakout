@@ -18,6 +18,7 @@ public class PlayerStats : ScriptableObject
     public float BulletTimeScale => _bulletTimeScale;
 
     private int _chargeMax = 100;
+    public int ChargeMax => _chargeMax;
     private int _charge = 0;
     private bool _isPaddleCharged;
     public bool IsPaddleCharged => _isPaddleCharged;

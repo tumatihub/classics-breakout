@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballPower: 3
   _chargeAmmountPerHit: 5
+  _chargeAmmountPerRemovedBlock: 10
   _chargeAmmountConsume: 5
   _bulletTimeConsumeRateInSeconds: 0.5
   _bulletTimeScale: 0.5
@@ -21,3 +22,4 @@ MonoBehaviour:
   _specials:
   - {fileID: 11400000, guid: 49ab6cdaaaad4fc41a2c3106e15b2598, type: 2}
   - {fileID: 11400000, guid: af64004bfcdfd9944825867a464f5e5c, type: 2}
+  _explosionRadius: 1
