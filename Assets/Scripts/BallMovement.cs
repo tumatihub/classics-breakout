@@ -7,6 +7,9 @@ public class BallMovement : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
     [SerializeField] float _speed;
+    [SerializeField] private PlayerStats _playerStats;
+
+    public int PiercingCountLeft = 0;
 
     void Start()
     {
@@ -26,6 +29,7 @@ public class BallMovement : MonoBehaviour
         {
             var dir = (transform.position - collision.transform.position).normalized;
             _rigidbody.velocity = dir * _speed;
+            collision.gameObject.GetComponent<PlayerController>().ActivateSpecial(this);
         }
     }
 }

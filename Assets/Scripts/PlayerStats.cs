@@ -18,7 +18,12 @@ public class PlayerStats : ScriptableObject
 
     private int _chargeMax = 100;
     private int _charge = 0;
+    private bool _isPaddleCharged;
+    public bool IsPaddleCharged => _isPaddleCharged;
     public int Charge => _charge;
+
+    [SerializeField] private int _piercingCount = 0;
+    public int PiercingCount => _piercingCount;
 
     public UnityAction ChargeUpEvent;
     public UnityAction ChargeCompleteEvent;
@@ -26,7 +31,8 @@ public class PlayerStats : ScriptableObject
     public UnityAction ChargeConsumeEvent;
     public UnityAction ChangeSpecialEvent;
 
-    public bool CanBulletTime =>_charge >= _chargeAmmountConsume;
+    public bool CanBulletTime => _charge >= _chargeAmmountConsume;
+    public bool CanUseSpecial => _charge >= _chargeMax;
 
     [SerializeField] private Special[] _specials;
     private Special _special;
@@ -37,6 +43,7 @@ public class PlayerStats : ScriptableObject
     {
         ResetCharge();
         _special = null;
+        _isPaddleCharged = false;
     }
 
     public void CicleSpecial()
@@ -71,5 +78,15 @@ public class PlayerStats : ScriptableObject
     {
         _charge = 0;
         ChargeResetEvent?.Invoke();
+    }
+
+    public void ChargePaddle()
+    {
+        _isPaddleCharged = true;
+    }
+
+    public void UnchargePaddle()
+    {
+        _isPaddleCharged = false;
     }
 }

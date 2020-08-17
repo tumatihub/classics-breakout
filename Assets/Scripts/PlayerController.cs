@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TreeEditor;
@@ -45,7 +46,20 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire2"))
         {
+            if (_playerStats.IsPaddleCharged) return;
             _playerStats.CicleSpecial();
+        }
+
+        if (Input.GetButtonDown("Fire3"))
+        {
+            if (!_playerStats.CanUseSpecial) return;
+            _playerStats.ResetCharge();
+            if (_playerStats.Special.ChargesPaddle)
+            {
+                _playerStats.ChargePaddle();
+                return;
+            }
+            ExecuteSpecial();
         }
 
     }
@@ -72,5 +86,16 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(_playerStats.BulletTimeConsumeRateInSeconds);
         }
         Time.timeScale = 1f;
+    }
+
+    public void ActivateSpecial(BallMovement ball)
+    {
+        if (!_playerStats.IsPaddleCharged) return;
+        _playerStats.Special.BallActivatedAction(ball);
+    }
+
+    private void ExecuteSpecial()
+    {
+        _playerStats.Special.Action();
     }
 }

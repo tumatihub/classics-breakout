@@ -14,6 +14,7 @@ public class ChargeUI : MonoBehaviour
         _playerStats.ChargeUpEvent += UpdateChargeValue;
         _playerStats.ChargeConsumeEvent += UpdateChargeValue;
         _playerStats.ChangeSpecialEvent += ChangeSpecial;
+        _playerStats.ChargeResetEvent += UpdateChargeValue;
     }
 
     private void UpdateChargeValue()
@@ -33,5 +34,6 @@ public class ChargeUI : MonoBehaviour
         _playerStats.ChargeUpEvent -= UpdateChargeValue;
         _playerStats.ChargeConsumeEvent -= UpdateChargeValue;
         _playerStats.ChangeSpecialEvent -= ChangeSpecial;
+        _playerStats.ChargeResetEvent -= UpdateChargeValue;
     }
 }

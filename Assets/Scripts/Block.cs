@@ -27,18 +27,37 @@ public class Block : MonoBehaviour
         if (collision.gameObject.CompareTag("Ball"))
         {
             var normal = (new Vector2(collision.transform.position.x, collision.transform.position.y) - _collider.ClosestPoint(collision.transform.position)).normalized;
-            
-            _hitPoints -= _playerStats.BallPower;
+
+            Hit();
             if (_hitPoints <= 0)
             {
-                collision.gameObject.GetComponent<BallMovement>().BounceBall(normal);
+                var ball = collision.gameObject.GetComponent<BallMovement>();
                 RemoveBlock();
+                if (ball.PiercingCountLeft > 0)
+                {
+                    ball.PiercingCountLeft--;
+                    return;
+                }
+                ball.BounceBall(normal);
             }
             else
             {
                 collision.gameObject.GetComponent<BallMovement>().BounceBall(normal);
                 UpdateSprite();
             }
+        }
+    }
+
+    private void Hit()
+    {
+        _hitPoints -= _playerStats.BallPower;
+        if (_hitPoints <= 0)
+        {
+            RemoveBlock();
+        }
+        else
+        {
+            UpdateSprite();
         }
     }
 
