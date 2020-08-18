@@ -24,18 +24,20 @@ public class BallMovement : MonoBehaviour
         _rigidbody.velocity = Vector2.Reflect(_rigidbody.velocity, inNormal);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            var dir = (transform.position - collision.transform.position).normalized;
-            _rigidbody.velocity = dir * _speed;
-            collision.gameObject.GetComponent<PlayerController>().ActivateSpecial(this);
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            var playerController = collision.gameObject.GetComponent<PlayerController>();
+            if (transform.position.y >= playerController.GetComponent<BoxCollider2D>().bounds.center.y)
+            {
+                _rigidbody.velocity = playerController.ArrowDirection * _speed;
+
+            }
+            playerController.ActivateSpecial(this);
+        }
+
         if (collision.gameObject.CompareTag("Block"))
         {
             var block = collision.gameObject.GetComponent<Block>();

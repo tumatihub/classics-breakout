@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerStats _playerStats;
 
+    private Vector2 _arrowDirection;
+    public Vector2 ArrowDirection => _arrowDirection;
+    [SerializeField] private GameObject _arrow;
+    [SerializeField] private float _maxArrowDegree = 60f;
+
     IEnumerator _bulletTime;
 
     private void Awake()
@@ -67,6 +72,8 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+        UpdateArrowDirection();
+
     }
 
     private void FixedUpdate()
@@ -91,6 +98,18 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(_playerStats.BulletTimeConsumeRateInSeconds);
         }
         Time.timeScale = 1f;
+    }
+
+    private void UpdateArrowDirection()
+    {
+        var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 newArrowDir = (mousePos - transform.position);
+        var angle = Mathf.Atan2(newArrowDir.y, newArrowDir.x)* Mathf.Rad2Deg;
+        if (angle >= 90f - _maxArrowDegree && angle <= 90f + _maxArrowDegree)
+        {
+            _arrow.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            _arrowDirection = newArrowDir.normalized;
+        }
     }
 
     public void ActivateSpecial(BallMovement ball)

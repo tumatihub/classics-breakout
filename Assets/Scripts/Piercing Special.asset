@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Piercing Special
   m_EditorClassIdentifier: 
   Name: Piercing
-  Color: {r: 0.018066937, g: 0.5471698, b: 0.15467963, a: 1}
+  Color: {r: 0.3457636, g: 0.6981132, b: 0.4345035, a: 1}
   ChargesPaddle: 1
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}
