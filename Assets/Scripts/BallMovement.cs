@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -57,6 +58,16 @@ public class BallMovement : MonoBehaviour
             }
             block.Hit();
         }
+
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            DestroyBall();
+        }
+    }
+
+    private void DestroyBall()
+    {
+        Destroy(gameObject);
     }
 
     public void Explode()
