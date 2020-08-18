@@ -13,10 +13,17 @@ public class BallMovement : MonoBehaviour
     public bool IsExplosionActivated = false;
     [SerializeField] private ExplosionFX _explosionFX;
 
+    private Vector2 _previousVelocity;
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.isKinematic = true;
+    }
+
+    private void FixedUpdate()
+    {
+        _previousVelocity = _rigidbody.velocity;    
     }
 
     public void BounceBall(Vector2 inNormal)
@@ -28,6 +35,7 @@ public class BallMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.CompareTag("Player"))
         {
             var playerController = collision.gameObject.GetComponent<PlayerController>();
@@ -39,7 +47,7 @@ public class BallMovement : MonoBehaviour
             playerController.ActivateSpecial(this);
         }
 
-        if (collision.gameObject.CompareTag("Block"))
+        /*if (collision.gameObject.CompareTag("Block"))
         {
             var block = collision.gameObject.GetComponent<Block>();
             if (PiercingCountLeft > 0)
@@ -49,7 +57,8 @@ public class BallMovement : MonoBehaviour
                 return;
             }
 
-            var normal = (new Vector2(transform.position.x, transform.position.y) - collision.ClosestPoint(transform.position)).normalized;
+            //var normal = (new Vector2(transform.position.x, transform.position.y) - collision.ClosestPoint(transform.position)).normalized;
+            Vector2 normal = collision.GetComponent<Block>().GetNormal(transform.position);
             BounceBall(normal);
             if (IsExplosionActivated)
             {
@@ -57,11 +66,36 @@ public class BallMovement : MonoBehaviour
                 return;
             }
             block.Hit();
-        }
+        }*/
 
         if (collision.gameObject.CompareTag("Floor"))
         {
             DestroyBall();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            var block = collision.gameObject.GetComponent<Block>();
+            if (PiercingCountLeft > 0)
+            {
+                PiercingCountLeft--;
+                block.RemoveBlock();
+                _rigidbody.velocity = _previousVelocity;
+                return;
+            }
+
+            //var normal = (new Vector2(transform.position.x, transform.position.y) - collision.ClosestPoint(transform.position)).normalized;
+            //Vector2 normal = collision.GetComponent<Block>().GetNormal(transform.position);
+            //BounceBall(normal);
+            if (IsExplosionActivated)
+            {
+                Explode();
+                return;
+            }
+            block.Hit();
         }
     }
 

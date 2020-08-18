@@ -45,4 +45,30 @@ public class Block : MonoBehaviour
         _playerStats.ChargePerRemovedBlock();
         Destroy(gameObject);
     }
+
+    public Vector2 GetNormal(Vector3 position)
+    {
+        if (position.x >= _collider.bounds.min.x && position.x <= _collider.bounds.max.x)
+        {
+            if (position.y >= _collider.bounds.center.y)
+            {
+                return new Vector2(0f, 1f);
+            }
+            else
+            {
+                return new Vector2(0f, -1f);
+            }
+        }
+        else
+        {
+            if (position.x >= _collider.bounds.center.x)
+            {
+                return new Vector2(1f, 0f);
+            }
+            else
+            {
+                return new Vector2(-1f, 0f);
+            }
+        }
+    }
 }
