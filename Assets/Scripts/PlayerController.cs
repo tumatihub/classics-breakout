@@ -1,9 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+public class InputKeys
+{
+    public const string HORIZONTAL_AXIS = "Horizontal";
+    public const string BULLET_TIME = "BulletTime";
+    public const string CICLE_SPECIAL = "Cicle";
+    public const string SPECIAL = "Special";
+    public const string RESTART = "Restart";
+    public const string LAUNCH_BALL = "Launch";
+}
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +29,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _arrow;
     [SerializeField] private float _maxArrowDegree = 60f;
 
+    [SerializeField] private Transform _ballSpawnPoint;
+    [SerializeField] private BallMovement _ballPrefab;
+    private BallMovement _ball;
+
+
     IEnumerator _bulletTime;
 
     private void Awake()
@@ -31,31 +45,32 @@ public class PlayerController : MonoBehaviour
     {
         _playerStats.Init();
         _rigidbody = GetComponent<Rigidbody2D>();
+        BallSpawn();
     }
 
     void Update()
     {
-        _xAxis = Input.GetAxis("Horizontal");
+        _xAxis = Input.GetAxis(InputKeys.HORIZONTAL_AXIS);
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown(InputKeys.BULLET_TIME))
         {
             StartCoroutine(_bulletTime);
         }
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp(InputKeys.BULLET_TIME))
         {
             StopCoroutine(_bulletTime);
             Time.timeScale = 1f;
             _bulletTime = BulletTime();
         }
 
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown(InputKeys.CICLE_SPECIAL))
         {
             if (_playerStats.IsPaddleCharged) return;
             _playerStats.CicleSpecial();
         }
 
-        if (Input.GetButtonDown("Fire3"))
+        if (Input.GetButtonDown(InputKeys.SPECIAL))
         {
             if (!_playerStats.CanUseSpecial) return;
             _playerStats.ResetCharge();
@@ -67,13 +82,25 @@ public class PlayerController : MonoBehaviour
             ExecuteSpecial();
         }
 
-        if (Input.GetButtonDown("Restart"))
+        if (Input.GetButtonDown(InputKeys.RESTART))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+        if (Input.GetButtonDown(InputKeys.LAUNCH_BALL) && _ball != null)
+        {
+            LauchBall();
+        }
+
         UpdateArrowDirection();
 
+    }
+
+    private void LauchBall()
+    {
+        _ball.transform.parent = null;
+        _ball.Launch(_arrowDirection);
+        _ball = null;
     }
 
     private void FixedUpdate()
@@ -121,5 +148,10 @@ public class PlayerController : MonoBehaviour
     private void ExecuteSpecial()
     {
         _playerStats.Special.Action();
+    }
+
+    private void BallSpawn()
+    {
+        _ball = Instantiate(_ballPrefab, _ballSpawnPoint.position, Quaternion.identity, _ballSpawnPoint);
     }
 }

@@ -15,7 +15,7 @@ public class BallMovement : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _rigidbody.velocity = new Vector2(1f, 1f).normalized * _speed;
+        _rigidbody.isKinematic = true;
     }
 
     public void BounceBall(Vector2 inNormal)
@@ -73,5 +73,11 @@ public class BallMovement : MonoBehaviour
             Block block = blockCollider.GetComponent<Block>();
             block.Hit();
         }
+    }
+
+    public void Launch(Vector2 dir)
+    {
+        _rigidbody.isKinematic = false;
+        _rigidbody.velocity = dir * _speed;
     }
 }
