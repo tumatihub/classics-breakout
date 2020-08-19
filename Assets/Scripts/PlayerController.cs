@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var nextPos = transform.position + (Vector3.right * _xAxis * _speed * Time.fixedUnscaledDeltaTime);
+        var nextPos = transform.position + (Vector3.right * _xAxis * _speed * Time.unscaledDeltaTime);
         if (nextPos.x >= -_xLimit && nextPos.x <= _xLimit)
         {
             _rigidbody.MovePosition(nextPos);
