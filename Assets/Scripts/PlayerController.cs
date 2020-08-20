@@ -12,6 +12,7 @@ public class InputKeys
     public const string SPECIAL = "Special";
     public const string RESTART = "Restart";
     public const string LAUNCH_BALL = "Launch";
+    public const KeyCode DEBUG_PANEL = KeyCode.P;
 }
 
 public class PlayerController : MonoBehaviour

@@ -5,7 +5,8 @@ using UnityEngine.Events;
 [CreateAssetMenu]
 public class PlayerStats : ScriptableObject
 {
-    [SerializeField] private int _ballPower = 1;
+    [SerializeField] private InitValues _initValues;
+    private int _ballPower = 3;
     public int BallPower => _ballPower;
     private int _maxBallPower;
 
@@ -49,6 +50,8 @@ public class PlayerStats : ScriptableObject
         ResetCharge();
         _special = null;
         _isPaddleCharged = false;
+
+        _ballPower = (int)_initValues.BallPower.Value;
     }
 
     public void CicleSpecial()

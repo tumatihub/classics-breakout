@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e6bb62ca499f14489469df56491565, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
+  _initValues: {fileID: 11400000, guid: 8a1a753a85c0bac4699979d386e06559, type: 2}
   _ballPower: 1
   _chargeAmmountPerHit: 5
   _chargeAmmountPerRemovedBlock: 10
