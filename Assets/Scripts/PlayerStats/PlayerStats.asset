@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   _initValues: {fileID: 11400000, guid: 8a1a753a85c0bac4699979d386e06559, type: 2}
-  _ballPower: 1
-  _chargeAmmountPerHit: 5
-  _chargeAmmountPerRemovedBlock: 10
-  _chargeAmmountConsume: 5
   _bulletTimeConsumeRateInSeconds: 0.5
   _bulletTimeScale: 0.5
   _piercingCount: 3

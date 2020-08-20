@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d424678f55c89ef4cafb6ab45ce1064e, type: 3}
+  m_Name: InitValues
+  m_EditorClassIdentifier: 
+  BallPower: {fileID: 11400000, guid: e42ffd2aec390e54a8a35e60c99b5cc5, type: 2}
+  ChargeAmmountPerHit: {fileID: 11400000, guid: 362b5f6b6dc4d87429d99928c36135e0,
+    type: 2}
+  ChargeAmmountPerRemovedBlock: {fileID: 11400000, guid: 3ee3aeff4d8ede24a9ad30d1e902ea50,
+    type: 2}
+  ChargeAmmountConsume: {fileID: 11400000, guid: 3808fce8d8af675469e76d1f21eacf09,
+    type: 2}
+  BulletTimeConsumeRateInSeconds: {fileID: 11400000, guid: aca66b68e8e010c42a17045b75968396,
+    type: 2}
+  BulletTimeScale: {fileID: 11400000, guid: 1806a3ca68c421b468105578ffd8c3be, type: 2}
+  ChargeMax: {fileID: 11400000, guid: c8e9393b3d01c6f42972a94003740ffe, type: 2}
+  PiercingCount: {fileID: 11400000, guid: 0f638a07e8c38974995544cef9bd251d, type: 2}
+  ExplosionRadius: {fileID: 11400000, guid: 4bec4bb0614fc3c4682e6eef58c209d0, type: 2}

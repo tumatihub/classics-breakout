@@ -10,12 +10,12 @@ public class PlayerStats : ScriptableObject
     public int BallPower => _ballPower;
     private int _maxBallPower;
 
-    [SerializeField] private int _chargeAmmountPerHit = 1;
-    [SerializeField] private int _chargeAmmountPerRemovedBlock = 5;
-    [SerializeField] private int _chargeAmmountConsume = 5;
-    [SerializeField] private float _bulletTimeConsumeRateInSeconds = 1f;
+    private int _chargeAmmountPerHit = 1;
+    private int _chargeAmmountPerRemovedBlock = 5;
+    private int _chargeAmmountConsume = 5;
+    private float _bulletTimeConsumeRateInSeconds = 1f;
     public float BulletTimeConsumeRateInSeconds => _bulletTimeConsumeRateInSeconds;
-    [SerializeField] private float _bulletTimeScale = .5f;
+    private float _bulletTimeScale = .5f;
     public float BulletTimeScale => _bulletTimeScale;
 
     private int _chargeMax = 100;
@@ -25,7 +25,7 @@ public class PlayerStats : ScriptableObject
     public bool IsPaddleCharged => _isPaddleCharged;
     public int Charge => _charge;
 
-    [SerializeField] private int _piercingCount = 0;
+    private int _piercingCount = 0;
     public int PiercingCount => _piercingCount;
 
     public UnityAction ChargeUpEvent;
@@ -42,7 +42,7 @@ public class PlayerStats : ScriptableObject
     public Special Special => _special;
     private int _specialIndex = 0;
 
-    [SerializeField] private float _explosionRadius;
+    private float _explosionRadius;
     public float ExplosionRadius => _explosionRadius;
 
     public void Init()
@@ -52,6 +52,14 @@ public class PlayerStats : ScriptableObject
         _isPaddleCharged = false;
 
         _ballPower = (int)_initValues.BallPower.Value;
+        _chargeAmmountPerHit = (int)_initValues.ChargeAmmountPerHit.Value;
+        _chargeAmmountPerRemovedBlock = (int)_initValues.ChargeAmmountPerRemovedBlock.Value;
+        _chargeAmmountConsume = (int)_initValues.ChargeAmmountConsume.Value;
+        _bulletTimeConsumeRateInSeconds = _initValues.BulletTimeConsumeRateInSeconds.Value;
+        _bulletTimeScale = _initValues.BulletTimeScale.Value;
+        _chargeMax = (int)_initValues.ChargeMax.Value;
+        _piercingCount = (int)_initValues.PiercingCount.Value;
+        _explosionRadius = _initValues.ExplosionRadius.Value;
     }
 
     public void CicleSpecial()

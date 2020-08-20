@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DebugPanelProperty : MonoBehaviour
+public class SliderProperty : MonoBehaviour
 {
     [SerializeField] private string _name;
     [SerializeField] private float _minValue;
@@ -16,14 +16,16 @@ public class DebugPanelProperty : MonoBehaviour
     [SerializeField] private TMP_Text _maxValueDisplay;
     [SerializeField] private FloatVariable _property;
     [SerializeField] bool _isInteger;
+    private string _format;
 
     private void Awake()
     {
+        _format = _isInteger ? "" : "n2";
         _propertyNameDisplay.text = _name;
         _slider.maxValue = _maxValue;
         _slider.value = _property.Value;
         _slider.minValue = _minValue;
-        _propertyValueDisplay.text = _property.Value.ToString();
+        _propertyValueDisplay.text = _property.Value.ToString(_format);
         _slider.wholeNumbers = _isInteger;
 
         _minValueDisplay.text = _minValue.ToString();
@@ -36,7 +38,7 @@ public class DebugPanelProperty : MonoBehaviour
 
     public void UpdateProperty()
     {
-        _propertyValueDisplay.text = _slider.value.ToString();
+        _propertyValueDisplay.text = _slider.value.ToString(_format);
         _property.Value = _slider.value;
     }
 }
