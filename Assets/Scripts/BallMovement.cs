@@ -14,6 +14,7 @@ public class BallMovement : MonoBehaviour
     [SerializeField] private ExplosionFX _explosionFX;
 
     private Vector2 _previousVelocity;
+    private Vector3 _previousPosition;
 
     void Start()
     {
@@ -23,7 +24,8 @@ public class BallMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _previousVelocity = _rigidbody.velocity;    
+        _previousVelocity = _rigidbody.velocity;
+        _previousPosition = transform.position;
     }
 
     public void BounceBall(Vector2 inNormal)
@@ -47,27 +49,6 @@ public class BallMovement : MonoBehaviour
             playerController.ActivateSpecial(this);
         }
 
-        /*if (collision.gameObject.CompareTag("Block"))
-        {
-            var block = collision.gameObject.GetComponent<Block>();
-            if (PiercingCountLeft > 0)
-            {
-                PiercingCountLeft--;
-                block.RemoveBlock();
-                return;
-            }
-
-            //var normal = (new Vector2(transform.position.x, transform.position.y) - collision.ClosestPoint(transform.position)).normalized;
-            Vector2 normal = collision.GetComponent<Block>().GetNormal(transform.position);
-            BounceBall(normal);
-            if (IsExplosionActivated)
-            {
-                Explode();
-                return;
-            }
-            block.Hit();
-        }*/
-
         if (collision.gameObject.CompareTag("Floor"))
         {
             DestroyBall();
@@ -84,12 +65,10 @@ public class BallMovement : MonoBehaviour
                 PiercingCountLeft--;
                 block.RemoveBlock();
                 _rigidbody.velocity = _previousVelocity;
+                transform.position = _previousPosition;
                 return;
             }
 
-            //var normal = (new Vector2(transform.position.x, transform.position.y) - collision.ClosestPoint(transform.position)).normalized;
-            //Vector2 normal = collision.GetComponent<Block>().GetNormal(transform.position);
-            //BounceBall(normal);
             if (IsExplosionActivated)
             {
                 Explode();
