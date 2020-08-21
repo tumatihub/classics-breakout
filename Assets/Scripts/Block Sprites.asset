@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6168cbab0d56f34a95ea0f927f678c7, type: 3}
   m_Name: Block Sprites
   m_EditorClassIdentifier: 
-  Sprites:
-  - {fileID: 21300000, guid: 5b4105aef2cf65e44b0edebd3fae1d54, type: 3}
-  - {fileID: 21300000, guid: 3596de32790e64d4787060982b79b832, type: 3}
-  - {fileID: 21300000, guid: b82630a833a91134ea361c5f862c2a4f, type: 3}
-  - {fileID: 21300000, guid: 57f43ea50ceb83044a1b0228ca90fad4, type: 3}
-  - {fileID: 21300000, guid: 0c08ea66ccd574343b41313e95876c0b, type: 3}
-  - {fileID: 21300000, guid: 6124ac4659e7c0141ba39b037f1c1e06, type: 3}
+  Configs:
+  - Sprite: {fileID: 21300000, guid: 5b4105aef2cf65e44b0edebd3fae1d54, type: 3}
+    DissolveColor: {r: 4, g: 4, b: 4, a: 1}
+  - Sprite: {fileID: 21300000, guid: 57f43ea50ceb83044a1b0228ca90fad4, type: 3}
+    DissolveColor: {r: 1.7960784, g: 1.2784314, b: 0, a: 1}
+  - Sprite: {fileID: 21300000, guid: b82630a833a91134ea361c5f862c2a4f, type: 3}
+    DissolveColor: {r: 0, g: 1.5262501, b: 0.26543483, a: 1}
+  - Sprite: {fileID: 21300000, guid: 3596de32790e64d4787060982b79b832, type: 3}
+    DissolveColor: {r: 0, g: 0.23036647, b: 1.6753925, a: 1}
+  - Sprite: {fileID: 21300000, guid: 6124ac4659e7c0141ba39b037f1c1e06, type: 3}
+    DissolveColor: {r: 1.157992, g: 0, b: 1.019033, a: 1}
+  - Sprite: {fileID: 21300000, guid: 0c08ea66ccd574343b41313e95876c0b, type: 3}
+    DissolveColor: {r: 1.7801045, g: 0, b: 0.10471203, a: 1}

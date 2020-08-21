@@ -25,7 +25,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Fade: 0.54
+    - _Fade: 1
+    - _Offset: 0
     - _Scale: 33.9
     m_Colors:
     - Color_52281E75: {r: 5.3403134, g: 5.3403134, b: 5.3403134, a: 1}
+    - _Color: {r: 4, g: 0, b: 0, a: 1}

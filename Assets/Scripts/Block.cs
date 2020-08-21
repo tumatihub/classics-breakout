@@ -29,21 +29,31 @@ public class Block : MonoBehaviour
         }
         else
         {
-            UpdateSprite();
+            DissolveToOtherSprite();
             _playerStats.ChargePerHit();
         }
     }
 
     private void UpdateSprite()
     {
-        if (_hitPoints > _blockSprites.Sprites.Length) return;
-        _sprite.sprite = _blockSprites.Sprites[_hitPoints - 1];
+        if (_hitPoints > _blockSprites.Configs.Length || _hitPoints < 1) return;
+        _sprite.sprite = _blockSprites.Configs[_hitPoints - 1].Sprite;
+        _sprite.material.SetColor("_Color", _blockSprites.Configs[_hitPoints - 1].DissolveColor);
+        _sprite.material.SetFloat("_Offset", UnityEngine.Random.Range(0f, 5f));
     }
 
     public void RemoveBlock()
     {
         _playerStats.ChargePerRemovedBlock();
-        Destroy(gameObject);
+        _collider.enabled = false;
+        Dissolve();
+    }
+
+    private void Dissolve()
+    {
+        var seq = LeanTween.sequence();
+        seq.append(LeanTween.value(gameObject, UpdateDissolveFadeValue, 1f, 0f, .3f));
+        seq.append(() => { Destroy(gameObject); });
     }
 
     public Vector2 GetNormal(Vector3 position)
@@ -70,5 +80,18 @@ public class Block : MonoBehaviour
                 return new Vector2(-1f, 0f);
             }
         }
+    }
+
+    void DissolveToOtherSprite()
+    {
+        var seq = LeanTween.sequence();
+        seq.append(LeanTween.value(gameObject, UpdateDissolveFadeValue, 1f, 0.2f, .3f));
+        seq.append(UpdateSprite);
+        seq.append(LeanTween.value(gameObject, UpdateDissolveFadeValue, 0.2f, 1f, .3f));
+    }
+
+    void UpdateDissolveFadeValue(float value, float ratio)
+    {
+        _sprite.material.SetFloat("_Fade", value);
     }
 }
