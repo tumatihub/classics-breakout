@@ -139,3 +139,5 @@ MonoBehaviour:
   IsExplosionActivated: 0
   _explosionFX: {fileID: 1112307003476689257, guid: dfaf91affc881944095c3512c6d90c61,
     type: 3}
+  _normalBallTrail: {fileID: 5658604170179927716, guid: bd31d998722388b46ab6b0b61cb7319d,
+    type: 3}

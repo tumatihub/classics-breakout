@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour
     private void ActivateChargeParticles()
     {
         if (_playerStats.Special.ChargeParticles == null) return;
+        if (_chargeParticles != null) Destroy(_chargeParticles.gameObject);
         _chargeParticles = Instantiate(_playerStats.Special.ChargeParticles, transform.position, Quaternion.identity, transform);
     }
 
@@ -158,6 +159,7 @@ public class PlayerController : MonoBehaviour
     public void ActivateSpecial(BallMovement ball)
     {
         if (!_playerStats.IsPaddleCharged) return;
+        ball.ChangeTrailToSpecial();
         DeactivateChargeParticles();
         ActivateSpecialParticles();
         _playerStats.Special.BallActivatedAction(ball);

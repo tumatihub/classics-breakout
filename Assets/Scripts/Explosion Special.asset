@@ -17,4 +17,8 @@ MonoBehaviour:
   ChargesPaddle: 1
   ChargeParticles: {fileID: 5877660361069297497, guid: c36784a1e054ca3428f503e3f58bebcc,
     type: 3}
+  ActivateSpecialParticles: {fileID: 5877660361069297497, guid: a4507ef4cd846fc478835c08b07382da,
+    type: 3}
+  BallTrail: {fileID: 5658604170179927716, guid: 6da2731c3949d494882e223891e86c7d,
+    type: 3}
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}

@@ -16,10 +16,14 @@ public class BallMovement : MonoBehaviour
     private Vector2 _previousVelocity;
     private Vector3 _previousPosition;
 
+    [SerializeField] private GameObject _normalBallTrail;
+    private GameObject _trail;
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.isKinematic = true;
+        ChangeTrailToNormal();
     }
 
     private void FixedUpdate()
@@ -66,16 +70,30 @@ public class BallMovement : MonoBehaviour
                 block.RemoveBlock();
                 _rigidbody.velocity = _previousVelocity;
                 transform.position = _previousPosition;
+                if (PiercingCountLeft <= 0) ChangeTrailToNormal();
                 return;
             }
 
             if (IsExplosionActivated)
             {
                 Explode();
+                ChangeTrailToNormal();
                 return;
             }
             block.Hit();
         }
+    }
+
+    private void ChangeTrailToNormal()
+    {
+        if (_trail != null) Destroy(_trail.gameObject);
+        _trail = Instantiate(_normalBallTrail, transform.position, Quaternion.identity, transform);
+    }
+
+    public void ChangeTrailToSpecial()
+    {
+        if (_trail != null) Destroy(_trail.gameObject);
+        _trail = Instantiate(_playerStats.Special.BallTrail, transform.position, Quaternion.identity, transform);
     }
 
     private void DestroyBall()

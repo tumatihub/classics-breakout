@@ -9,6 +9,7 @@ public abstract class Special : ScriptableObject
     public bool ChargesPaddle;
     public GameObject ChargeParticles;
     public GameObject ActivateSpecialParticles;
+    public GameObject BallTrail;
 
     [SerializeField] protected PlayerStats _playerStats;
 
