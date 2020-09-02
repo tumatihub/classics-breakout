@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BallMovement _ballPrefab;
     private BallMovement _ball;
 
+    private GameObject _chargeParticles;
 
     IEnumerator _bulletTime;
 
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour
             if (_playerStats.Special.ChargesPaddle)
             {
                 _playerStats.ChargePaddle();
+                ActivateChargeParticles();
                 return;
             }
             ExecuteSpecial();
@@ -95,6 +97,19 @@ public class PlayerController : MonoBehaviour
 
         UpdateArrowDirection();
 
+    }
+
+    private void ActivateChargeParticles()
+    {
+        if (_playerStats.Special.ChargeParticles == null) return;
+        _chargeParticles = Instantiate(_playerStats.Special.ChargeParticles, transform.position, Quaternion.identity, transform);
+    }
+
+    private void DeactivateChargeParticles()
+    {
+        if (_chargeParticles == null) return;
+        Destroy(_chargeParticles.gameObject);
+        _chargeParticles = null;
     }
 
     private void LauchBall()
@@ -143,7 +158,15 @@ public class PlayerController : MonoBehaviour
     public void ActivateSpecial(BallMovement ball)
     {
         if (!_playerStats.IsPaddleCharged) return;
+        DeactivateChargeParticles();
+        ActivateSpecialParticles();
         _playerStats.Special.BallActivatedAction(ball);
+    }
+
+    private void ActivateSpecialParticles()
+    {
+        if (_playerStats.Special.ActivateSpecialParticles == null) return;
+        Instantiate(_playerStats.Special.ActivateSpecialParticles, transform.position, Quaternion.identity, transform);
     }
 
     private void ExecuteSpecial()

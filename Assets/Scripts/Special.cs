@@ -7,6 +7,8 @@ public abstract class Special : ScriptableObject
     public string Name;
     public Color Color;
     public bool ChargesPaddle;
+    public GameObject ChargeParticles;
+    public GameObject ActivateSpecialParticles;
 
     [SerializeField] protected PlayerStats _playerStats;
 

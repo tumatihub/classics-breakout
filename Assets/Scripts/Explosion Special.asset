@@ -15,4 +15,6 @@ MonoBehaviour:
   Name: Explosion
   Color: {r: 0.8901961, g: 0.3647059, b: 0.3647059, a: 1}
   ChargesPaddle: 1
+  ChargeParticles: {fileID: 5877660361069297497, guid: c36784a1e054ca3428f503e3f58bebcc,
+    type: 3}
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}

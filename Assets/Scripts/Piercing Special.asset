@@ -15,4 +15,6 @@ MonoBehaviour:
   Name: Piercing
   Color: {r: 0.3457636, g: 0.6981132, b: 0.4345035, a: 1}
   ChargesPaddle: 1
+  ChargeParticles: {fileID: 5877660361069297497, guid: 63ccab3d34129384795f351b0394246e,
+    type: 3}
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}
