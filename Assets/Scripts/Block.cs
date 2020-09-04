@@ -34,6 +34,11 @@ public class Block : MonoBehaviour
         }
     }
 
+    public void SetHitPoints(int hitPoints)
+    {
+        _hitPoints = Mathf.Clamp(hitPoints, 1, _blockSprites.Configs.Length);
+    }
+
     private void UpdateSprite()
     {
         if (_hitPoints > _blockSprites.Configs.Length || _hitPoints < 1) return;
