@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class InputKeys
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour
     private GameObject _chargeParticles;
 
     IEnumerator _bulletTime;
+
+    public UnityEvent BallCollisionWithPaddle;
 
     private void Awake()
     {
@@ -158,6 +161,7 @@ public class PlayerController : MonoBehaviour
 
     public void ActivateSpecial(BallMovement ball)
     {
+        BallCollisionWithPaddle.Invoke();
         if (!_playerStats.IsPaddleCharged) return;
         ball.ChangeTrailToSpecial();
         DeactivateChargeParticles();

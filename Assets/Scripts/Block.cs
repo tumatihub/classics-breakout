@@ -13,6 +13,8 @@ public class Block : MonoBehaviour
     [SerializeField] private BlockSprites _blockSprites;
     private SpriteRenderer _sprite;
 
+    public event Action<Block> OnRemoveBlock;
+
     void Start()
     {
         _collider = GetComponent<Collider2D>();
@@ -49,6 +51,7 @@ public class Block : MonoBehaviour
 
     public void RemoveBlock()
     {
+        OnRemoveBlock?.Invoke(this);
         _playerStats.ChargePerRemovedBlock();
         _collider.enabled = false;
         Dissolve();
