@@ -19,6 +19,8 @@ public class BallMovement : MonoBehaviour
     [SerializeField] private GameObject _normalBallTrail;
     private GameObject _trail;
 
+    [SerializeField] private Score _score;
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -66,6 +68,7 @@ public class BallMovement : MonoBehaviour
             var block = collision.gameObject.GetComponent<Block>();
             if (PiercingCountLeft > 0)
             {
+                _score.ScoreInstantRemove(block);
                 PiercingCountLeft--;
                 block.RemoveBlock();
                 _rigidbody.velocity = _previousVelocity;

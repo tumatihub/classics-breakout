@@ -9,9 +9,13 @@ public class Block : MonoBehaviour
 
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private int _hitPoints = 1;
+    public int HitPoints => _hitPoints;
+
     private Collider2D _collider;
     [SerializeField] private BlockSprites _blockSprites;
     private SpriteRenderer _sprite;
+
+    [SerializeField] private Score _score;
 
     public event Action<Block> OnRemoveBlock;
 
@@ -24,6 +28,7 @@ public class Block : MonoBehaviour
 
     public void Hit()
     {
+        _score.ScoreNormalHit(this);
         _hitPoints -= _playerStats.BallPower;
         if (_hitPoints <= 0)
         {

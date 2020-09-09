@@ -141,3 +141,4 @@ MonoBehaviour:
     type: 3}
   _normalBallTrail: {fileID: 5658604170179927716, guid: bd31d998722388b46ab6b0b61cb7319d,
     type: 3}
+  _score: {fileID: 11400000, guid: 612cbfb6733210b42b0f04094eec5dc9, type: 2}

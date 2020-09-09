@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator _bulletTime;
 
     public UnityEvent BallCollisionWithPaddle;
+    public UnityEvent OnBallCollisionWithoutSpecial;
 
     private void Awake()
     {
@@ -162,7 +163,11 @@ public class PlayerController : MonoBehaviour
     public void ActivateSpecial(BallMovement ball)
     {
         BallCollisionWithPaddle.Invoke();
-        if (!_playerStats.IsPaddleCharged) return;
+        if (!_playerStats.IsPaddleCharged)
+        {
+            OnBallCollisionWithoutSpecial.Invoke();
+            return;
+        }
         ball.ChangeTrailToSpecial();
         DeactivateChargeParticles();
         ActivateSpecialParticles();

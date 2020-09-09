@@ -59,7 +59,7 @@ public class BlocksRow : MonoBehaviour
 
     int GetBlockHitPoints()
     {
-        return UnityEngine.Random.Range(1, 2);
+        return UnityEngine.Random.Range(1, 7);
     }
 
     public void MoveRowDown()
