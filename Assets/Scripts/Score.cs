@@ -26,14 +26,14 @@ public class Score : ScriptableObject
 
     public void ScoreNormalHit(Block block)
     {
-        OnHit?.Invoke();
         _comboCounter += Mathf.Min(block.HitPoints, _playerStats.BallPower);
+        OnHit?.Invoke();
     }
 
     public void ScoreInstantRemove(Block block)
     {
-        OnHit?.Invoke();
         _comboCounter += block.HitPoints;
+        OnHit?.Invoke();
     }
 
     public void ScoreComboCouter()
