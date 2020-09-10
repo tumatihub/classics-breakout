@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -36,7 +37,8 @@ public class PlayerStats : ScriptableObject
 
     public bool CanBulletTime => _charge >= _chargeAmmountConsume;
 
-    [SerializeField] private Special[] _specials;
+    [SerializeField] private List<Special> _specials = new List<Special>();
+
     private Special _special;
     public bool CanUseSpecial => _charge >= _chargeMax && _special != null;
     public Special Special => _special;
@@ -62,12 +64,22 @@ public class PlayerStats : ScriptableObject
         _explosionRadius = _initValues.ExplosionRadius.Value;
     }
 
+    public void ClearSpecials()
+    {
+        _specials.Clear();
+    }
+
+    public void AddSpecial(Special special)
+    {
+        _specials.Add(special);
+    }
+
     public void CicleSpecial()
     {
-        if (_specials.Length == 0) return;
+        if (_specials.Count == 0) return;
 
         _specialIndex += 1;
-        if (_specialIndex >= _specials.Length) _specialIndex = 0;
+        if (_specialIndex >= _specials.Count) _specialIndex = 0;
         _special = _specials[_specialIndex];
         ChangeSpecialEvent?.Invoke();
     }
