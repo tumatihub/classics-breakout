@@ -47,8 +47,11 @@ public class PlayerStats : ScriptableObject
     private float _explosionRadius;
     public float ExplosionRadius => _explosionRadius;
 
+    [SerializeField] private Upgrades _upgrades;
+
     public void Init()
     {
+        _upgrades.LoadUpgrades();
         ResetCharge();
         _special = null;
         _isPaddleCharged = false;

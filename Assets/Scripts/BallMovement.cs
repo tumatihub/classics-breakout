@@ -21,6 +21,8 @@ public class BallMovement : MonoBehaviour
 
     [SerializeField] private Score _score;
 
+    public event Action OnDestroy;
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -101,6 +103,7 @@ public class BallMovement : MonoBehaviour
 
     private void DestroyBall()
     {
+        OnDestroy?.Invoke();
         Destroy(gameObject);
     }
 

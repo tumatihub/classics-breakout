@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   _initValues: {fileID: 11400000, guid: 8a1a753a85c0bac4699979d386e06559, type: 2}
-  _bulletTimeConsumeRateInSeconds: 0.5
-  _bulletTimeScale: 0.5
-  _piercingCount: 3
   _specials:
-  - {fileID: 11400000, guid: 49ab6cdaaaad4fc41a2c3106e15b2598, type: 2}
   - {fileID: 11400000, guid: af64004bfcdfd9944825867a464f5e5c, type: 2}
-  _explosionRadius: 1
+  - {fileID: 11400000, guid: 49ab6cdaaaad4fc41a2c3106e15b2598, type: 2}
+  _upgrades: {fileID: 11400000, guid: 1478f9412f5ca1a45b4631b516c31c8f, type: 2}

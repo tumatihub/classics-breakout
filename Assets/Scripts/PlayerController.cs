@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator _bulletTime;
 
+    private SceneController _sceneController;
+
     public UnityEvent BallCollisionWithPaddle;
     public UnityEvent OnBallCollisionWithoutSpecial;
 
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerStats.Init();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _sceneController = FindObjectOfType<SceneController>();
         BallSpawn();
     }
 
@@ -188,5 +191,11 @@ public class PlayerController : MonoBehaviour
     private void BallSpawn()
     {
         _ball = Instantiate(_ballPrefab, _ballSpawnPoint.position, Quaternion.identity, _ballSpawnPoint);
+        _ball.OnDestroy += HandleBallDestroyed;
+    }
+
+    private void HandleBallDestroyed()
+    {
+        _sceneController.LoadUpgradesScreen();
     }
 }

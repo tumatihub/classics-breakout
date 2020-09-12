@@ -24,13 +24,20 @@ public class Upgrades : ScriptableObject
         if (_explosionRadius.Level > 0)
         {
             _playerStats.AddSpecial(_explosionSpecial);
-            _initValues.ExplosionRadius.Value = _explosionRadius.Value;
         }
+        _initValues.ExplosionRadius.Value = _explosionRadius.Value;
 
         if (_piercingCount.Level > 0)
         {
             _playerStats.AddSpecial(_piercingSpecial);
-            _initValues.PiercingCount.Value = _piercingCount.Value;
         }
+        _initValues.PiercingCount.Value = _piercingCount.Value;
+    }
+
+    public void ResetUpgrades()
+    {
+        _ballPower.Reset();
+        _piercingCount.Reset();
+        _explosionRadius.Reset();
     }
 }

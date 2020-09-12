@@ -45,4 +45,8 @@ public class Score : ScriptableObject
         _comboCounter = 0;
     }
 
+    public void ConsumeComboPoints(int points)
+    {
+        _comboTotalScore = Mathf.Max(0, _comboTotalScore - points);
+    }
 }
