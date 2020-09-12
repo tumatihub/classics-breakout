@@ -17,7 +17,7 @@ public class Block : MonoBehaviour
 
     [SerializeField] private Score _score;
 
-    public event Action<Block> OnRemoveBlock;
+    public event Action OnRemoveBlock;
 
     void Start()
     {
@@ -56,7 +56,6 @@ public class Block : MonoBehaviour
 
     public void RemoveBlock()
     {
-        OnRemoveBlock?.Invoke(this);
         _playerStats.ChargePerRemovedBlock();
         _collider.enabled = false;
         Dissolve();
@@ -66,7 +65,7 @@ public class Block : MonoBehaviour
     {
         var seq = LeanTween.sequence();
         seq.append(LeanTween.value(gameObject, UpdateDissolveFadeValue, 1f, 0f, .3f));
-        seq.append(() => { Destroy(gameObject); });
+        seq.append(() => { OnRemoveBlock?.Invoke(); Destroy(gameObject); });
     }
 
     public Vector2 GetNormal(Vector3 position)

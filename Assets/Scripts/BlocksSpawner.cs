@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class BlocksSpawner : MonoBehaviour
     [SerializeField] private float _secondsToSpawnNewRow = 5f;
     private float _spawnCooldown;
     private List<BlocksRow> _spawnedRows = new List<BlocksRow>();
+
+    public event Action OnMoveDownRows;
 
     void Start()
     {
@@ -24,6 +27,8 @@ public class BlocksSpawner : MonoBehaviour
     public void HandleRemoveRow(BlocksRow blocksRow)
     {
         _spawnedRows.Remove(blocksRow);
+        OnMoveDownRows -= blocksRow.MoveRowDown;
+        blocksRow.RemoveRow();
     }
 
     public void HandleBallCollisionWithPaddle()
@@ -31,7 +36,7 @@ public class BlocksSpawner : MonoBehaviour
         if (_spawnCooldown <= 0 || _spawnedRows.Count < _initialNumberOfRows)
         {
             if (_spawnCooldown <= 0) _spawnCooldown = _secondsToSpawnNewRow;
-            MoveAllRowsDown();
+            OnMoveDownRows?.Invoke();
             SpawnRow(transform.position);
         }
     }
@@ -39,6 +44,8 @@ public class BlocksSpawner : MonoBehaviour
     BlocksRow SpawnRow(Vector3 centerPosition)
     {
         var row = Instantiate(_blocksRowPrefab, centerPosition, Quaternion.identity);
+        OnMoveDownRows += row.MoveRowDown;
+        row.OnRemoveRow += HandleRemoveRow;
         _spawnedRows.Add(row);
         return row;
     }
@@ -47,17 +54,8 @@ public class BlocksSpawner : MonoBehaviour
     {
         for (var i = 0; i < numberOfRows; i++)
         {
-            MoveAllRowsDown();
-            var row = SpawnRow(transform.position);
-            row.OnRemoveRow += HandleRemoveRow;
-        }
-    }
-
-    void MoveAllRowsDown()
-    {
-        foreach(var row in _spawnedRows)
-        {
-            row?.MoveRowDown();
+            OnMoveDownRows?.Invoke();
+            SpawnRow(transform.position);
         }
     }
 }

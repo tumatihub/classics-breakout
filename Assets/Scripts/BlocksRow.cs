@@ -47,13 +47,13 @@ public class BlocksRow : MonoBehaviour
         return block;
     }
 
-    public void HandleRemoveBlock(Block removedBlock)
+    public void HandleRemoveBlock()
     {
         _remainingBlocks--;
         if (_remainingBlocks <= 0)
         {
             OnRemoveRow?.Invoke(this);
-            Destroy(gameObject, 1f);
+            
         }
     }
 
@@ -65,5 +65,10 @@ public class BlocksRow : MonoBehaviour
     public void MoveRowDown()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y - _spaceBetweenRows);
+    }
+
+    public void RemoveRow()
+    {
+        Destroy(gameObject);
     }
 }
