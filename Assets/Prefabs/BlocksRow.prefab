@@ -45,3 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockPrefab: {fileID: -3525605073277301406, guid: a3bce1c62f315e947aa3b9b6d1ce5f8d,
     type: 3}
+  _spawnerProgression: {fileID: 11400000, guid: 39d319af07079a142aed99bd1fb64b11,
+    type: 2}

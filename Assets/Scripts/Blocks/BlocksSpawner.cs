@@ -11,10 +11,16 @@ public class BlocksSpawner : MonoBehaviour
     private float _spawnCooldown;
     private List<BlocksRow> _spawnedRows = new List<BlocksRow>();
 
+    [SerializeField] private int _startLevel;
+
+    private int _totalSpawnedRows;
+    [SerializeField] SpawnerProgression _spawnerProgression;
+
     public event Action OnMoveDownRows;
 
     void Start()
     {
+        _spawnerProgression.SetLevel(_startLevel);
         CreateInitialRows(_initialNumberOfRows);
         _spawnCooldown = _secondsToSpawnNewRow;
     }
@@ -47,8 +53,11 @@ public class BlocksSpawner : MonoBehaviour
         OnMoveDownRows += row.MoveRowDown;
         row.OnRemoveRow += HandleRemoveRow;
         _spawnedRows.Add(row);
+        _totalSpawnedRows++;
+        _spawnerProgression.CheckLevelUpdate(_totalSpawnedRows);
         return row;
     }
+
 
     void CreateInitialRows(int numberOfRows)
     {

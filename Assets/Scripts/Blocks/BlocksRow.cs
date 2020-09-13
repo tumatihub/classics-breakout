@@ -12,6 +12,8 @@ public class BlocksRow : MonoBehaviour
     private float _spaceBetweenRows = 0.5f;
     private int _remainingBlocks = NUM_FOR_BLOCKS_PER_ROW;
 
+    [SerializeField] private SpawnerProgression _spawnerProgression;
+
     public event Action<BlocksRow> OnRemoveRow;
 
     void Start()
@@ -59,7 +61,7 @@ public class BlocksRow : MonoBehaviour
 
     int GetBlockHitPoints()
     {
-        return UnityEngine.Random.Range(1, 7);
+        return _spawnerProgression.GetBlockHitPoints();
     }
 
     public void MoveRowDown()

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6456b279f84d4a4198d2e440724046a, type: 3}
+  m_Name: Spawner Progression
+  m_EditorClassIdentifier: 
+  _spawnerProgressionLevels:
+  - MinSpawnedRows: 0
+    Chances:
+    - Chance: 20
+      HitPoints: 3
+    - Chance: 30
+      HitPoints: 2
+    - Chance: 50
+      HitPoints: 1
+  - MinSpawnedRows: 9
+    Chances:
+    - Chance: 20
+      HitPoints: 4
+    - Chance: 30
+      HitPoints: 3
+    - Chance: 50
+      HitPoints: 2
+  - MinSpawnedRows: 15
+    Chances:
+    - Chance: 20
+      HitPoints: 4
+    - Chance: 30
+      HitPoints: 2
+    - Chance: 50
+      HitPoints: 3

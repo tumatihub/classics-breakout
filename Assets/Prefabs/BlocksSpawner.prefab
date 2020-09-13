@@ -45,3 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blocksRowPrefab: {fileID: 7954823665832070882, guid: 7bf0d7d89c5fdc44bbe3d71ec6d476a0,
     type: 3}
+  _initialNumberOfRows: 8
+  _secondsToSpawnNewRow: 5
+  _startLevel: 0
+  _spawnerProgression: {fileID: 11400000, guid: 39d319af07079a142aed99bd1fb64b11,
+    type: 2}
