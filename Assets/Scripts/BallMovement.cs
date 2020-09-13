@@ -119,7 +119,7 @@ public class BallMovement : MonoBehaviour
         foreach (var blockCollider in blockList)
         {
             Block block = blockCollider.GetComponent<Block>();
-            block.Hit();
+            block.RemoveBlock();
         }
     }
 
