@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3bad33feadaf4dad7a5b2d1148f26, type: 3}
   m_Name: PiercingProgress
   m_EditorClassIdentifier: 
-  _level: 10
+  _level: 0
   _upgrades:
   - Price: 0
     Value: 0

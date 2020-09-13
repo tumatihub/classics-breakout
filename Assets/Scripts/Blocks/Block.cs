@@ -16,6 +16,7 @@ public class Block : MonoBehaviour
     private SpriteRenderer _sprite;
 
     [SerializeField] private Score _score;
+    [SerializeField] private GameObject _blockHitParticles;
 
     public event Action OnRemoveBlock;
 
@@ -37,6 +38,7 @@ public class Block : MonoBehaviour
         else
         {
             DissolveToOtherSprite();
+            SpawnHitParticles();
             _playerStats.ChargePerHit();
         }
     }
@@ -105,5 +107,10 @@ public class Block : MonoBehaviour
     void UpdateDissolveFadeValue(float value, float ratio)
     {
         _sprite.material.SetFloat("_Fade", value);
+    }
+
+    void SpawnHitParticles()
+    {
+        Instantiate(_blockHitParticles, transform.position, Quaternion.identity);
     }
 }

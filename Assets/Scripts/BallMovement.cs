@@ -21,6 +21,7 @@ public class BallMovement : MonoBehaviour
 
     [SerializeField] private Score _score;
 
+
     public event Action OnDestroy;
 
     void Start()
@@ -78,7 +79,6 @@ public class BallMovement : MonoBehaviour
                 if (PiercingCountLeft <= 0) ChangeTrailToNormal();
                 return;
             }
-
             if (IsExplosionActivated)
             {
                 Explode();
@@ -88,6 +88,7 @@ public class BallMovement : MonoBehaviour
             block.Hit();
         }
     }
+
 
     private void ChangeTrailToNormal()
     {
