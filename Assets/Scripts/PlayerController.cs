@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerStats _playerStats;
 
-    private Vector2 _arrowDirection;
+    private Vector2 _arrowDirection = new Vector2(0,1);
     public Vector2 ArrowDirection => _arrowDirection;
     [SerializeField] private GameObject _arrow;
     [SerializeField] private float _maxArrowDegree = 60f;
