@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class BlockSprites : ScriptableObject
+public class BlockTypes : ScriptableObject
 {
     [Serializable]
     public struct Config
@@ -10,6 +10,7 @@ public class BlockSprites : ScriptableObject
         public Sprite Sprite;
         [ColorUsageAttribute(true, true)]
         public Color DissolveColor;
+        public GameObject HitParticles;
     }
 
 

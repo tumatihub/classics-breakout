@@ -12,11 +12,10 @@ public class Block : MonoBehaviour
     public int HitPoints => _hitPoints;
 
     private Collider2D _collider;
-    [SerializeField] private BlockSprites _blockSprites;
+    [SerializeField] private BlockTypes _blockTypes;
     private SpriteRenderer _sprite;
 
     [SerializeField] private Score _score;
-    [SerializeField] private GameObject _blockHitParticles;
 
     public event Action OnRemoveBlock;
 
@@ -45,14 +44,14 @@ public class Block : MonoBehaviour
 
     public void SetHitPoints(int hitPoints)
     {
-        _hitPoints = Mathf.Clamp(hitPoints, 1, _blockSprites.Configs.Length);
+        _hitPoints = Mathf.Clamp(hitPoints, 1, _blockTypes.Configs.Length);
     }
 
     private void UpdateSprite()
     {
-        if (_hitPoints > _blockSprites.Configs.Length || _hitPoints < 1) return;
-        _sprite.sprite = _blockSprites.Configs[_hitPoints - 1].Sprite;
-        _sprite.material.SetColor("_Color", _blockSprites.Configs[_hitPoints - 1].DissolveColor);
+        if (_hitPoints > _blockTypes.Configs.Length || _hitPoints < 1) return;
+        _sprite.sprite = _blockTypes.Configs[_hitPoints - 1].Sprite;
+        _sprite.material.SetColor("_Color", _blockTypes.Configs[_hitPoints - 1].DissolveColor);
         _sprite.material.SetFloat("_Offset", UnityEngine.Random.Range(0f, 5f));
     }
 
@@ -111,6 +110,6 @@ public class Block : MonoBehaviour
 
     void SpawnHitParticles()
     {
-        Instantiate(_blockHitParticles, transform.position, Quaternion.identity);
+        Instantiate(_blockTypes.Configs[_hitPoints].HitParticles, transform.position, Quaternion.identity);
     }
 }
