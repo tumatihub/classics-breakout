@@ -11,6 +11,7 @@ public class BlockTypes : ScriptableObject
         [ColorUsageAttribute(true, true)]
         public Color DissolveColor;
         public GameObject HitParticles;
+        public GameObject DestroyParticles;
     }
 
 

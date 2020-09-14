@@ -16,23 +16,35 @@ MonoBehaviour:
   - Sprite: {fileID: 21300000, guid: 5b4105aef2cf65e44b0edebd3fae1d54, type: 3}
     DissolveColor: {r: 4, g: 4, b: 4, a: 1}
     HitParticles: {fileID: 0}
+    DestroyParticles: {fileID: 5438881404819774814, guid: 08ae251858b5013488eaf9174881a52b,
+      type: 3}
   - Sprite: {fileID: 21300000, guid: 57f43ea50ceb83044a1b0228ca90fad4, type: 3}
     DissolveColor: {r: 1.7960784, g: 1.2784314, b: 0, a: 1}
     HitParticles: {fileID: 3791141408225999056, guid: bdad2ba6071653f4f820725b784db4f4,
+      type: 3}
+    DestroyParticles: {fileID: 2278571466628017238, guid: 702886b64cf71e84a932f9f8a91161d8,
       type: 3}
   - Sprite: {fileID: 21300000, guid: b82630a833a91134ea361c5f862c2a4f, type: 3}
     DissolveColor: {r: 0, g: 1.5262501, b: 0.26543483, a: 1}
     HitParticles: {fileID: 4240651368302206601, guid: 5b649c078fd134344894725ede208540,
       type: 3}
+    DestroyParticles: {fileID: 7098987912240339083, guid: 488cf2016b5aa82468a001b62a6ed520,
+      type: 3}
   - Sprite: {fileID: 21300000, guid: 3596de32790e64d4787060982b79b832, type: 3}
     DissolveColor: {r: 0, g: 0.23036647, b: 1.6753925, a: 1}
     HitParticles: {fileID: 4445353156018463647, guid: e1d398971f68cd44f85211d32bb68679,
+      type: 3}
+    DestroyParticles: {fileID: 1699125620100275230, guid: ef247da2092515d44b991c3e588d8aad,
       type: 3}
   - Sprite: {fileID: 21300000, guid: 6124ac4659e7c0141ba39b037f1c1e06, type: 3}
     DissolveColor: {r: 1.157992, g: 0, b: 1.019033, a: 1}
     HitParticles: {fileID: 836868606083499706, guid: 2a90580e9be137e4c8b8a6bd85d8eca9,
       type: 3}
+    DestroyParticles: {fileID: 3647286196624107220, guid: 10f6cbdd853403e4c98f7c3290f8a15e,
+      type: 3}
   - Sprite: {fileID: 21300000, guid: 0c08ea66ccd574343b41313e95876c0b, type: 3}
     DissolveColor: {r: 1.7801045, g: 0, b: 0.10471203, a: 1}
     HitParticles: {fileID: 4224770440604882100, guid: d63026f7b5524e6458083243e47b34a9,
+      type: 3}
+    DestroyParticles: {fileID: 5604249290480603436, guid: aba9f3cdb95b039498579a8a4ce54735,
       type: 3}

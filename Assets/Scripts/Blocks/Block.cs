@@ -16,6 +16,7 @@ public class Block : MonoBehaviour
     private SpriteRenderer _sprite;
 
     [SerializeField] private Score _score;
+    [SerializeField] private GameObject _destroyParticles;
 
     public event Action OnRemoveBlock;
 
@@ -29,13 +30,13 @@ public class Block : MonoBehaviour
     public void Hit()
     {
         _score.ScoreNormalHit(this);
-        _hitPoints -= _playerStats.BallPower;
-        if (_hitPoints <= 0)
+        if (_hitPoints - _playerStats.BallPower <= 0)
         {
             RemoveBlock();
         }
         else
         {
+            _hitPoints -= _playerStats.BallPower;
             DissolveToOtherSprite();
             SpawnHitParticles();
             _playerStats.ChargePerHit();
@@ -57,6 +58,7 @@ public class Block : MonoBehaviour
 
     public void RemoveBlock()
     {
+        Instantiate(_blockTypes.Configs[_hitPoints-1].DestroyParticles, transform.position, Quaternion.identity);
         _playerStats.ChargePerRemovedBlock();
         _collider.enabled = false;
         Dissolve();
