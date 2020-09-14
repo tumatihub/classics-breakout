@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown(InputKeys.RESTART))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            _sceneController.StartGame();
         }
 
         if (Input.GetButtonDown(InputKeys.LAUNCH_BALL) && _ball != null)
@@ -196,6 +196,12 @@ public class PlayerController : MonoBehaviour
 
     private void HandleBallDestroyed()
     {
+        Invoke("EndGame", 2f);
+    }
+
+    private void EndGame()
+    {
         _sceneController.LoadUpgradesScreen();
+
     }
 }

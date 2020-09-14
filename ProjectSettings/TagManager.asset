@@ -47,3 +47,6 @@ TagManager:
   - name: Block
     uniqueID: 2514807689
     locked: 0
+  - name: ScoreHit
+    uniqueID: 2850776915
+    locked: 0

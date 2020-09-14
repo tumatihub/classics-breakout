@@ -16,7 +16,7 @@ public class Score : ScriptableObject
     private float _comboCounterDurationWithoutHit = 3f;
     public float ComboCounterDurationWithoutHit => _comboCounterDurationWithoutHit;
 
-    public event Action OnHit;
+    public event Action<Block, int> OnHit;
 
     public void Init()
     {
@@ -26,14 +26,16 @@ public class Score : ScriptableObject
 
     public void ScoreNormalHit(Block block)
     {
-        _comboCounter += Mathf.Min(block.HitPoints, _playerStats.BallPower);
-        OnHit?.Invoke();
+        var score = Mathf.Min(block.HitPoints, _playerStats.BallPower);
+        _comboCounter += score;
+        OnHit?.Invoke(block, score);
     }
 
     public void ScoreInstantRemove(Block block)
     {
-        _comboCounter += block.HitPoints;
-        OnHit?.Invoke();
+        var score = block.HitPoints;
+        _comboCounter += score;
+        OnHit?.Invoke(block, score);
     }
 
     public void ScoreComboCouter()

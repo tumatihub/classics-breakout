@@ -2928,6 +2928,11 @@ PrefabInstance:
       propertyPath: _scoreDisplay
       value: 
       objectReference: {fileID: 105939320}
+    - target: {fileID: 2889677618237095195, guid: dbf9d8ce0c3f7e44db1f8de12e77ffe6,
+        type: 3}
+      propertyPath: _scoreHitCanvas
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5817164154221300689, guid: dbf9d8ce0c3f7e44db1f8de12e77ffe6,
         type: 3}
       propertyPath: m_LocalPosition.x
