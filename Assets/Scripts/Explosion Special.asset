@@ -19,6 +19,6 @@ MonoBehaviour:
     type: 3}
   ActivateSpecialParticles: {fileID: 5877660361069297497, guid: a4507ef4cd846fc478835c08b07382da,
     type: 3}
-  BallTrail: {fileID: 5658604170179927716, guid: 6da2731c3949d494882e223891e86c7d,
+  BallTrail: {fileID: 5658604170179927716, guid: 218f8f4b7cbbd8a4582bdb88fefa2c46,
     type: 3}
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}

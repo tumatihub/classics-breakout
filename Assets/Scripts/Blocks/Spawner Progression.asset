@@ -37,3 +37,15 @@ MonoBehaviour:
       HitPoints: 2
     - Chance: 50
       HitPoints: 3
+  - MinSpawnedRows: 20
+    Chances:
+    - Chance: 10
+      HitPoints: 6
+    - Chance: 15
+      HitPoints: 2
+    - Chance: 20
+      HitPoints: 3
+    - Chance: 25
+      HitPoints: 4
+    - Chance: 30
+      HitPoints: 5
