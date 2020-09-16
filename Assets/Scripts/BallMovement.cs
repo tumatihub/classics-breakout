@@ -11,7 +11,8 @@ public class BallMovement : MonoBehaviour
 
     public int PiercingCountLeft = 0;
     public bool IsExplosionActivated = false;
-    [SerializeField] private ExplosionFX _explosionFX;
+    [SerializeField] private List<GameObject> _explosionsPrefabs;
+    [SerializeField] private UpgradeProgress _explosionProgress;
 
     private Vector2 _previousVelocity;
     private Vector3 _previousPosition;
@@ -111,8 +112,8 @@ public class BallMovement : MonoBehaviour
     public void Explode()
     {
         IsExplosionActivated = false;
-        Instantiate(_explosionFX, transform.position, Quaternion.identity);
-        Collider2D[] blockList = Physics2D.OverlapCircleAll(
+        Instantiate(_explosionsPrefabs[_explosionProgress.Level], transform.position, Quaternion.identity);
+        /*Collider2D[] blockList = Physics2D.OverlapCircleAll(
             new Vector2(transform.position.x, transform.position.y), 
             _playerStats.ExplosionRadius,
             LayerMask.GetMask("Block")
@@ -122,7 +123,7 @@ public class BallMovement : MonoBehaviour
             Block block = blockCollider.GetComponent<Block>();
             _score.ScoreInstantRemove(block);
             block.RemoveBlock();
-        }
+        }*/
     }
 
     public void Launch(Vector2 dir)

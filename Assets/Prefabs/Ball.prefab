@@ -137,10 +137,11 @@ MonoBehaviour:
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}
   PiercingCountLeft: 0
   IsExplosionActivated: 0
-  _explosionFX: {fileID: 1112307003476689257, guid: dfaf91affc881944095c3512c6d90c61,
-    type: 3}
+  _explosionsPrefabs:
+  - {fileID: 0}
+  - {fileID: 7428452306848351700, guid: 115d4229586a86c46abfcc8f7d1d8c12, type: 3}
+  - {fileID: 3513457969535290137, guid: b331d15d96b581248acacc96574ff594, type: 3}
+  _explosionProgress: {fileID: 11400000, guid: 77994753fa523374e93b7347407493a2, type: 2}
   _normalBallTrail: {fileID: 5658604170179927716, guid: bd31d998722388b46ab6b0b61cb7319d,
     type: 3}
   _score: {fileID: 11400000, guid: 612cbfb6733210b42b0f04094eec5dc9, type: 2}
-  _collisionParticles: {fileID: 8982179573585046579, guid: f4358f177aa98884da8959896bf384c1,
-    type: 3}

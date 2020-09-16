@@ -19,6 +19,8 @@ public class UpgradeProgress : ScriptableObject
     [SerializeField]
     List<Upgrade> _upgrades = new List<Upgrade>();
 
+    public List<Upgrade> Upgrades => _upgrades;
+
     [SerializeField] private string _upgradeName;
     public string UpgradeName => _upgradeName;
 
