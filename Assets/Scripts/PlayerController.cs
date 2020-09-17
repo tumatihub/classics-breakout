@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+
+
 
 public class InputKeys
 {
@@ -44,6 +48,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ParticleSystem _bulletTimeParticles;
     [SerializeField] private TrailRenderer _bulletTimeTrail;
 
+    [SerializeField] private VolumeProfile _bulletTimeProfile;
+    [SerializeField] private float _chromaticValue = .17f;
+    [SerializeField] private float _chromaticDelay = .5f;
+    private ChromaticAberration _chromatic;
+
     public UnityEvent BallCollisionWithPaddle;
     public UnityEvent OnBallCollisionWithoutSpecial;
 
@@ -58,6 +67,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _sceneController = FindObjectOfType<SceneController>();
         BallSpawn();
+        _bulletTimeProfile.TryGet<ChromaticAberration>(out _chromatic);
     }
 
     void Update()
@@ -74,6 +84,7 @@ public class PlayerController : MonoBehaviour
             StopCoroutine(_bulletTime);
             Time.timeScale = 1f;
             StopBulletTrail();
+            StopBulletVolume();
             _bulletTime = BulletTime();
         }
 
@@ -146,7 +157,11 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator BulletTime()
     {
-        if (_playerStats.CanBulletTime)  StartBulletTrail();
+        if (_playerStats.CanBulletTime)
+        {
+            StartBulletTrail();
+            StartBulletVolume();
+        }
         while (_playerStats.CanBulletTime)
         {
             Time.timeScale = _playerStats.BulletTimeScale;
@@ -154,6 +169,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(_playerStats.BulletTimeConsumeRateInSeconds);
         }
         StopBulletTrail();
+        StopBulletVolume();
         Time.timeScale = 1f;
     }
 
@@ -170,6 +186,22 @@ public class PlayerController : MonoBehaviour
         var particles = _bulletTimeParticles.main;
         particles.loop = false;
         _bulletTimeTrail.enabled = false;
+    }
+
+    void StartBulletVolume()
+    {
+        LeanTween.value(gameObject, UpdateBulletVolume, 0, _chromaticValue, _chromaticDelay).setEase(LeanTweenType.easeInCirc);
+    }
+
+    void StopBulletVolume()
+    {
+        var currentValue = _chromatic.intensity.value;
+        LeanTween.value(gameObject, UpdateBulletVolume, currentValue, 0, _chromaticDelay).setEase(LeanTweenType.easeOutCirc);
+    }
+
+    void UpdateBulletVolume(float value)
+    {
+        _chromatic.intensity.value = value;
     }
 
     private void UpdateArrowDirection()
