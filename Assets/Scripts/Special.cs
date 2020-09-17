@@ -10,6 +10,11 @@ public abstract class Special : ScriptableObject
     public GameObject ChargeParticles;
     public GameObject ActivateSpecialParticles;
     public GameObject BallTrail;
+    public Color BackgroundColor;
+    [ColorUsageAttribute(true, true)]
+    public Color BackgroundHDRColor;
+    [ColorUsageAttribute(true, true)]
+    public Color BackgroundHDRColorActivated;
 
     [SerializeField] protected PlayerStats _playerStats;
 

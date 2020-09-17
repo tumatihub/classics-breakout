@@ -34,6 +34,8 @@ public class PlayerStats : ScriptableObject
     public UnityAction ChargeResetEvent;
     public UnityAction ChargeConsumeEvent;
     public UnityAction ChangeSpecialEvent;
+    public UnityAction ChargePaddleEvent;
+    public UnityAction UnchargePaddleEvent;
 
     public bool CanBulletTime => _charge >= _chargeAmmountConsume;
 
@@ -123,10 +125,12 @@ public class PlayerStats : ScriptableObject
     public void ChargePaddle()
     {
         _isPaddleCharged = true;
+        ChargePaddleEvent?.Invoke();
     }
 
     public void UnchargePaddle()
     {
         _isPaddleCharged = false;
+        UnchargePaddleEvent?.Invoke();
     }
 }
