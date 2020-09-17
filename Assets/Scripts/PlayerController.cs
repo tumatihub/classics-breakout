@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
 
     private SceneController _sceneController;
 
+    [SerializeField] private ParticleSystem _bulletTimeParticles;
+    [SerializeField] private TrailRenderer _bulletTimeTrail;
+
     public UnityEvent BallCollisionWithPaddle;
     public UnityEvent OnBallCollisionWithoutSpecial;
 
@@ -70,6 +73,7 @@ public class PlayerController : MonoBehaviour
         {
             StopCoroutine(_bulletTime);
             Time.timeScale = 1f;
+            StopBulletTrail();
             _bulletTime = BulletTime();
         }
 
@@ -142,13 +146,30 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator BulletTime()
     {
+        if (_playerStats.CanBulletTime)  StartBulletTrail();
         while (_playerStats.CanBulletTime)
         {
             Time.timeScale = _playerStats.BulletTimeScale;
             _playerStats.ConsumeCharge();
             yield return new WaitForSeconds(_playerStats.BulletTimeConsumeRateInSeconds);
         }
+        StopBulletTrail();
         Time.timeScale = 1f;
+    }
+
+    void StartBulletTrail()
+    {
+        var particles = _bulletTimeParticles.main;
+        particles.loop = true;
+        _bulletTimeParticles.Play();
+        _bulletTimeTrail.enabled = true;
+    }
+
+    void StopBulletTrail()
+    {
+        var particles = _bulletTimeParticles.main;
+        particles.loop = false;
+        _bulletTimeTrail.enabled = false;
     }
 
     private void UpdateArrowDirection()
