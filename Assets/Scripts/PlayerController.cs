@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
     private void ChangePaddleChargeVFX()
     {
-        if (_playerStats.Special == null) return;
+        if (!_playerStats.Special.CanBeUsed) return;
         if (_paddleChargeVFX != null) Destroy(_paddleChargeVFX.gameObject);
         _paddleChargeVFX = Instantiate(_playerStats.Special.PaddleChargeVFX, transform.position, Quaternion.identity, transform);
     }

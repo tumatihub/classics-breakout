@@ -42,7 +42,7 @@ public class PlayerStats : ScriptableObject
     [SerializeField] private List<Special> _specials = new List<Special>();
 
     private Special _special;
-    public bool CanUseSpecial => _charge >= _chargeMax && _special != null;
+    public bool CanUseSpecial => _charge >= _chargeMax && _special.CanBeUsed;
     public Special Special => _special;
     private int _specialIndex = 0;
 
@@ -55,7 +55,7 @@ public class PlayerStats : ScriptableObject
     {
         _upgrades.LoadUpgrades();
         ResetCharge();
-        _special = null;
+        ChangeSpecial(0);
         _isPaddleCharged = false;
 
         _ballPower = (int)_initValues.BallPower.Value;
@@ -85,7 +85,12 @@ public class PlayerStats : ScriptableObject
 
         _specialIndex += 1;
         if (_specialIndex >= _specials.Count) _specialIndex = 0;
-        _special = _specials[_specialIndex];
+        ChangeSpecial(_specialIndex);
+    }
+
+    public void ChangeSpecial(int index)
+    {
+        _special = _specials[index];
         ChangeSpecialEvent?.Invoke();
     }
 

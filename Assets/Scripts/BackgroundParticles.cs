@@ -14,6 +14,11 @@ public class BackgroundParticles : MonoBehaviour
         _playerStats.UnchargePaddleEvent += ChangeColorToCurrentSpecial;
     }
 
+    private void Start()
+    {
+        ChangeColorToCurrentSpecial();
+    }
+
     void ChangeColorToCurrentSpecial()
     {
         _particlesMaterial.color = _playerStats.Special.BackgroundColor;

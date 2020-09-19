@@ -15,12 +15,16 @@ public class Upgrades : ScriptableObject
 
     [SerializeField] private PiercingSpecial _piercingSpecial;
     [SerializeField] private ExplosionSpecial _explosionSpecial;
+    [SerializeField] private EmptySpecial _emptySpecial;
 
     public void LoadUpgrades()
     {
         _initValues.BallPower.Value = _ballPower.Value;
 
         _playerStats.ClearSpecials();
+
+        _playerStats.AddSpecial(_emptySpecial);
+
         if (_explosionRadius.Level > 0)
         {
             _playerStats.AddSpecial(_explosionSpecial);
