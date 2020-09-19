@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PaddleCharge_explosion
+  m_Shader: {fileID: -6465566751694194690, guid: 26c59a33e482d464ab568ea3d38b5239,
+    type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 20b292eb38292ed4492a2b702a671d81, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_ADF88333: 0.8
+    - Vector1_E26D8596: 1.03
+    - Vector1_F182AB63: 0.48
+    - _Fade: 0.533
+    - _Offset: 1.47
+    - _Scale: 12.3
+    m_Colors:
+    - Color_52281E75: {r: 5.3403134, g: 5.3403134, b: 5.3403134, a: 1}
+    - _Color: {r: 2.964706, g: 0.24835235, b: 0.2173083, a: 1}

@@ -15,6 +15,7 @@ public abstract class Special : ScriptableObject
     public Color BackgroundHDRColor;
     [ColorUsageAttribute(true, true)]
     public Color BackgroundHDRColorActivated;
+    public PaddleChargeVFX PaddleChargeVFX;
 
     [SerializeField] protected PlayerStats _playerStats;
 

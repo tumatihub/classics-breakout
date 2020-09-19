@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,6 +107,9 @@ MonoBehaviour:
   _ballPrefab: {fileID: 1599469807, guid: 64e229cedf22a6b4b8a07f9435d7feac, type: 3}
   _bulletTimeParticles: {fileID: 6521385030078103447}
   _bulletTimeTrail: {fileID: 6965587386843730306}
+  _bulletTimeProfile: {fileID: 0}
+  _chromaticValue: 0.17
+  _chromaticDelay: 0.5
   BallCollisionWithPaddle:
     m_PersistentCalls:
       m_Calls: []

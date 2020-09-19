@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _chromaticDelay = .5f;
     private ChromaticAberration _chromatic;
 
+    private PaddleChargeVFX _paddleChargeVFX;
+
     public UnityEvent BallCollisionWithPaddle;
     public UnityEvent OnBallCollisionWithoutSpecial;
 
@@ -92,6 +94,7 @@ public class PlayerController : MonoBehaviour
         {
             if (_playerStats.IsPaddleCharged) return;
             _playerStats.CicleSpecial();
+            ChangePaddleChargeVFX();
         }
 
         if (Input.GetButtonDown(InputKeys.SPECIAL))
@@ -121,18 +124,15 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void ActivateChargeParticles()
+    private void ChangePaddleChargeVFX()
     {
-        if (_playerStats.Special.ChargeParticles == null) return;
-        if (_chargeParticles != null) Destroy(_chargeParticles.gameObject);
-        _chargeParticles = Instantiate(_playerStats.Special.ChargeParticles, transform.position, Quaternion.identity, transform);
+        if (_paddleChargeVFX != null) Destroy(_paddleChargeVFX.gameObject);
+        _paddleChargeVFX = Instantiate(_playerStats.Special.PaddleChargeVFX, transform.position, Quaternion.identity, transform);
     }
 
-    private void DeactivateChargeParticles()
+    private void ActivateChargeParticles()
     {
-        if (_chargeParticles == null) return;
-        Destroy(_chargeParticles.gameObject);
-        _chargeParticles = null;
+        _paddleChargeVFX.PulseIn();
     }
 
     private void LauchBall()
@@ -225,15 +225,13 @@ public class PlayerController : MonoBehaviour
             return;
         }
         ball.ChangeTrailToSpecial();
-        DeactivateChargeParticles();
         ActivateSpecialParticles();
         _playerStats.Special.BallActivatedAction(ball);
     }
 
     private void ActivateSpecialParticles()
     {
-        if (_playerStats.Special.ActivateSpecialParticles == null) return;
-        Instantiate(_playerStats.Special.ActivateSpecialParticles, transform.position, Quaternion.identity, transform);
+        _paddleChargeVFX.PulseOut();
     }
 
     private void ExecuteSpecial()

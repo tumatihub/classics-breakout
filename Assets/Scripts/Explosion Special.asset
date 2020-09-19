@@ -24,4 +24,6 @@ MonoBehaviour:
   BackgroundColor: {r: 0.9686275, g: 0.4431373, b: 0.45098042, a: 1}
   BackgroundHDRColor: {r: 1.482353, g: 0.11764706, b: 0.101960786, a: 1}
   BackgroundHDRColorActivated: {r: 2.964706, g: 0.24835235, b: 0.2173083, a: 1}
+  PaddleChargeVFX: {fileID: 8445099616292908550, guid: 7072089d788dd9f438eef6c8d122da8a,
+    type: 3}
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}
