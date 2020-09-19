@@ -79,7 +79,7 @@ public class PlayerStats : ScriptableObject
         _specials.Add(special);
     }
 
-    public void CicleSpecial()
+    public void CycleSpecial()
     {
         if (_specials.Count == 0) return;
 

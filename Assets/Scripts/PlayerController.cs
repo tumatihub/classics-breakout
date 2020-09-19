@@ -13,7 +13,7 @@ public class InputKeys
 {
     public const string HORIZONTAL_AXIS = "Horizontal";
     public const string BULLET_TIME = "BulletTime";
-    public const string CICLE_SPECIAL = "Cicle";
+    public const string CYCLE_SPECIAL = "Cicle";
     public const string SPECIAL = "Special";
     public const string RESTART = "Restart";
     public const string LAUNCH_BALL = "Launch";
@@ -90,10 +90,10 @@ public class PlayerController : MonoBehaviour
             _bulletTime = BulletTime();
         }
 
-        if (Input.GetButtonDown(InputKeys.CICLE_SPECIAL))
+        if (Input.GetButtonDown(InputKeys.CYCLE_SPECIAL))
         {
             if (_playerStats.IsPaddleCharged) return;
-            _playerStats.CicleSpecial();
+            _playerStats.CycleSpecial();
             ChangePaddleChargeVFX();
         }
 
