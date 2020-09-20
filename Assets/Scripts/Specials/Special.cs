@@ -6,6 +6,7 @@ public abstract class Special : ScriptableObject
 {
     public string Name;
     public Color Color;
+    public Sprite Icon;
     public bool ChargesPaddle;
     public bool CanBeUsed = true;
     public GameObject ChargeParticles;

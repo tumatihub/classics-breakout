@@ -9,6 +9,7 @@ public class ChargeUI : MonoBehaviour
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] TMP_Text _specialName;
     [SerializeField] Image _progressBar;
+    [SerializeField] private Image _icon;
     private float _slideBarMaxWidth;
 
     private void OnEnable()
@@ -33,8 +34,8 @@ public class ChargeUI : MonoBehaviour
     private void ChangeSpecial()
     {
         _specialName.text = _playerStats.Special.Name;
-        _specialName.color = _playerStats.Special.Color;
         _progressBar.color = _playerStats.Special.Color;
+        _icon.sprite = _playerStats.Special.Icon;
     }
 
     private void OnDisable()

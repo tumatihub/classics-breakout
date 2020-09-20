@@ -91,6 +91,7 @@ public class PlayerStats : ScriptableObject
     public void ChangeSpecial(int index)
     {
         _special = _specials[index];
+        _specialIndex = index;
         ChangeSpecialEvent?.Invoke();
     }
 
