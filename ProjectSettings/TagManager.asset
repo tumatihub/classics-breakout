@@ -56,3 +56,6 @@ TagManager:
   - name: Paddle
     uniqueID: 568886769
     locked: 0
+  - name: HUD
+    uniqueID: 587477849
+    locked: 0
