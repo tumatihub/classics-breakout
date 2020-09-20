@@ -40,6 +40,7 @@ public class PlayerStats : ScriptableObject
     public bool CanBulletTime => _charge >= _chargeAmmountConsume;
 
     [SerializeField] private List<Special> _specials = new List<Special>();
+    public List<Special> Specials => _specials;
 
     private Special _special;
     public bool CanUseSpecial => _charge >= _chargeMax && _special.CanBeUsed;
@@ -79,12 +80,21 @@ public class PlayerStats : ScriptableObject
         _specials.Add(special);
     }
 
-    public void CycleSpecial()
+    public void CycleUpSpecial()
     {
         if (_specials.Count == 0) return;
 
         _specialIndex += 1;
         if (_specialIndex >= _specials.Count) _specialIndex = 0;
+        ChangeSpecial(_specialIndex);
+    }
+
+    public void CycleDownSpecial()
+    {
+        if (_specials.Count == 0) return;
+
+        _specialIndex -= 1;
+        if (_specialIndex < 0) _specialIndex = _specials.Count-1;
         ChangeSpecial(_specialIndex);
     }
 

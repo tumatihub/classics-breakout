@@ -66,6 +66,10 @@ public class PlayerController : MonoBehaviour
     public UnityEvent OnBallCollisionWithoutSpecial;
     public UnityEvent OnEnterBulletTime;
     public UnityEvent OnExitBulletTime;
+    public UnityEvent OnSpecialCycleUp;
+    public UnityEvent OnSpecialCycleDown;
+    public UnityEvent OnEnterSpecialSelection;
+    public UnityEvent OnExitSpecialSelection;
 
     private void Awake()
     {
@@ -111,7 +115,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis(InputKeys.MOUSE_SCROLLWHEEL_AXIS) > 0)
         {
             if (_playerStats.IsPaddleCharged) return;
-            _playerStats.CycleSpecial();
+            _playerStats.CycleUpSpecial();
+            OnSpecialCycleUp.Invoke();
+            ChangePaddleChargeVFX();
+        }
+
+        if (Input.GetAxis(InputKeys.MOUSE_SCROLLWHEEL_AXIS) < 0)
+        {
+            if (_playerStats.IsPaddleCharged) return;
+            _playerStats.CycleDownSpecial();
+            OnSpecialCycleDown.Invoke();
             ChangePaddleChargeVFX();
         }
 
@@ -147,6 +160,7 @@ public class PlayerController : MonoBehaviour
         Move = MoveTimeScaleDependent;
         Time.timeScale = _specialSelectionTimeScale;
         StartSaturationVolume();
+        OnEnterSpecialSelection.Invoke();
     }
 
     private void ExitSpecialSelectionMode()
@@ -154,6 +168,7 @@ public class PlayerController : MonoBehaviour
         Move = MoveUnscaled;
         Time.timeScale = 1f;
         StopSaturationVolume();
+        OnExitSpecialSelection.Invoke();
     }
 
     private void ChangePaddleChargeVFX()

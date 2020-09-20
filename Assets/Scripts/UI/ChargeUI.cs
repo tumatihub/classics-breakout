@@ -12,6 +12,9 @@ public class ChargeUI : MonoBehaviour
     [SerializeField] Image _centerProgressBar;
     [SerializeField] private Image _icon;
     private float _slideBarMaxWidth;
+    [SerializeField] private Transform _specialSelectionGroup;
+    [SerializeField] private SpecialOption _specialOptionPrefab;
+    
 
     private void OnEnable()
     {
@@ -25,6 +28,22 @@ public class ChargeUI : MonoBehaviour
     {
         _slideBarMaxWidth = _progressBar.rectTransform.sizeDelta.x;
         _centerProgressBar.material.SetInt("_IsActive", 0);
+    }
+
+    private void Start()
+    {
+        _specialSelectionGroup.gameObject.SetActive(false);
+        CreateSelectionOptions();
+    }
+
+    private void CreateSelectionOptions()
+    {
+        for (var i=_playerStats.Specials.Count-1; i>=0; i--)
+        {
+            var option = Instantiate(_specialOptionPrefab, _specialSelectionGroup);
+            option.SetSpecial(_playerStats.Specials[i]);
+            option.UpdateDisplay();
+        }
     }
 
     private void UpdateChargeValue()
@@ -49,6 +68,26 @@ public class ChargeUI : MonoBehaviour
     public void HandleExitBulletTime()
     {
         _centerProgressBar.material.SetInt("_IsActive", 0);
+    }
+
+    public void HandleSpecialCycleUp()
+    {
+        _specialSelectionGroup.GetChild(_playerStats.Specials.Count - 1).SetSiblingIndex(0);
+    }
+
+    public void HandleSpecialCycleDown()
+    {
+        _specialSelectionGroup.GetChild(0).SetSiblingIndex(_playerStats.Specials.Count - 1);
+    }
+
+    public void HandleEnterSpecialSelection()
+    {
+        _specialSelectionGroup.gameObject.SetActive(true);
+    }
+
+    public void HandleExitSpecialSelection()
+    {
+        _specialSelectionGroup.gameObject.SetActive(false);
     }
 
     private void OnDisable()
