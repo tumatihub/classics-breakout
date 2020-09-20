@@ -9,6 +9,7 @@ public class ChargeUI : MonoBehaviour
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] TMP_Text _specialName;
     [SerializeField] Image _progressBar;
+    [SerializeField] Image _centerProgressBar;
     [SerializeField] private Image _icon;
     private float _slideBarMaxWidth;
 
@@ -23,6 +24,7 @@ public class ChargeUI : MonoBehaviour
     private void Awake()
     {
         _slideBarMaxWidth = _progressBar.rectTransform.sizeDelta.x;
+        _centerProgressBar.material.SetInt("_IsActive", 0);
     }
 
     private void UpdateChargeValue()
@@ -35,7 +37,18 @@ public class ChargeUI : MonoBehaviour
     {
         _specialName.text = _playerStats.Special.Name;
         _progressBar.color = _playerStats.Special.Color;
+        _centerProgressBar.material.SetColor("_Color", _playerStats.Special.Color);
         _icon.sprite = _playerStats.Special.Icon;
+    }
+
+    public void HandleEnterBulletTime()
+    {
+        _centerProgressBar.material.SetInt("_IsActive", 1);
+    }
+
+    public void HandleExitBulletTime()
+    {
+        _centerProgressBar.material.SetInt("_IsActive", 0);
     }
 
     private void OnDisable()

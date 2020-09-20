@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
     public UnityEvent BallCollisionWithPaddle;
     public UnityEvent OnBallCollisionWithoutSpecial;
+    public UnityEvent OnEnterBulletTime;
+    public UnityEvent OnExitBulletTime;
 
     private void Awake()
     {
@@ -92,11 +94,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonUp(InputKeys.BULLET_TIME))
         {
-            StopCoroutine(_bulletTime);
-            Time.timeScale = 1f;
-            StopBulletTrail();
-            StopBulletVolume();
-            _bulletTime = BulletTime();
+            ExitBulletTime();
         }
 
         if (Input.GetButtonDown(InputKeys.SPECIAL_SELECTION))
@@ -211,11 +209,13 @@ public class PlayerController : MonoBehaviour
 
     private void EnterBulletTime()
     {
+        OnEnterBulletTime.Invoke();
         StartCoroutine(_bulletTime);
     }
 
     private void ExitBulletTime()
     {
+        OnExitBulletTime.Invoke();
         StopCoroutine(_bulletTime);
         Time.timeScale = 1f;
         StopBulletTrail();

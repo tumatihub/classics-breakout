@@ -2510,6 +2510,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c127b8e7a2ecce4b80a1fc3915af36c, type: 3}
+--- !u!114 &1908614916 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -4135211616883185214, guid: 842d6a75aac673645a12b875bfe6259e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6424674348071159499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d70ac85801d29349b57ebf0f5aafb2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2083780209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3233,6 +3245,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
         type: 3}
+      propertyPath: OnEnterBulletTime.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: OnExitBulletTime.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
       propertyPath: BallCollisionWithPaddle.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -3307,6 +3329,56 @@ PrefabInstance:
       propertyPath: _saturationVolume
       value: 
       objectReference: {fileID: 1353994936}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: OnEnterBulletTime.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: OnEnterBulletTime.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: OnEnterBulletTime.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1908614916}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: OnEnterBulletTime.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleEnterBulletTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: OnEnterBulletTime.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: OnExitBulletTime.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: OnExitBulletTime.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: OnExitBulletTime.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1908614916}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: OnExitBulletTime.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleExitBulletTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: OnExitBulletTime.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6420929054478192819, guid: 9d0df206ad45c964b8687cb75457137b,
         type: 3}
       propertyPath: m_LocalPosition.x
