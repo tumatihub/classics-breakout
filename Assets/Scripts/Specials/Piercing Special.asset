@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Piercing
   Color: {r: 0.69803923, g: 0.8470589, b: 0.3529412, a: 1}
   ChargesPaddle: 1
+  CanBeUsed: 1
   ChargeParticles: {fileID: 5877660361069297497, guid: 63ccab3d34129384795f351b0394246e,
     type: 3}
   ActivateSpecialParticles: {fileID: 5877660361069297497, guid: b84ece9ef093541439fdb07664fbbb73,
@@ -22,8 +23,8 @@ MonoBehaviour:
   BallTrail: {fileID: 5658604170179927716, guid: ba01d2d9bbd42c54994800ee51fdbc67,
     type: 3}
   BackgroundColor: {r: 0.69803923, g: 0.8470589, b: 0.3529412, a: 1}
-  BackgroundHDRColor: {r: 1.0352942, g: 1.3568628, b: 0.3137255, a: 1}
-  BackgroundHDRColorActivated: {r: 2.074366, g: 2.7137256, b: 0.6393594, a: 1}
+  BackgroundHDRColor: {r: 0.5185915, g: 0.6784314, b: 0.15983985, a: 1}
+  BackgroundHDRColorActivated: {r: 2.0705884, g: 2.7137256, b: 0.627451, a: 1}
   PaddleChargeVFX: {fileID: 3406653127804305143, guid: aa071c440f763344e8f4f3893169a65e,
     type: 3}
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}

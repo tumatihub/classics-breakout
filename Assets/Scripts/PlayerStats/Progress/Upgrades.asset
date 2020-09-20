@@ -19,3 +19,4 @@ MonoBehaviour:
   _explosionRadius: {fileID: 11400000, guid: 77994753fa523374e93b7347407493a2, type: 2}
   _piercingSpecial: {fileID: 11400000, guid: 49ab6cdaaaad4fc41a2c3106e15b2598, type: 2}
   _explosionSpecial: {fileID: 11400000, guid: af64004bfcdfd9944825867a464f5e5c, type: 2}
+  _emptySpecial: {fileID: 11400000, guid: 9b66fd24a60a5a54a8951a4f4358407e, type: 2}

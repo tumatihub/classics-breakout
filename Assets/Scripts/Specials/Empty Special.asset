@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08d21683a771c1439eb61dc894c0285, type: 3}
   m_Name: Empty Special
   m_EditorClassIdentifier: 
-  Name: 
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  Name: Empty
+  Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   ChargesPaddle: 0
+  CanBeUsed: 0
   ChargeParticles: {fileID: 0}
   ActivateSpecialParticles: {fileID: 0}
   BallTrail: {fileID: 0}
-  BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  BackgroundHDRColor: {r: 0, g: 0, b: 0, a: 0}
-  BackgroundHDRColorActivated: {r: 0, g: 0, b: 0, a: 0}
+  BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  BackgroundHDRColor: {r: 1, g: 1, b: 1, a: 1}
+  BackgroundHDRColorActivated: {r: 3.9999995, g: 3.9999995, b: 3.9999995, a: 1}
   PaddleChargeVFX: {fileID: 0}
   _playerStats: {fileID: 0}

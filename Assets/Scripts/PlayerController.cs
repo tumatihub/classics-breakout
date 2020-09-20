@@ -13,7 +13,8 @@ public class InputKeys
 {
     public const string HORIZONTAL_AXIS = "Horizontal";
     public const string BULLET_TIME = "BulletTime";
-    public const string CYCLE_SPECIAL = "Cicle";
+    public const string SPECIAL_SELECTION = "Special Selection";
+    public const string MOUSE_SCROLLWHEEL_AXIS = "Mouse ScrollWheel";
     public const string SPECIAL = "Special";
     public const string RESTART = "Restart";
     public const string LAUNCH_BALL = "Launch";
@@ -53,7 +54,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _chromaticDelay = .5f;
     private ChromaticAberration _chromatic;
 
+    [SerializeField] private Volume _saturationVolume;
+
     private PaddleChargeVFX _paddleChargeVFX;
+
+    [SerializeField] private float _specialSelectionTimeScale = .05f;
+
+    private Action Move;
 
     public UnityEvent BallCollisionWithPaddle;
     public UnityEvent OnBallCollisionWithoutSpecial;
@@ -70,6 +77,7 @@ public class PlayerController : MonoBehaviour
         _sceneController = FindObjectOfType<SceneController>();
         BallSpawn();
         _bulletTimeProfile.TryGet<ChromaticAberration>(out _chromatic);
+        Move = MoveUnscaled;
     }
 
     void Update()
@@ -78,7 +86,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown(InputKeys.BULLET_TIME))
         {
-            StartCoroutine(_bulletTime);
+            ExitSpecialSelectionMode();
+            EnterBulletTime();
         }
 
         if (Input.GetButtonUp(InputKeys.BULLET_TIME))
@@ -90,7 +99,18 @@ public class PlayerController : MonoBehaviour
             _bulletTime = BulletTime();
         }
 
-        if (Input.GetButtonDown(InputKeys.CYCLE_SPECIAL))
+        if (Input.GetButtonDown(InputKeys.SPECIAL_SELECTION))
+        {
+            ExitBulletTime();
+            EnterSpecialSelectionMode();
+        }
+
+        if (Input.GetButtonUp(InputKeys.SPECIAL_SELECTION))
+        {
+            ExitSpecialSelectionMode();
+        }
+
+        if (Input.GetAxis(InputKeys.MOUSE_SCROLLWHEEL_AXIS) > 0)
         {
             if (_playerStats.IsPaddleCharged) return;
             _playerStats.CycleSpecial();
@@ -124,6 +144,20 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void EnterSpecialSelectionMode()
+    {
+        Move = MoveTimeScaleDependent;
+        Time.timeScale = _specialSelectionTimeScale;
+        StartSaturationVolume();
+    }
+
+    private void ExitSpecialSelectionMode()
+    {
+        Move = MoveUnscaled;
+        Time.timeScale = 1f;
+        StopSaturationVolume();
+    }
+
     private void ChangePaddleChargeVFX()
     {
         if (!_playerStats.Special.CanBeUsed) return;
@@ -145,6 +179,25 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Move.Invoke();
+    }
+
+    
+    private void MoveTimeScaleDependent()
+    {
+        var nextPos = transform.position + (Vector3.right * _xAxis * _speed * Time.fixedDeltaTime);
+        if (nextPos.x >= -_xLimit && nextPos.x <= _xLimit)
+        {
+            _rigidbody.MovePosition(nextPos);
+        }
+        else
+        {
+            _rigidbody.MovePosition(new Vector2(_xLimit * (Mathf.Sign(_xAxis)), nextPos.y));
+        }
+    }
+
+    private void MoveUnscaled()
+    {
         var nextPos = transform.position + (Vector3.right * _xAxis * _speed * Time.unscaledDeltaTime);
         if (nextPos.x >= -_xLimit && nextPos.x <= _xLimit)
         {
@@ -152,8 +205,22 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            _rigidbody.MovePosition(new Vector2(_xLimit*(Mathf.Sign(_xAxis)), nextPos.y));
+            _rigidbody.MovePosition(new Vector2(_xLimit * (Mathf.Sign(_xAxis)), nextPos.y));
         }
+    }
+
+    private void EnterBulletTime()
+    {
+        StartCoroutine(_bulletTime);
+    }
+
+    private void ExitBulletTime()
+    {
+        StopCoroutine(_bulletTime);
+        Time.timeScale = 1f;
+        StopBulletTrail();
+        StopBulletVolume();
+        _bulletTime = BulletTime();
     }
 
     IEnumerator BulletTime()
@@ -191,18 +258,34 @@ public class PlayerController : MonoBehaviour
 
     void StartBulletVolume()
     {
-        LeanTween.value(gameObject, UpdateBulletVolume, 0, _chromaticValue, _chromaticDelay).setEase(LeanTweenType.easeInCirc);
+        LeanTween.value(gameObject, UpdateBulletVolume, 0, _chromaticValue, _chromaticDelay).setEase(LeanTweenType.easeInCirc).setIgnoreTimeScale(true);
     }
 
     void StopBulletVolume()
     {
         var currentValue = _chromatic.intensity.value;
-        LeanTween.value(gameObject, UpdateBulletVolume, currentValue, 0, _chromaticDelay).setEase(LeanTweenType.easeOutCirc);
+        LeanTween.value(gameObject, UpdateBulletVolume, currentValue, 0, _chromaticDelay).setEase(LeanTweenType.easeOutCirc).setIgnoreTimeScale(true);
     }
 
     void UpdateBulletVolume(float value)
     {
         _chromatic.intensity.value = value;
+    }
+
+    void StartSaturationVolume()
+    {
+        LeanTween.value(gameObject, UpdateSaturationVolume, 0f, 1f, 0.5f).setEase(LeanTweenType.easeOutCirc).setIgnoreTimeScale(true);
+    }
+
+    void StopSaturationVolume()
+    {
+        var currentValue = _saturationVolume.weight;
+        LeanTween.value(gameObject, UpdateSaturationVolume, currentValue, 0f, 0.5f).setEase(LeanTweenType.easeOutCirc).setIgnoreTimeScale(true);
+    }
+
+    void UpdateSaturationVolume(float value)
+    {
+        _saturationVolume.weight = value;
     }
 
     private void UpdateArrowDirection()

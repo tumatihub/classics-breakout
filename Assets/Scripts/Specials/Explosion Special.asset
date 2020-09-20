@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Explosion
   Color: {r: 0.9686275, g: 0.4431373, b: 0.45098042, a: 1}
   ChargesPaddle: 1
+  CanBeUsed: 1
   ChargeParticles: {fileID: 5877660361069297497, guid: c36784a1e054ca3428f503e3f58bebcc,
     type: 3}
   ActivateSpecialParticles: {fileID: 5877660361069297497, guid: a4507ef4cd846fc478835c08b07382da,
@@ -22,8 +23,8 @@ MonoBehaviour:
   BallTrail: {fileID: 5658604170179927716, guid: 218f8f4b7cbbd8a4582bdb88fefa2c46,
     type: 3}
   BackgroundColor: {r: 0.9686275, g: 0.4431373, b: 0.45098042, a: 1}
-  BackgroundHDRColor: {r: 1.482353, g: 0.11764706, b: 0.101960786, a: 1}
-  BackgroundHDRColorActivated: {r: 2.964706, g: 0.24835235, b: 0.2173083, a: 1}
+  BackgroundHDRColor: {r: 0.74117655, g: 0.06208809, b: 0.05432708, a: 1}
+  BackgroundHDRColorActivated: {r: 2.964706, g: 0.23529412, b: 0.20392157, a: 1}
   PaddleChargeVFX: {fileID: 8445099616292908550, guid: 7072089d788dd9f438eef6c8d122da8a,
     type: 3}
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}
