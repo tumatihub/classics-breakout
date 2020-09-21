@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonUp(InputKeys.BULLET_TIME))
         {
+            ExitSpecialSelectionMode();
             ExitBulletTime();
         }
 
@@ -109,6 +110,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonUp(InputKeys.SPECIAL_SELECTION))
         {
+            ExitBulletTime();
             ExitSpecialSelectionMode();
         }
 
