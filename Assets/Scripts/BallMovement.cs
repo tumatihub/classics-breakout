@@ -27,6 +27,7 @@ public class BallMovement : MonoBehaviour
 
     private Material _ballMaterial;
     [SerializeField] private string _dissolveLayer;
+    [SerializeField] private ParticleSystem _aura;
 
 
     public event Action OnDestroy;
@@ -36,6 +37,7 @@ public class BallMovement : MonoBehaviour
         _ballMaterial = GetComponent<SpriteRenderer>().material;
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.isKinematic = true;
+        _aura.Play();
         ChangeTrailToNormal();
     }
 
@@ -49,11 +51,6 @@ public class BallMovement : MonoBehaviour
         else
         {
             _idleTime += Time.deltaTime;
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Dissolve();
         }
     }
 
@@ -183,6 +180,7 @@ public class BallMovement : MonoBehaviour
 
     public void Launch(Vector2 dir)
     {
+        _aura.Stop();
         _rigidbody.isKinematic = false;
         _rigidbody.velocity = dir * _speed;
     }
