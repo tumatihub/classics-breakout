@@ -338,7 +338,7 @@ public class PlayerController : MonoBehaviour
         _playerStats.Special.Action();
     }
 
-    private void BallSpawn()
+    public void BallSpawn()
     {
         _ball = Instantiate(_ballPrefab, _ballSpawnPoint.position, Quaternion.identity, _ballSpawnPoint);
         _ball.OnDestroy += HandleBallDestroyed;

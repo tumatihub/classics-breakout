@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6420929054478192818}
   - component: {fileID: 6420929054478192817}
   - component: {fileID: 280517475}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlayerPaddle
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 568886769
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 20b292eb38292ed4492a2b702a671d81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -110,10 +110,30 @@ MonoBehaviour:
   _bulletTimeProfile: {fileID: 0}
   _chromaticValue: 0.17
   _chromaticDelay: 0.5
+  _saturationVolume: {fileID: 0}
+  _specialSelectionTimeScale: 0.05
   BallCollisionWithPaddle:
     m_PersistentCalls:
       m_Calls: []
   OnBallCollisionWithoutSpecial:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnterBulletTime:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitBulletTime:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSpecialCycleUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSpecialCycleDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnterSpecialSelection:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitSpecialSelection:
     m_PersistentCalls:
       m_Calls: []
 --- !u!50 &6420929054478192817
@@ -389,11 +409,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: vfx_bullet_time
-      objectReference: {fileID: 0}
-    - target: {fileID: 2628268761715085593, guid: 69274f8c074027b4687bbd953ca567f4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2916385005280424789, guid: 69274f8c074027b4687bbd953ca567f4,
         type: 3}

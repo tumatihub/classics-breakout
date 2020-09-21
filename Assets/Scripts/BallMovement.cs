@@ -22,21 +22,74 @@ public class BallMovement : MonoBehaviour
 
     [SerializeField] private Score _score;
 
+    [SerializeField] private float _maxIdleTime = 3f;
+    private float _idleTime;
+
+    private Material _ballMaterial;
+    [SerializeField] private string _dissolveLayer;
+
 
     public event Action OnDestroy;
 
     void Start()
     {
+        _ballMaterial = GetComponent<SpriteRenderer>().material;
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.isKinematic = true;
         ChangeTrailToNormal();
     }
+
+    private void Update()
+    {
+        if (_idleTime > _maxIdleTime)
+        {
+            _idleTime = 0;
+            Dissolve();
+        }
+        else
+        {
+            _idleTime += Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Dissolve();
+        }
+    }
+
 
     private void FixedUpdate()
     {
         _previousVelocity = _rigidbody.velocity;
         _previousPosition = transform.position;
     }
+    private void Dissolve()
+    {
+        gameObject.layer = LayerMask.NameToLayer(_dissolveLayer);
+        var trail = _trail.GetComponentInChildren<TrailRenderer>();
+        if (trail != null) trail.emitting = false;
+        var particles = _trail.GetComponentInChildren<ParticleSystem>();
+        if (particles != null) particles.Stop();
+
+        var seq = LeanTween.sequence();
+        seq.append(
+            LeanTween.value(gameObject, UpdateDissolve, 1f, 0f, 1f)
+        );
+        seq.append( () =>
+        {
+            GameObject.FindObjectOfType<PlayerController>()?.BallSpawn();
+            Destroy(gameObject);
+
+        }
+           
+        );
+    }
+
+    private void UpdateDissolve(float value)
+    {
+        _ballMaterial.SetFloat("_Fade", value);
+    }
+
 
     public void BounceBall(Vector2 inNormal)
     {
@@ -50,6 +103,7 @@ public class BallMovement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            _idleTime = 0;
             var playerController = collision.gameObject.GetComponent<PlayerController>();
             if (transform.position.y >= playerController.GetComponent<BoxCollider2D>().bounds.center.y)
             {
@@ -69,6 +123,7 @@ public class BallMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Block"))
         {
+            _idleTime = 0;
             var block = collision.gameObject.GetComponent<Block>();
             if (PiercingCountLeft > 0)
             {
