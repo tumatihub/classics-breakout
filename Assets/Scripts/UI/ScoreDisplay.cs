@@ -18,6 +18,8 @@ public class ScoreDisplay : MonoBehaviour
     [SerializeField] private float _addScoreDelay = .2f;
     [SerializeField] private float _comboAddFadeDelay = 1.5f;
 
+    private int _moveTweenId;
+
     private void Start()
     {
         HideComboCounter();
@@ -27,12 +29,14 @@ public class ScoreDisplay : MonoBehaviour
 
     public void ShowComboCounter()
     {
-        LeanTween.move(_comboDisplayGroup, _showComboPosition, _timeToShowCombo).setEase(LeanTweenType.easeOutCirc).setIgnoreTimeScale(true);
+        if (LeanTween.descr(_moveTweenId) != null && LeanTween.isTweening(_moveTweenId)) LeanTween.cancel(_moveTweenId);
+        _moveTweenId = LeanTween.move(_comboDisplayGroup, _showComboPosition, _timeToShowCombo).setEase(LeanTweenType.easeOutCirc).setIgnoreTimeScale(true).id;
     }
 
     public void HideComboCounter()
     {
-        LeanTween.move(_comboDisplayGroup, _hideComboPosition, _timeToHideCombo).setEase(LeanTweenType.easeInCirc).setIgnoreTimeScale(true);
+        if (LeanTween.descr(_moveTweenId) != null && LeanTween.isTweening(_moveTweenId)) LeanTween.cancel(_moveTweenId);
+        _moveTweenId = LeanTween.move(_comboDisplayGroup, _hideComboPosition, _timeToHideCombo).setEase(LeanTweenType.easeInCirc).setIgnoreTimeScale(true).id;
     }
 
     public void UpdateComboCounterDisplay()
