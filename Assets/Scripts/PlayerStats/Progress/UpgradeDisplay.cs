@@ -8,6 +8,7 @@ public class UpgradeDisplay : MonoBehaviour
 {
     [SerializeField] private TMP_Text _name;
     [SerializeField] private TMP_Text _description;
+    [SerializeField] private TMP_Text _nextLevelDescription;
     [SerializeField] private TMP_Text _price;
     [SerializeField] private Image _thumbnail;
     [SerializeField] private Button _upgradeButton;
@@ -30,8 +31,9 @@ public class UpgradeDisplay : MonoBehaviour
     {
         _name.text = _upgradeProgress.UpgradeName;
         _description.text = _upgradeProgress.Description;
+        _nextLevelDescription.text = _upgradeProgress.NextLevelDescription;
         _price.text = _upgradeProgress.IsMaxed ? "Max" : _upgradeProgress.GetNextPrice().ToString();
-
+        _thumbnail.sprite = _upgradeProgress.Icon;
         if (!_upgradeProgress.IsMaxed && _score.ComboTotalScore >= _upgradeProgress.GetNextPrice())
         {
             _upgradeButton.interactable = true;
@@ -44,10 +46,12 @@ public class UpgradeDisplay : MonoBehaviour
 
     public void BuyUpgrade()
     {
-        _score.ConsumeComboPoints((int)_upgradeProgress.GetNextPrice());
+        int price = (int)_upgradeProgress.GetNextPrice();
+        int current = _score.ComboTotalScore;
+        _score.ConsumeComboPoints(price);
         _upgradeProgress.LevelUp();
         _upgradesPanel.UpdateAllUpgradeDisplays();
-        _upgradesPanel.UpdateComboPointsDisplay();
+        _upgradesPanel.ConsumeComboPoints(price, current);
     }
     
 

@@ -6,6 +6,10 @@ public class BackgroundParticles : MonoBehaviour
 {
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private Material _particlesMaterial;
+    [SerializeField] private bool _useRandomColors;
+    [ColorUsageAttribute(true, true)]
+    [SerializeField] private List<Color> _colors = new List<Color>();
+    [SerializeField] private float _randomChangeInterval = 3f;
 
     private void Awake()
     {
@@ -16,7 +20,21 @@ public class BackgroundParticles : MonoBehaviour
 
     private void Start()
     {
-        ChangeColorToCurrentSpecial();
+        if (_useRandomColors && _colors.Count > 0)
+        {
+            InvokeRepeating("ChangeToRandomColor", 0f, _randomChangeInterval);
+        }
+        else
+        {
+            ChangeColorToCurrentSpecial();
+        }
+    }
+
+    void ChangeToRandomColor()
+    {
+        var index = Random.Range(0, _colors.Count);
+        _particlesMaterial.color = _colors[index];
+        _particlesMaterial.SetColor("_EmissionColor", _colors[index]);
     }
 
     void ChangeColorToCurrentSpecial()

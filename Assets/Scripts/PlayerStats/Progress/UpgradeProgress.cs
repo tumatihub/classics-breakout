@@ -8,6 +8,7 @@ public class Upgrade
     public int Price;
     public float Value;
     public string Description;
+    public string NextLevelDescription;
 }
 
 [CreateAssetMenu]
@@ -27,8 +28,11 @@ public class UpgradeProgress : ScriptableObject
     public float Value => _upgrades[_level].Value;
     public int Price => _upgrades[_level].Price;
 
-    public string Description => _upgrades[_level].Description;
+    [SerializeField] private Sprite _icon;
+    public Sprite Icon => _icon;
 
+    public string Description => _upgrades[_level].Description;
+    public string NextLevelDescription => _upgrades[_level].NextLevelDescription;
     public bool IsMaxed => _level >= _upgrades.Count - 1;
     public float GetNextValue()
     {

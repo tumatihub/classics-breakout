@@ -16,11 +16,15 @@ MonoBehaviour:
   _upgrades:
   - Price: 0
     Value: 0
-    Description: Unlocked
-  - Price: 0
+    Description: Upgrade to unlock
+    NextLevelDescription: Explodes nearby blocks
+  - Price: 300
     Value: 1
-    Description: 
-  - Price: 0
+    Description: Explodes nearby blocks
+    NextLevelDescription: Increase explosion radius
+  - Price: 600
     Value: 1.5
-    Description: 
+    Description: Explodes nearby blocks
+    NextLevelDescription: --
   _upgradeName: Explosion Special
+  _icon: {fileID: 21300000, guid: 4fc9d84141707f0448830a960d881255, type: 3}
