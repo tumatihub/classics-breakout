@@ -17,6 +17,7 @@ public class BlocksSpawner : MonoBehaviour
     [SerializeField] SpawnerProgression _spawnerProgression;
 
     public event Action OnMoveDownRows;
+    public event Action OnMoveDownRowsInstant;
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class BlocksSpawner : MonoBehaviour
     {
         _spawnedRows.Remove(blocksRow);
         OnMoveDownRows -= blocksRow.MoveRowDown;
+        OnMoveDownRowsInstant -= blocksRow.MoveRowDown;
         blocksRow.RemoveRow();
     }
 
@@ -51,6 +53,7 @@ public class BlocksSpawner : MonoBehaviour
     {
         var row = Instantiate(_blocksRowPrefab, centerPosition, Quaternion.identity);
         OnMoveDownRows += row.MoveRowDown;
+        OnMoveDownRowsInstant += row.MoveRowDownInstant;
         row.OnRemoveRow += HandleRemoveRow;
         _spawnedRows.Add(row);
         _totalSpawnedRows++;
@@ -63,7 +66,7 @@ public class BlocksSpawner : MonoBehaviour
     {
         for (var i = 0; i < numberOfRows; i++)
         {
-            OnMoveDownRows?.Invoke();
+            OnMoveDownRowsInstant?.Invoke();
             SpawnRow(transform.position);
         }
     }

@@ -14,6 +14,8 @@ public class BlocksRow : MonoBehaviour
 
     [SerializeField] private SpawnerProgression _spawnerProgression;
 
+    private LTSeq _moveDownTweenSequence;
+
     public event Action<BlocksRow> OnRemoveRow;
 
     void Start()
@@ -65,6 +67,11 @@ public class BlocksRow : MonoBehaviour
     }
 
     public void MoveRowDown()
+    {
+        LeanTween.move(gameObject, new Vector3(transform.position.x, transform.position.y - _spaceBetweenRows), .2f).setEase(LeanTweenType.easeOutCirc);
+    }
+
+    public void MoveRowDownInstant()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y - _spaceBetweenRows);
     }
