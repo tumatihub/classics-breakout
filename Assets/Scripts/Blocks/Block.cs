@@ -25,6 +25,13 @@ public class Block : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _sprite = GetComponent<SpriteRenderer>();
         UpdateSprite();
+        Create();
+    }
+
+    private void Create()
+    {
+        var seq = LeanTween.sequence();
+        seq.append(LeanTween.value(gameObject, UpdateDissolveFadeValue, 0f, 1f, .5f));
     }
 
     public void Hit()
