@@ -4930,3 +4930,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}
   _particlesMaterial: {fileID: 2100000, guid: c1b43b78938d3e046948eb7e2fca7081, type: 2}
+  _useRandomColors: 0
+  _colors:
+  - {r: 2, g: 2, b: 2, a: 1}
+  - {r: 1.0352942, g: 1.3568628, b: 0.3137255, a: 1}
+  - {r: 1.482353, g: 0.11764706, b: 0.101960786, a: 1}
+  _randomChangeInterval: 3

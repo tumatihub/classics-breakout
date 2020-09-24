@@ -353,7 +353,7 @@ public class PlayerController : MonoBehaviour
 
     private void EndGame()
     {
-        _sceneController.LoadUpgradesScreen();
+        _sceneController.LoadScoreScreen();
 
     }
 }

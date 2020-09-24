@@ -58,4 +58,10 @@ public class UpgradeProgress : ScriptableObject
     {
         _level = 0;
     }
+
+    public bool CanUpgrade(int comboPoints)
+    {
+        if (_level < _upgrades.Count - 1 && GetNextPrice() <= comboPoints) return true;
+        return false;
+    }
 }

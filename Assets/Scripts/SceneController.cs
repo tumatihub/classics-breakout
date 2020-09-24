@@ -8,6 +8,7 @@ public class SceneNames
     public const string Game = "Sandbox";
     public const string MainMenu = "MainMenu";
     public const string Upgrades = "Upgrades";
+    public const string Score = "Score";
 }
 
 public class SceneController : MonoBehaviour
@@ -25,5 +26,10 @@ public class SceneController : MonoBehaviour
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(SceneNames.MainMenu);
+    }
+
+    public void LoadScoreScreen()
+    {
+        SceneManager.LoadScene(SceneNames.Score);
     }
 }

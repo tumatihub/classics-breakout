@@ -17,6 +17,9 @@ public class Upgrades : ScriptableObject
     [SerializeField] private ExplosionSpecial _explosionSpecial;
     [SerializeField] private EmptySpecial _emptySpecial;
 
+    [SerializeField] private List<UpgradeProgress> _allUpgrades = new List<UpgradeProgress>();
+    public List<UpgradeProgress> AllUpgrades => _allUpgrades;
+
     public void LoadUpgrades()
     {
         _initValues.BallPower.Value = _ballPower.Value;
