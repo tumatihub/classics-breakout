@@ -20,6 +20,7 @@ public class ScorePanel : MonoBehaviour
     private void UpdateInfo()
     {
         _comboPointsValue.text = _score.ComboTotalScore.ToString();
+        _totalScoreValue.text = _score.TotalScore.ToString();
     }
 
     public int GetAvailableUpgrades()
