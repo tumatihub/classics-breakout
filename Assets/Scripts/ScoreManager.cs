@@ -50,6 +50,7 @@ public class ScoreManager : MonoBehaviour
             _comboCooldown = _score.ComboCounterDurationWithoutHit;
             _scoreDisplay.UpdateComboCounterDisplay();
         }
+        _scoreDisplay.UpdateTotalScoreDisplay();
     }
 
     void SpawnHitValue(Vector3 position, int score)

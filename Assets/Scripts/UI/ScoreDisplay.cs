@@ -17,6 +17,7 @@ public class ScoreDisplay : MonoBehaviour
     [SerializeField] private float _addScoreScale = 1.2f;
     [SerializeField] private float _addScoreDelay = .2f;
     [SerializeField] private float _comboAddFadeDelay = 1.5f;
+    [SerializeField] private TMP_Text _totalScoreValue;
 
     private int _moveTweenId;
 
@@ -65,5 +66,10 @@ public class ScoreDisplay : MonoBehaviour
     void UpdateAlpha(float value)
     {
         _comboAdd.alpha = value;
+    }
+
+    public void UpdateTotalScoreDisplay()
+    {
+        _totalScoreValue.text = _score.TotalScore.ToString();
     }
 }
