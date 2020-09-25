@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnerProgressionLevels:
   - MinSpawnedRows: 0
+    SecondsToSpawnNewRow: 10
     Chances:
     - Chance: 20
       HitPoints: 3
@@ -22,6 +23,7 @@ MonoBehaviour:
     - Chance: 50
       HitPoints: 1
   - MinSpawnedRows: 9
+    SecondsToSpawnNewRow: 10
     Chances:
     - Chance: 20
       HitPoints: 4
@@ -30,6 +32,7 @@ MonoBehaviour:
     - Chance: 50
       HitPoints: 2
   - MinSpawnedRows: 15
+    SecondsToSpawnNewRow: 10
     Chances:
     - Chance: 20
       HitPoints: 4
@@ -38,6 +41,7 @@ MonoBehaviour:
     - Chance: 50
       HitPoints: 3
   - MinSpawnedRows: 20
+    SecondsToSpawnNewRow: 10
     Chances:
     - Chance: 10
       HitPoints: 6

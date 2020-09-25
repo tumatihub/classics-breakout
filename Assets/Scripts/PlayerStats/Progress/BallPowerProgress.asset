@@ -12,29 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3bad33feadaf4dad7a5b2d1148f26, type: 3}
   m_Name: BallPowerProgress
   m_EditorClassIdentifier: 
-  _level: 0
+  _level: 5
   _upgrades:
   - Price: 0
     Value: 1
     Description: Take 1 hitpoint from a block
     NextLevelDescription: Take 2 hitpoint from a block
-  - Price: 1000
+  - Price: 0
     Value: 2
     Description: Take 2 hitpoint from a block
     NextLevelDescription: Take 3 hitpoint from a block
-  - Price: 1000
+  - Price: 0
     Value: 3
     Description: Take 3 hitpoint from a block
     NextLevelDescription: Take 4 hitpoint from a block
-  - Price: 2000
+  - Price: 0
     Value: 4
     Description: Take 4 hitpoint from a block
     NextLevelDescription: Take 5 hitpoint from a block
-  - Price: 3000
+  - Price: 0
     Value: 5
     Description: Take 5 hitpoint from a block
     NextLevelDescription: Take 6 hitpoint from a block
-  - Price: 5000
+  - Price: 0
     Value: 6
     Description: Take 6 hitpoint from a block
     NextLevelDescription: --
