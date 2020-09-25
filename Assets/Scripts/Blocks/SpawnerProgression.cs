@@ -11,6 +11,7 @@ public class SpawnerProgression : ScriptableObject
     [SerializeField]
     List<SpawnerProgressionLevel> _spawnerProgressionLevels = new List<SpawnerProgressionLevel>();
 
+    public float SecondsToSpawnNewRow => _spawnerProgressionLevels[_level].SecondsToSpawnNewRow;
     public int GetBlockHitPoints()
     {
         float chance = UnityEngine.Random.Range(0, 100);

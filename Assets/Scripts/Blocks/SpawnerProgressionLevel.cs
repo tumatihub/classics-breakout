@@ -5,5 +5,6 @@ using System.Collections.Generic;
 public class SpawnerProgressionLevel
 {
     public int MinSpawnedRows;
+    public float SecondsToSpawnNewRow;
     public List<BlockChance> Chances = new List<BlockChance>();
 }

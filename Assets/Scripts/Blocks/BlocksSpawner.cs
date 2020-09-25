@@ -7,7 +7,6 @@ public class BlocksSpawner : MonoBehaviour
 {
     [SerializeField] private BlocksRow _blocksRowPrefab;
     [SerializeField] private int _initialNumberOfRows = 8;
-    [SerializeField] private float _secondsToSpawnNewRow = 5f;
     private float _spawnCooldown;
     private List<BlocksRow> _spawnedRows = new List<BlocksRow>();
 
@@ -23,7 +22,7 @@ public class BlocksSpawner : MonoBehaviour
     {
         _spawnerProgression.SetLevel(_startLevel);
         CreateInitialRows(_initialNumberOfRows);
-        _spawnCooldown = _secondsToSpawnNewRow;
+        _spawnCooldown = _spawnerProgression.SecondsToSpawnNewRow;
     }
 
     private void Update()
@@ -43,7 +42,7 @@ public class BlocksSpawner : MonoBehaviour
     {
         if (_spawnCooldown <= 0 || _spawnedRows.Count < _initialNumberOfRows)
         {
-            if (_spawnCooldown <= 0) _spawnCooldown = _secondsToSpawnNewRow;
+            if (_spawnCooldown <= 0) _spawnCooldown = _spawnerProgression.SecondsToSpawnNewRow;
             OnMoveDownRows?.Invoke();
             SpawnRow(transform.position);
         }
