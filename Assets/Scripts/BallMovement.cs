@@ -47,11 +47,13 @@ public class BallMovement : MonoBehaviour
         {
             _idleTime = 0;
             Dissolve();
+            GameObject.FindObjectOfType<PlayerController>()?.BallSpawn();
         }
         else
         {
             _idleTime += Time.deltaTime;
         }
+
     }
 
 
@@ -60,7 +62,7 @@ public class BallMovement : MonoBehaviour
         _previousVelocity = _rigidbody.velocity;
         _previousPosition = transform.position;
     }
-    private void Dissolve()
+    public void Dissolve()
     {
         gameObject.layer = LayerMask.NameToLayer(_dissolveLayer);
         var trail = _trail.GetComponentInChildren<TrailRenderer>();
@@ -74,7 +76,6 @@ public class BallMovement : MonoBehaviour
         );
         seq.append( () =>
         {
-            GameObject.FindObjectOfType<PlayerController>()?.BallSpawn();
             Destroy(gameObject);
 
         }
@@ -158,24 +159,12 @@ public class BallMovement : MonoBehaviour
     private void DestroyBall()
     {
         OnDestroy?.Invoke();
-        Destroy(gameObject);
     }
 
     public void Explode()
     {
         IsExplosionActivated = false;
         Instantiate(_explosionsPrefabs[_explosionProgress.Level], transform.position, Quaternion.identity);
-        /*Collider2D[] blockList = Physics2D.OverlapCircleAll(
-            new Vector2(transform.position.x, transform.position.y), 
-            _playerStats.ExplosionRadius,
-            LayerMask.GetMask("Block")
-        );
-        foreach (var blockCollider in blockList)
-        {
-            Block block = blockCollider.GetComponent<Block>();
-            _score.ScoreInstantRemove(block);
-            block.RemoveBlock();
-        }*/
     }
 
     public void Launch(Vector2 dir)

@@ -12,15 +12,26 @@ public class BlocksRow : MonoBehaviour
     private float _spaceBetweenRows = 0.5f;
     private int _remainingBlocks = NUM_FOR_BLOCKS_PER_ROW;
 
+    private PlayerController _playerController;
+
     [SerializeField] private SpawnerProgression _spawnerProgression;
 
-    private LTSeq _moveDownTweenSequence;
-
     public event Action<BlocksRow> OnRemoveRow;
+    public event Action OnRowReachFloor;
 
     void Start()
     {
         CreateBlocks(transform.position);
+        _playerController = FindObjectOfType<PlayerController>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            OnRowReachFloor?.Invoke();
+            _playerController.EndGame();
+        }    
     }
 
     void CreateBlocks(Vector3 startPosition)
@@ -48,6 +59,8 @@ public class BlocksRow : MonoBehaviour
         var block = Instantiate(_blockPrefab, position, Quaternion.identity, transform);
         block.SetHitPoints(GetBlockHitPoints());
         block.OnRemoveBlock += HandleRemoveBlock;
+        block.RowParent = this;
+        OnRowReachFloor += block.Dissolve;
         return block;
     }
 

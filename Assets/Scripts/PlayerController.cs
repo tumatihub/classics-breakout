@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _specialSelectionTimeScale = .05f;
 
     private Action Move;
+    private Action HandleInput;
 
     public UnityEvent BallCollisionWithPaddle;
     public UnityEvent OnBallCollisionWithoutSpecial;
@@ -84,9 +85,16 @@ public class PlayerController : MonoBehaviour
         BallSpawn();
         _bulletTimeProfile.TryGet<ChromaticAberration>(out _chromatic);
         Move = MoveUnscaled;
+        HandleInput = HandleInputWhenInControll;
     }
 
     void Update()
+    {
+        HandleInput?.Invoke();
+
+    }
+
+    private void HandleInputWhenInControll()
     {
         _xAxis = Input.GetAxis(InputKeys.HORIZONTAL_AXIS);
 
@@ -154,22 +162,32 @@ public class PlayerController : MonoBehaviour
         }
 
         UpdateArrowDirection();
+    }
 
+
+    private void EnterSaturationMode(float scale)
+    {
+        Move = MoveTimeScaleDependent;
+        Time.timeScale = scale;
+        StartSaturationVolume();
+    }
+
+    private void ExitSaturationMode()
+    {
+        Move = MoveUnscaled;
+        Time.timeScale = 1f;
+        StopSaturationVolume();
     }
 
     private void EnterSpecialSelectionMode()
     {
-        Move = MoveTimeScaleDependent;
-        Time.timeScale = _specialSelectionTimeScale;
-        StartSaturationVolume();
+        EnterSaturationMode(_specialSelectionTimeScale);
         OnEnterSpecialSelection.Invoke();
     }
 
     private void ExitSpecialSelectionMode()
     {
-        Move = MoveUnscaled;
-        Time.timeScale = 1f;
-        StopSaturationVolume();
+        ExitSaturationMode();
         OnExitSpecialSelection.Invoke();
     }
 
@@ -348,12 +366,29 @@ public class PlayerController : MonoBehaviour
 
     private void HandleBallDestroyed()
     {
-        Invoke("EndGame", 2f);
+        EndGame();
     }
 
-    private void EndGame()
+    public void EndGame()
     {
-        _sceneController.LoadScoreScreen();
+        StopControllers();
+        EnterSaturationMode(1);
+        var ball = FindObjectOfType<BallMovement>();
+        if (ball != null) ball.Dissolve();
+        StartCoroutine(LoadScoreScreen(1.5f));
+    }
 
+    private void StopControllers()
+    {
+        _xAxis = 0;
+        HandleInput = null;
+    }
+
+    IEnumerator LoadScoreScreen(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        ExitSaturationMode();
+        ExitBulletTime();
+        _sceneController.LoadScoreScreen();
     }
 }

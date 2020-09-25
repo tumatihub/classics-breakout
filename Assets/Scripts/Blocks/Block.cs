@@ -18,6 +18,10 @@ public class Block : MonoBehaviour
     [SerializeField] private Score _score;
     [SerializeField] private GameObject _destroyParticles;
 
+    private PlayerController _playerController;
+
+    public BlocksRow RowParent;
+
     public event Action OnRemoveBlock;
 
     void Start()
@@ -26,6 +30,16 @@ public class Block : MonoBehaviour
         _sprite = GetComponent<SpriteRenderer>();
         UpdateSprite();
         Create();
+        _playerController = FindObjectOfType<PlayerController>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Dissolve();
+            _playerController.EndGame();
+        }
     }
 
     private void Create()
@@ -71,7 +85,7 @@ public class Block : MonoBehaviour
         Dissolve();
     }
 
-    private void Dissolve()
+    public void Dissolve()
     {
         var seq = LeanTween.sequence();
         seq.append(LeanTween.value(gameObject, UpdateDissolveFadeValue, 1f, 0f, .3f));
@@ -120,5 +134,10 @@ public class Block : MonoBehaviour
     void SpawnHitParticles()
     {
         Instantiate(_blockTypes.Configs[_hitPoints].HitParticles, transform.position, Quaternion.identity);
+    }
+
+    private void OnDestroy()
+    {
+        RowParent.OnRowReachFloor -= Dissolve;
     }
 }
