@@ -14,42 +14,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnerProgressionLevels:
   - MinSpawnedRows: 0
-    SecondsToSpawnNewRow: 10
+    SecondsToSpawnNewRow: 60
     Chances:
     - Chance: 20
-      HitPoints: 3
+      HitPoints: 03000000
     - Chance: 30
-      HitPoints: 2
+      HitPoints: 02000000
     - Chance: 50
-      HitPoints: 1
+      HitPoints: 01000000
   - MinSpawnedRows: 9
-    SecondsToSpawnNewRow: 10
+    SecondsToSpawnNewRow: 50
     Chances:
     - Chance: 20
-      HitPoints: 4
+      HitPoints: 0100000004000000
     - Chance: 30
-      HitPoints: 3
+      HitPoints: 03000000
     - Chance: 50
-      HitPoints: 2
+      HitPoints: 02000000
   - MinSpawnedRows: 15
-    SecondsToSpawnNewRow: 10
+    SecondsToSpawnNewRow: 40
     Chances:
     - Chance: 20
-      HitPoints: 4
+      HitPoints: 0500000002000000
     - Chance: 30
-      HitPoints: 2
+      HitPoints: 04000000
     - Chance: 50
-      HitPoints: 3
+      HitPoints: 03000000
   - MinSpawnedRows: 20
+    SecondsToSpawnNewRow: 30
+    Chances:
+    - Chance: 20
+      HitPoints: 0300000006000000
+    - Chance: 30
+      HitPoints: 05000000
+    - Chance: 50
+      HitPoints: 04000000
+  - MinSpawnedRows: 25
+    SecondsToSpawnNewRow: 20
+    Chances:
+    - Chance: 20
+      HitPoints: 0300000004000000
+    - Chance: 30
+      HitPoints: 06000000
+    - Chance: 50
+      HitPoints: 05000000
+  - MinSpawnedRows: 30
     SecondsToSpawnNewRow: 10
     Chances:
     - Chance: 10
-      HitPoints: 6
-    - Chance: 15
-      HitPoints: 2
-    - Chance: 20
-      HitPoints: 3
-    - Chance: 25
-      HitPoints: 4
-    - Chance: 30
-      HitPoints: 5
+      HitPoints: 0300000004000000
+    - Chance: 40
+      HitPoints: 05000000
+    - Chance: 50
+      HitPoints: 06000000
