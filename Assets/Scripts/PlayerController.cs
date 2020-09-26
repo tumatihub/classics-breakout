@@ -18,7 +18,8 @@ public class InputKeys
     public const string SPECIAL = "Special";
     public const string RESTART = "Restart";
     public const string LAUNCH_BALL = "Launch";
-    public const KeyCode DEBUG_PANEL = KeyCode.P;
+    public const string PAUSE = "Pause";
+    public const KeyCode DEBUG_PANEL = KeyCode.O;
 }
 
 public class PlayerController : MonoBehaviour
@@ -60,9 +61,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _specialSelectionTimeScale = .05f;
 
+    [SerializeField] private PauseScreen _pauseScreen;
+
     private Action Move;
     private Action HandleInput;
 
+    #region Events
+    
     public UnityEvent BallCollisionWithPaddle;
     public UnityEvent OnBallCollisionWithoutSpecial;
     public UnityEvent OnEnterBulletTime;
@@ -71,6 +76,8 @@ public class PlayerController : MonoBehaviour
     public UnityEvent OnSpecialCycleDown;
     public UnityEvent OnEnterSpecialSelection;
     public UnityEvent OnExitSpecialSelection;
+
+    #endregion
 
     private void Awake()
     {
@@ -149,6 +156,11 @@ public class PlayerController : MonoBehaviour
                 return;
             }
             ExecuteSpecial();
+        
+        }
+        if (Input.GetButtonDown(InputKeys.PAUSE))
+        {
+            EnterPauseMode();
         }
 
         if (Input.GetButtonDown(InputKeys.RESTART))
@@ -164,6 +176,28 @@ public class PlayerController : MonoBehaviour
         UpdateArrowDirection();
     }
 
+    private void EnterPauseMode()
+    {
+        StopControllers();
+        ExitBulletTime();
+        HandleInput = HandleInputWhenPaused;
+        EnterSaturationMode(0);
+        _pauseScreen.Pause();
+    }
+
+    private void HandleInputWhenPaused()
+    {
+        if (Input.GetButtonDown(InputKeys.PAUSE))
+        {
+            _pauseScreen.Unpause();
+        }
+    }
+
+    public void ExitPauseMode()
+    {
+        ExitSaturationMode();
+        HandleInput = HandleInputWhenInControll;
+    }
 
     private void EnterSaturationMode(float scale)
     {
@@ -381,6 +415,7 @@ public class PlayerController : MonoBehaviour
     private void StopControllers()
     {
         _xAxis = 0;
+        MoveUnscaled();
         HandleInput = null;
     }
 
