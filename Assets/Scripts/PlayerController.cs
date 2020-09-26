@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _bulletTime = BulletTime();
-        Cursor.SetCursor(_crossair, new Vector2(0, 0), CursorMode.Auto);
+        Cursor.SetCursor(_crossair, new Vector2(16, 16), CursorMode.Auto);
     }
 
     void Start()
