@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _specialSelectionTimeScale = .05f;
 
     [SerializeField] private PauseScreen _pauseScreen;
+    [SerializeField] private Texture2D _crossair;
 
     private Action Move;
     private Action HandleInput;
@@ -81,7 +82,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _bulletTime = BulletTime();    
+        _bulletTime = BulletTime();
+        Cursor.SetCursor(_crossair, new Vector2(0, 0), CursorMode.Auto);
     }
 
     void Start()
@@ -99,6 +101,11 @@ public class PlayerController : MonoBehaviour
     {
         HandleInput?.Invoke();
 
+    }
+    
+    private void FixedUpdate()
+    {
+        Move.Invoke();
     }
 
     private void HandleInputWhenInControll()
@@ -244,12 +251,6 @@ public class PlayerController : MonoBehaviour
         _ball = null;
     }
 
-    private void FixedUpdate()
-    {
-        Move.Invoke();
-    }
-
-    
     private void MoveTimeScaleDependent()
     {
         var nextPos = transform.position + (Vector3.right * _xAxis * _speed * Time.fixedDeltaTime);
@@ -425,5 +426,10 @@ public class PlayerController : MonoBehaviour
         ExitSaturationMode();
         ExitBulletTime();
         _sceneController.LoadScoreScreen();
+    }
+
+    private void OnDestroy()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 }
