@@ -18,10 +18,14 @@ public class Upgrades : ScriptableObject
     [SerializeField] private EmptySpecial _emptySpecial;
 
     [SerializeField] private List<UpgradeProgress> _allUpgrades = new List<UpgradeProgress>();
+
+    [SerializeField] private Save _save;
     public List<UpgradeProgress> AllUpgrades => _allUpgrades;
 
     public void LoadUpgrades()
     {
+        _save.LoadPlayerPrefs();
+
         _initValues.BallPower.Value = _ballPower.Value;
 
         _playerStats.ClearSpecials();
@@ -46,5 +50,8 @@ public class Upgrades : ScriptableObject
         _ballPower.Reset();
         _piercingCount.Reset();
         _explosionRadius.Reset();
+        _save.SavePlayerPrefs();
     }
+
+    
 }

@@ -14,6 +14,7 @@ public class UpgradeDisplay : MonoBehaviour
     [SerializeField] private Button _upgradeButton;
 
     [SerializeField] private UpgradeProgress _upgradeProgress;
+    [SerializeField] private Save _save;
     [SerializeField] private Score _score;
     private UpgradesPanel _upgradesPanel;
 
@@ -52,6 +53,7 @@ public class UpgradeDisplay : MonoBehaviour
         _upgradeProgress.LevelUp();
         _upgradesPanel.UpdateAllUpgradeDisplays();
         _upgradesPanel.ConsumeComboPoints(price, current);
+        _save.SavePlayerPrefs();
     }
     
 

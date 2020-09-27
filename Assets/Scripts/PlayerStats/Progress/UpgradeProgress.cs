@@ -64,4 +64,9 @@ public class UpgradeProgress : ScriptableObject
         if (_level < _upgrades.Count - 1 && GetNextPrice() <= comboPoints) return true;
         return false;
     }
+
+    public void SetLevel(int level)
+    {
+        _level = Mathf.Clamp(level, 0, _upgrades.Count - 1);
+    }
 }

@@ -1003,6 +1003,7 @@ MonoBehaviour:
   _thumbnail: {fileID: 2445303660215442174}
   _upgradeButton: {fileID: 2445303660585638099}
   _upgradeProgress: {fileID: 0}
+  _save: {fileID: 11400000, guid: 6efe3bfb1b11e3747a296dbd0b13e985, type: 2}
   _score: {fileID: 11400000, guid: 612cbfb6733210b42b0f04094eec5dc9, type: 2}
 --- !u!1 &3048779437298599091
 GameObject:
