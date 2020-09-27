@@ -7,6 +7,8 @@ using UnityEngine;
 public class Score : ScriptableObject
 {
     [SerializeField] PlayerStats _playerStats;
+    [SerializeField] private Save _save;
+
     private int _comboTotalScore;
     public int ComboTotalScore => _comboTotalScore;
     private int _comboCounter;
@@ -19,6 +21,11 @@ public class Score : ScriptableObject
     private int _totalScore;
     public int TotalScore => _totalScore;
 
+    private int _maxCombo;
+    public int MaxCombo => _maxCombo;
+    public int MaxComboRecord;
+    public int ComboTotalRecord;
+
     public event Action<Block, int> OnHit;
 
     public void Init()
@@ -26,6 +33,8 @@ public class Score : ScriptableObject
         _comboTotalScore = 0;
         _comboCounter = 0;
         _totalScore = 0;
+        _maxCombo = 0;
+        _save.LoadPlayerPrefs();
     }
 
     public void ScoreNormalHit(Block block)
@@ -49,6 +58,9 @@ public class Score : ScriptableObject
         if (_comboCounter >= _minComboToStartCount)
         {
             _comboTotalScore += _comboCounter;
+            _maxCombo = Mathf.Max(_comboCounter, _maxCombo);
+            MaxComboRecord = Mathf.Max(_maxCombo, MaxComboRecord);
+            ComboTotalRecord = Mathf.Max(_comboTotalScore, ComboTotalRecord);
         }
         _comboCounter = 0;
     }

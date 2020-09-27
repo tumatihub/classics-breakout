@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Score
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 11400000, guid: 9eeee59f0d2cfdd47bfd257fe7e6db3e, type: 2}
+  _save: {fileID: 11400000, guid: 6efe3bfb1b11e3747a296dbd0b13e985, type: 2}
+  MaxComboRecord: 282
+  ComboTotalRecord: 2420
