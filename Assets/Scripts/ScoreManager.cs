@@ -60,6 +60,12 @@ public class ScoreManager : MonoBehaviour
         
     }
 
+    public void CancelCombo()
+    {
+        _score.CancelCombo();
+        _scoreDisplay.CancelCombo();
+    }
+
     private void OnDestroy()
     {
         _score.OnHit -= HandleHit;

@@ -69,4 +69,9 @@ public class Score : ScriptableObject
     {
         _comboTotalScore = Mathf.Max(0, _comboTotalScore - points);
     }
+
+    public void CancelCombo()
+    {
+        _comboCounter = 0;
+    }
 }

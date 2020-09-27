@@ -34,6 +34,14 @@ public class ScoreDisplay : MonoBehaviour
         _moveTweenId = LeanTween.move(_comboDisplayGroup, _showComboPosition, _timeToShowCombo).setEase(LeanTweenType.easeOutCirc).setIgnoreTimeScale(true).id;
     }
 
+    public void CancelCombo()
+    {
+        _comboCounterValue.color = Color.red;
+        _comboCounterValue.fontStyle = FontStyles.Strikethrough;
+
+        HideComboCounter();
+    }
+
     public void HideComboCounter()
     {
         if (LeanTween.descr(_moveTweenId) != null && LeanTween.isTweening(_moveTweenId)) LeanTween.cancel(_moveTweenId);

@@ -66,6 +66,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transition _transition;
 
+    [SerializeField] private ScoreManager _scoreManager;
+
     private Action Move;
     private Action HandleInput;
 
@@ -408,6 +410,7 @@ public class PlayerController : MonoBehaviour
 
     public void EndGame()
     {
+        _scoreManager.CancelCombo();
         StopControllers();
         EnterSaturationMode(1);
         var ball = FindObjectOfType<BallMovement>();

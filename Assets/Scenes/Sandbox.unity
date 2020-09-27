@@ -3868,6 +3868,11 @@ PrefabInstance:
       propertyPath: _transition
       value: 
       objectReference: {fileID: 1214578251443100383}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: _scoreManager
+      value: 
+      objectReference: {fileID: 1698428097}
     - target: {fileID: 6420929054478192819, guid: 9d0df206ad45c964b8687cb75457137b,
         type: 3}
       propertyPath: m_LocalPosition.x
