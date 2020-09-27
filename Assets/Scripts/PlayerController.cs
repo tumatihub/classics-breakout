@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PauseScreen _pauseScreen;
     [SerializeField] private Texture2D _crossair;
 
+    [SerializeField] private Transition _transition;
+
     private Action Move;
     private Action HandleInput;
 
@@ -410,7 +412,7 @@ public class PlayerController : MonoBehaviour
         EnterSaturationMode(1);
         var ball = FindObjectOfType<BallMovement>();
         if (ball != null) ball.Dissolve();
-        StartCoroutine(LoadScoreScreen(1.5f));
+        Invoke("RunExitTransition", 1f);
     }
 
     private void StopControllers()
@@ -420,12 +422,12 @@ public class PlayerController : MonoBehaviour
         HandleInput = null;
     }
 
-    IEnumerator LoadScoreScreen(float time)
+    private void RunExitTransition()
     {
-        yield return new WaitForSecondsRealtime(time);
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         ExitSaturationMode();
         ExitBulletTime();
-        _sceneController.LoadScoreScreen();
+        _sceneController.TransitionToScoreScreen();
     }
 
     private void OnDestroy()

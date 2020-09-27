@@ -13,9 +13,21 @@ public class SceneNames
 
 public class SceneController : MonoBehaviour
 {
+    [SerializeField] private Transition _transition;
+
+    public void TransitionToStartGame()
+    {
+        _transition.RunExit(StartGame);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(SceneNames.Game);
+    }
+
+    public void TransitionToUpgrades()
+    {
+        _transition.RunExit(LoadUpgradesScreen);
     }
 
     public void LoadUpgradesScreen()
@@ -23,9 +35,19 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(SceneNames.Upgrades);
     }
 
+    public void TransitionToMainMenu()
+    {
+        _transition.RunExit(LoadMainMenu);
+    }
+
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(SceneNames.MainMenu);
+    }
+
+    public void TransitionToScoreScreen()
+    {
+        _transition.RunExit(LoadScoreScreen);
     }
 
     public void LoadScoreScreen()

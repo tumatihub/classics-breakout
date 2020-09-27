@@ -22,7 +22,6 @@ public class BlocksSpawner : MonoBehaviour
     {
         _spawnerProgression.SetLevel(_startLevel);
         _spawnerProgression.SortChances();
-        CreateInitialRows(_initialNumberOfRows);
         _spawnCooldown = _spawnerProgression.SecondsToSpawnNewRow;
     }
 
@@ -62,9 +61,9 @@ public class BlocksSpawner : MonoBehaviour
     }
 
 
-    void CreateInitialRows(int numberOfRows)
+    public void CreateInitialRows()
     {
-        for (var i = 0; i < numberOfRows; i++)
+        for (var i = 0; i < _initialNumberOfRows; i++)
         {
             OnMoveDownRowsInstant?.Invoke();
             SpawnRow(transform.position);
