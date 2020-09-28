@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Audio;
 
 
 
@@ -68,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private ScoreManager _scoreManager;
 
+    private AudioManager _audioManager;
+
     private Action Move;
     private Action HandleInput;
 
@@ -99,6 +102,7 @@ public class PlayerController : MonoBehaviour
         _bulletTimeProfile.TryGet<ChromaticAberration>(out _chromatic);
         Move = MoveUnscaled;
         HandleInput = HandleInputWhenInControll;
+        _audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Update()
@@ -189,6 +193,7 @@ public class PlayerController : MonoBehaviour
 
     private void EnterPauseMode()
     {
+        _audioManager.MusicVolumeDown();
         StopControllers();
         ExitBulletTime();
         HandleInput = HandleInputWhenPaused;
@@ -206,6 +211,7 @@ public class PlayerController : MonoBehaviour
 
     public void ExitPauseMode()
     {
+        _audioManager.RestoreMusicVolume();
         ExitSaturationMode();
         HandleInput = HandleInputWhenInControll;
     }
@@ -226,12 +232,14 @@ public class PlayerController : MonoBehaviour
 
     private void EnterSpecialSelectionMode()
     {
+        _audioManager.MusicVolumeDown();
         EnterSaturationMode(_specialSelectionTimeScale);
         OnEnterSpecialSelection.Invoke();
     }
 
     private void ExitSpecialSelectionMode()
     {
+        _audioManager.RestoreMusicVolume();
         ExitSaturationMode();
         OnExitSpecialSelection.Invoke();
     }
@@ -283,12 +291,14 @@ public class PlayerController : MonoBehaviour
 
     private void EnterBulletTime()
     {
+        _audioManager.PitchDown();
         OnEnterBulletTime.Invoke();
         StartCoroutine(_bulletTime);
     }
 
     private void ExitBulletTime()
     {
+        _audioManager.PitchUp();
         OnExitBulletTime.Invoke();
         StopCoroutine(_bulletTime);
         Time.timeScale = 1f;

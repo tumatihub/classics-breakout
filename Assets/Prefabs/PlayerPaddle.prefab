@@ -114,6 +114,9 @@ MonoBehaviour:
   _specialSelectionTimeScale: 0.05
   _pauseScreen: {fileID: 0}
   _crossair: {fileID: 2800000, guid: 9ee6024f22568ed4db7b45096afa8b06, type: 3}
+  _transition: {fileID: 0}
+  _scoreManager: {fileID: 0}
+  _audioMixer: {fileID: 24100000, guid: 80b3c4d1b1bd7ea4ca4a8e68012dc0ba, type: 2}
   BallCollisionWithPaddle:
     m_PersistentCalls:
       m_Calls: []

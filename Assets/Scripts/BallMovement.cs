@@ -29,6 +29,8 @@ public class BallMovement : MonoBehaviour
     [SerializeField] private string _dissolveLayer;
     [SerializeField] private ParticleSystem _aura;
 
+    private AudioSource _audioSource;
+    [SerializeField] private List<AudioClip> _ballHits = new List<AudioClip>();
 
     public event Action OnDestroy;
 
@@ -37,6 +39,7 @@ public class BallMovement : MonoBehaviour
         _ballMaterial = GetComponent<SpriteRenderer>().material;
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.isKinematic = true;
+        _audioSource = GetComponent<AudioSource>();
         _aura.Play();
         ChangeTrailToNormal();
     }
@@ -101,6 +104,7 @@ public class BallMovement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            PlayRandomBallHit();
             _idleTime = 0;
             var playerController = collision.gameObject.GetComponent<PlayerController>();
             if (transform.position.y >= playerController.GetComponent<BoxCollider2D>().bounds.center.y)
@@ -117,10 +121,16 @@ public class BallMovement : MonoBehaviour
         }
     }
 
+    void PlayRandomBallHit()
+    {
+        _audioSource.PlayOneShot(_ballHits[UnityEngine.Random.Range(0,_ballHits.Count)]);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Block"))
         {
+            PlayRandomBallHit();
             _idleTime = 0;
             var block = collision.gameObject.GetComponent<Block>();
             if (PiercingCountLeft > 0)
