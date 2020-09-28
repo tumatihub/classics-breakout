@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
 
     private void EnterPauseMode()
     {
-        _audioManager.MusicVolumeDown();
+        _audioManager.MasterVolumeDown();
         StopControllers();
         ExitBulletTime();
         HandleInput = HandleInputWhenPaused;
@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
 
     public void ExitPauseMode()
     {
-        _audioManager.RestoreMusicVolume();
+        _audioManager.RestoreMasterVolume();
         ExitSaturationMode();
         HandleInput = HandleInputWhenInControll;
     }
