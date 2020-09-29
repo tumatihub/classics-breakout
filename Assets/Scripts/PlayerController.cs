@@ -51,10 +51,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ParticleSystem _bulletTimeParticles;
     [SerializeField] private TrailRenderer _bulletTimeTrail;
 
-    [SerializeField] private VolumeProfile _bulletTimeProfile;
-    [SerializeField] private float _chromaticValue = .17f;
-    [SerializeField] private float _chromaticDelay = .5f;
-    private ChromaticAberration _chromatic;
+    [SerializeField] private Volume _bulletTimeVolume;
+    [SerializeField] private float _bulletVolumeDelay = .5f;
+    private int _bulletVolumeTweenId;
 
     [SerializeField] private Volume _saturationVolume;
 
@@ -99,7 +98,6 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _sceneController = FindObjectOfType<SceneController>();
         BallSpawn();
-        _bulletTimeProfile.TryGet<ChromaticAberration>(out _chromatic);
         Move = MoveUnscaled;
         HandleInput = HandleInputWhenInControll;
         _audioManager = FindObjectOfType<AudioManager>();
@@ -342,18 +340,20 @@ public class PlayerController : MonoBehaviour
 
     void StartBulletVolume()
     {
-        LeanTween.value(gameObject, UpdateBulletVolume, 0, _chromaticValue, _chromaticDelay).setEase(LeanTweenType.easeInCirc).setIgnoreTimeScale(true);
+        if (LeanTween.descr(_bulletVolumeTweenId) != null) LeanTween.cancel(_bulletVolumeTweenId);
+        _bulletVolumeTweenId = LeanTween.value(gameObject, UpdateBulletVolume, 0f, 1f, _bulletVolumeDelay).setEase(LeanTweenType.easeOutCirc).setIgnoreTimeScale(true).id;
     }
 
     void StopBulletVolume()
     {
-        var currentValue = _chromatic.intensity.value;
-        LeanTween.value(gameObject, UpdateBulletVolume, currentValue, 0, _chromaticDelay).setEase(LeanTweenType.easeOutCirc).setIgnoreTimeScale(true);
+        if (LeanTween.descr(_bulletVolumeTweenId) != null) LeanTween.cancel(_bulletVolumeTweenId);
+        var currentValue = _bulletTimeVolume.weight;
+        _bulletVolumeTweenId = LeanTween.value(gameObject, UpdateBulletVolume, currentValue, 0, _bulletVolumeDelay).setEase(LeanTweenType.easeOutCirc).setIgnoreTimeScale(true).id;
     }
 
     void UpdateBulletVolume(float value)
     {
-        _chromatic.intensity.value = value;
+        _bulletTimeVolume.weight = value;
     }
 
     void StartSaturationVolume()

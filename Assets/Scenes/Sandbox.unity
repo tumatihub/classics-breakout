@@ -2211,6 +2211,18 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 382484793492253668}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1689152894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7465181414398580972, guid: 60f5126f36eed80408cf7af9d382423c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7465181415542806122}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1698428097 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2889677618237095195, guid: dbf9d8ce0c3f7e44db1f8de12e77ffe6,
@@ -3873,6 +3885,16 @@ PrefabInstance:
       propertyPath: _scoreManager
       value: 
       objectReference: {fileID: 1698428097}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: _bulletTimeVolume
+      value: 
+      objectReference: {fileID: 1689152894}
+    - target: {fileID: 6420929054478192818, guid: 9d0df206ad45c964b8687cb75457137b,
+        type: 3}
+      propertyPath: _bulletVolumeDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6420929054478192819, guid: 9d0df206ad45c964b8687cb75457137b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5650,6 +5672,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7465181414398580972, guid: 60f5126f36eed80408cf7af9d382423c,
+        type: 3}
+      propertyPath: weight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7465181414398580973, guid: 60f5126f36eed80408cf7af9d382423c,
         type: 3}
       propertyPath: m_LocalPosition.x
