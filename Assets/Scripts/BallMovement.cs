@@ -104,15 +104,14 @@ public class BallMovement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            PlayRandomBallHit();
-            _idleTime = 0;
             var playerController = collision.gameObject.GetComponent<PlayerController>();
             if (transform.position.y >= playerController.GetComponent<BoxCollider2D>().bounds.center.y)
             {
                 _rigidbody.velocity = playerController.ArrowDirection * _speed;
-
+                PlayRandomBallHit();
+                _idleTime = 0;
+                playerController.ActivateSpecial(this);
             }
-            playerController.ActivateSpecial(this);
         }
 
         if (collision.gameObject.CompareTag("Floor"))
