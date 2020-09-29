@@ -291,8 +291,6 @@ public class PlayerController : MonoBehaviour
 
     private void EnterBulletTime()
     {
-        _audioManager.PitchDown();
-        OnEnterBulletTime.Invoke();
         StartCoroutine(_bulletTime);
     }
 
@@ -313,6 +311,8 @@ public class PlayerController : MonoBehaviour
         {
             StartBulletTrail();
             StartBulletVolume();
+            _audioManager.PitchDown();
+            OnEnterBulletTime.Invoke();
         }
         while (_playerStats.CanBulletTime)
         {
