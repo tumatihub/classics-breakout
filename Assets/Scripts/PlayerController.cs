@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
         BallSpawn();
         Move = MoveUnscaled;
         HandleInput = HandleInputWhenInControll;
-        _audioManager = FindObjectOfType<AudioManager>();
+        _audioManager = AudioManager.Instance;
     }
 
     void Update()
