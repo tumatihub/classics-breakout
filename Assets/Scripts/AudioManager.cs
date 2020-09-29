@@ -17,12 +17,16 @@ public class AudioManager : MonoBehaviour
     private float _sFXVolume;
     private float _masterVolume;
 
+    [SerializeField] private AudioClip _gameMusic;
+    [SerializeField] private AudioClip _menuMusic;
+
     [SerializeField] private AudioMixer _audioMixer;
 
     private static AudioManager _instance;
 
     public static AudioManager Instance => _instance;
 
+    private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -42,6 +46,40 @@ public class AudioManager : MonoBehaviour
         _audioMixer.GetFloat(MUSIC_VOLUME, out _musicVolume);
         _audioMixer.GetFloat(SFX_VOLUME, out _sFXVolume);
         _audioMixer.GetFloat(MASTER_VOLUME, out _masterVolume);
+        _audioSource = GetComponent<AudioSource>();
+    }
+
+    public void TransitionToMenu()
+    {
+        TransitionToMusic(_menuMusic, 1f, .5f);
+    }
+
+    public void TransitionToGame()
+    {
+        TransitionToMusic(_gameMusic, 1f, 0.2f);
+    }
+
+    public void TransitionToMusic(AudioClip music, float fadeOutTime, float fadeInTime)
+    {
+        var currentVolume = _musicVolume;
+        var seq = LeanTween.sequence();
+        seq.append(
+            LeanTween.value(gameObject, UpdateVolume, currentVolume, MIN_VOLUME, fadeOutTime).setIgnoreTimeScale(true)
+        );
+        seq.append( () =>
+            {
+                _audioSource.clip = music;
+                _audioSource.Play();
+            }   
+        );
+        seq.append(
+            LeanTween.value(gameObject, UpdateVolume, MIN_VOLUME, currentVolume, fadeInTime).setIgnoreTimeScale(true)
+        );
+    }
+
+    private void UpdateVolume(float value)
+    {
+        _audioMixer.SetFloat(MUSIC_VOLUME, value);
     }
 
     public void PitchDown()

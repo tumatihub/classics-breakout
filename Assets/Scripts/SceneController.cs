@@ -14,6 +14,12 @@ public class SceneNames
 public class SceneController : MonoBehaviour
 {
     [SerializeField] private Transition _transition;
+    private AudioManager _audioManager;
+
+    private void Start()
+    {
+        _audioManager = AudioManager.Instance;
+    }
 
     public void TransitionToStartGame()
     {
@@ -22,6 +28,7 @@ public class SceneController : MonoBehaviour
 
     public void StartGame()
     {
+        _audioManager.TransitionToGame();
         SceneManager.LoadScene(SceneNames.Game);
     }
 
@@ -47,6 +54,7 @@ public class SceneController : MonoBehaviour
 
     public void TransitionToScoreScreen()
     {
+        _audioManager.TransitionToMenu();
         _transition.RunExit(LoadScoreScreen);
     }
 
