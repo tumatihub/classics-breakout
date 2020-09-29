@@ -132,6 +132,8 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 455346f9addbe2d4e95209b2f38f394f
+    name: MasterVolume
   - guid: 522feab69346cbd4cb3fe1abfb068380
     name: MusicPitch
   - guid: 1c412538aede3774b823f51445399f42
@@ -207,11 +209,11 @@ AudioMixerSnapshotController:
     1a493a445d5c9884d8a0bb188e720bc9: 1
     14af893531cfd7d44be72a6e931c52d0: 0.5
     c76e434509dc0c14698c57b72ac46a4c: 513
-    50fe749550a3db040890dbec6b3ef350: 7.8518515
+    50fe749550a3db040890dbec6b3ef350: 0.23722866
     522feab69346cbd4cb3fe1abfb068380: 1
     77534ae6a6de9924fb3a18be6d41c4c1: 11334
     34cb101721db6f241b835a290c775bf1: 0.818
-    1c412538aede3774b823f51445399f42: -8.091647
+    1c412538aede3774b823f51445399f42: -16.928656
     a0ebf2c8c4b2c78408dcf0cf769e9f08: 476
     3f9c88a9e49072942ae724332d4a11e6: 0.898
     455346f9addbe2d4e95209b2f38f394f: 10.610256
