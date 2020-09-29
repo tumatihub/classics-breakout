@@ -4963,8 +4963,9 @@ MonoBehaviour:
   _dissolveLayer: BallDissolve
   _aura: {fileID: 6641818671421254127}
   _ballHits:
-  - {fileID: 8300000, guid: 58f4db8ba5427af4c8420ef6809b2f36, type: 3}
-  - {fileID: 8300000, guid: ebbc905814689794eb2b42b93525ab3c, type: 3}
+  - {fileID: 8300000, guid: 261acae2c9ffa2a4892407177bbbb9f2, type: 3}
+  - {fileID: 8300000, guid: 1635d1a8766580a47a08d16277a3a7ad, type: 3}
+  - {fileID: 8300000, guid: a5c47ac903eece642b5d9ec514eedf7c, type: 3}
 --- !u!82 &866237691540149769
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4978,7 +4979,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.491
+  m_Volume: 0.8
   m_Pitch: 0.9
   Loop: 0
   Mute: 0
