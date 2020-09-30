@@ -11,10 +11,13 @@ public class PauseScreen : MonoBehaviour
     [SerializeField] private TMP_Text _counter;
     [SerializeField] private Image _pauseIcon;
     [SerializeField] private PlayerController _playerController;
+    [SerializeField] private AudioClip _countdownClip;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _pauseCanvas.gameObject.SetActive(false);
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void Pause()
@@ -36,6 +39,7 @@ public class PauseScreen : MonoBehaviour
         int seconds = _secondsToUnpause;
         while (seconds >= 0)
         {
+            _audioSource.PlayOneShot(_countdownClip);
             _counter.text = seconds.ToString();
             yield return new WaitForSecondsRealtime(1);
             seconds--;
