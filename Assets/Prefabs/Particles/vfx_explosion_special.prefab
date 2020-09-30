@@ -9636,6 +9636,8 @@ GameObject:
   - component: {fileID: 7528238043506958357}
   - component: {fileID: -911167352381400629}
   - component: {fileID: -7430518155072953809}
+  - component: {fileID: 5914109588798907010}
+  - component: {fileID: -6394649258335574885}
   m_Layer: 0
   m_Name: vfx_explosion_special
   m_TagString: Untagged
@@ -9782,6 +9784,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2921563d75058449926cf640ec3f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _delay: 0.2
+--- !u!114 &5914109588798907010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6406385654850092971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 3
+    m_RepeatMode: 0
+    m_Randomize: 0
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.1
+      m_DecayTime: 0.3
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
+    m_PropagationSpeed: 343
+--- !u!114 &-6394649258335574885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6406385654850092971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac2eb845590b65b47acfaf44cc7ba8ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _force: 5
   _delay: 0.2
 --- !u!1 &8889359647696259293
 GameObject:

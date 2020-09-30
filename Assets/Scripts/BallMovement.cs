@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class BallMovement : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class BallMovement : MonoBehaviour
     private AudioSource _audioSource;
     [SerializeField] private List<AudioClip> _ballHits = new List<AudioClip>();
 
+    private CinemachineImpulseSource _impulseSource;
+
     public event Action OnDestroy;
 
     void Start()
@@ -42,6 +45,7 @@ public class BallMovement : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _aura.Play();
         ChangeTrailToNormal();
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     private void Update()
@@ -134,6 +138,7 @@ public class BallMovement : MonoBehaviour
             var block = collision.gameObject.GetComponent<Block>();
             if (PiercingCountLeft > 0)
             {
+                CameraShake(.5f);
                 _score.ScoreInstantRemove(block);
                 PiercingCountLeft--;
                 block.RemoveBlock();
@@ -152,6 +157,10 @@ public class BallMovement : MonoBehaviour
         }
     }
 
+    private void CameraShake(float force)
+    {
+        _impulseSource.GenerateImpulse(force);
+    }
 
     private void ChangeTrailToNormal()
     {
