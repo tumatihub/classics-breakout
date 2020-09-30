@@ -37,12 +37,24 @@ public class UpgradeDisplay : MonoBehaviour
         _thumbnail.sprite = _upgradeProgress.Icon;
         if (!_upgradeProgress.IsMaxed && _score.ComboTotalScore >= _upgradeProgress.GetNextPrice())
         {
-            _upgradeButton.interactable = true;
+            EnableButton();
         }
         else
         {
-            _upgradeButton.interactable = false;
+            DisableButton();
         }
+    }
+
+    private void DisableButton()
+    {
+        _upgradeButton.interactable = false;
+        _upgradeButton.GetComponent<Image>().raycastTarget = false;
+    }
+
+    private void EnableButton()
+    {
+        _upgradeButton.interactable = true;
+        _upgradeButton.GetComponent<Image>().raycastTarget = true;
     }
 
     public void BuyUpgrade()
