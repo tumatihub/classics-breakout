@@ -145,9 +145,13 @@ public class PlayerStats : ScriptableObject
     }
     private void ChargeUp(int ammount)
     {
-        _charge = Mathf.Min(_charge + ammount, _chargeMax);
-        ChargeUpEvent?.Invoke();
-        if (_charge == _chargeMax) ChargeCompleteEvent?.Invoke();
+        if (_charge < _chargeMax)
+        {
+            _charge = Mathf.Min(_charge + ammount, _chargeMax);
+            ChargeUpEvent?.Invoke();
+            if (IsFullCharged) ChargeCompleteEvent?.Invoke();
+        }
+
     }
 
     public void ConsumeCharge()

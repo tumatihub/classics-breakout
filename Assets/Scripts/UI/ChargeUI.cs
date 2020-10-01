@@ -18,7 +18,8 @@ public class ChargeUI : MonoBehaviour
     [SerializeField] private GameObject _extraChargeGroup;
     [SerializeField] private ExtraCharge _extraChargePrefab;
     private List<ExtraCharge> _extraCharges = new List<ExtraCharge>();
-
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip _fullChargeClip;
     
 
     private void OnEnable()
@@ -30,12 +31,14 @@ public class ChargeUI : MonoBehaviour
         _playerStats.OnConsumeExtraCharge += HandleConsumeExtraCharge;
         _playerStats.OnStartStoringExtraCharge += HandleStartStoringExtraCharge;
         _playerStats.OnCancelStoringExtraCharge += HandleCancelStoringExtraCharge;
+        _playerStats.ChargeCompleteEvent += HandleChargeComplete;
     }
 
     private void Awake()
     {
         _slideBarMaxWidth = _progressBar.rectTransform.sizeDelta.x;
         _centerProgressBar.material.SetInt("_IsActive", 0);
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -146,6 +149,22 @@ public class ChargeUI : MonoBehaviour
         }
     }
 
+    private void HandleChargeComplete()
+    {
+        _audioSource.PlayOneShot(_fullChargeClip);
+        FullChargeFeedback();
+    }
+    private void FullChargeFeedback()
+    {
+        var seq = LeanTween.sequence();
+        seq.append(
+            LeanTween.scale(_progressBar.GetComponent<RectTransform>(), new Vector3(1f, 2f, 1f), .1f)
+        );
+        seq.append(
+            LeanTween.scale(_progressBar.GetComponent<RectTransform>(), new Vector3(1f, 1f, 1f), .1f)
+        );
+    }
+
     private void OnDisable()
     {
         _playerStats.ChargeUpEvent -= UpdateChargeValue;
@@ -155,6 +174,7 @@ public class ChargeUI : MonoBehaviour
         _playerStats.OnConsumeExtraCharge -= HandleConsumeExtraCharge;
         _playerStats.OnStartStoringExtraCharge -= HandleStartStoringExtraCharge;
         _playerStats.OnCancelStoringExtraCharge -= HandleCancelStoringExtraCharge;
+        _playerStats.ChargeCompleteEvent -= HandleChargeComplete;
     }
 
 }
