@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _bulletTime = BulletTime();
-        Cursor.SetCursor(_crossair, new Vector2(16, 16), CursorMode.Auto);
+        SetCrossairCursor();
     }
 
     void Start()
@@ -115,6 +115,16 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move.Invoke();
+    }
+
+    private void SetCrossairCursor()
+    {
+        Cursor.SetCursor(_crossair, new Vector2(16, 16), CursorMode.Auto);
+    }
+
+    private void SetDefaultCursor()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
     private void HandleInputWhenInControll()
@@ -238,6 +248,7 @@ public class PlayerController : MonoBehaviour
         HandleInput = HandleInputWhenPaused;
         EnterSaturationMode(0);
         _pauseScreen.Pause();
+        SetDefaultCursor();
     }
 
     private void HandleInputWhenPaused()
@@ -253,6 +264,7 @@ public class PlayerController : MonoBehaviour
         _audioManager.RestoreMasterVolume();
         ExitSaturationMode();
         HandleInput = HandleInputWhenInControll;
+        SetCrossairCursor();
     }
 
     private void EnterSaturationMode(float scale)
@@ -271,14 +283,14 @@ public class PlayerController : MonoBehaviour
 
     private void EnterSpecialSelectionMode()
     {
-        _audioManager.MusicVolumeDown();
+        _audioManager.MasterVolumeDown();
         EnterSaturationMode(_specialSelectionTimeScale);
         OnEnterSpecialSelection.Invoke();
     }
 
     private void ExitSpecialSelectionMode()
     {
-        _audioManager.RestoreMusicVolume();
+        _audioManager.RestoreMasterVolume();
         ExitSaturationMode();
         OnExitSpecialSelection.Invoke();
     }
@@ -486,6 +498,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        SetDefaultCursor();
     }
 }

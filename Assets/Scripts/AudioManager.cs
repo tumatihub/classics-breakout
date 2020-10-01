@@ -17,6 +17,9 @@ public class AudioManager : MonoBehaviour
     private float _sFXVolume;
     private float _masterVolume;
 
+    [SerializeField] private BoolVariable _isAudioOn;
+    [SerializeField] private BoolVariable _isMusicOn;
+
     [SerializeField] private AudioClip _gameMusic;
     [SerializeField] private AudioClip _menuMusic;
 
@@ -47,6 +50,11 @@ public class AudioManager : MonoBehaviour
         _audioMixer.GetFloat(SFX_VOLUME, out _sFXVolume);
         _audioMixer.GetFloat(MASTER_VOLUME, out _masterVolume);
         _audioSource = GetComponent<AudioSource>();
+
+        if (_isMusicOn.Value) UnmuteMusic();
+        else MuteMusic();
+        if (_isAudioOn.Value) UnmuteSFX();
+        else MuteSFX();
     }
 
     public void TransitionToMenu()
@@ -61,7 +69,7 @@ public class AudioManager : MonoBehaviour
 
     public void TransitionToMusic(AudioClip music, float fadeOutTime, float fadeInTime)
     {
-        var currentVolume = _musicVolume;
+        var currentVolume = (_isMusicOn.Value) ? _musicVolume : MIN_VOLUME;
         var seq = LeanTween.sequence();
         seq.append(
             LeanTween.value(gameObject, UpdateVolume, currentVolume, MIN_VOLUME, fadeOutTime).setIgnoreTimeScale(true)
@@ -84,24 +92,38 @@ public class AudioManager : MonoBehaviour
 
     public void PitchDown()
     {
-        _audioMixer.SetFloat(SFX_PITCH, .3f);
-        _audioMixer.SetFloat(MUSIC_PITCH, .9f);
+        if (_isAudioOn.Value) _audioMixer.SetFloat(SFX_PITCH, .3f);
+        if (_isMusicOn.Value) _audioMixer.SetFloat(MUSIC_PITCH, .9f);
     }
 
     public void PitchUp()
     {
-        _audioMixer.SetFloat(SFX_PITCH, 1f);
-        _audioMixer.SetFloat(MUSIC_PITCH, 1f);
+        if (_isAudioOn.Value) _audioMixer.SetFloat(SFX_PITCH, 1f);
+        if (_isMusicOn.Value) _audioMixer.SetFloat(MUSIC_PITCH, 1f);
     }
 
     public void MuteMusic()
     {
         GroupVolumeDown(MUSIC_VOLUME, _musicVolume, 1);
+        _isMusicOn.Value = false;
     }
 
     public void UnmuteMusic()
     {
         RestoreMusicVolume();
+        _isMusicOn.Value = true;
+    }
+
+    public void MuteSFX()
+    {
+        GroupVolumeDown(SFX_VOLUME, _sFXVolume, 1);
+        _isAudioOn.Value = false;
+    }
+
+    public void UnmuteSFX()
+    {
+        RestoreGroupVolume(SFX_VOLUME, _sFXVolume);
+        _isAudioOn.Value = true;
     }
 
     public void MusicVolumeDown()

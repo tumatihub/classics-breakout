@@ -13,11 +13,17 @@ public class PauseScreen : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private AudioClip _countdownClip;
     private AudioSource _audioSource;
+    private AudioManager _audioManager;
 
     private void Awake()
     {
         _pauseCanvas.gameObject.SetActive(false);
         _audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        _audioManager = AudioManager.Instance;
     }
 
     public void Pause()
@@ -47,4 +53,25 @@ public class PauseScreen : MonoBehaviour
         _pauseCanvas.gameObject.SetActive(false);
         _playerController.ExitPauseMode();
     }
+
+    public void MuteMusic()
+    {
+        _audioManager.MuteMusic();
+    }
+
+    public void UnmuteMusic()
+    {
+        _audioManager.UnmuteMusic();
+    }
+
+    public void MuteSFX()
+    {
+        _audioManager.MuteSFX();
+    }
+
+    public void UnmuteSFX()
+    {
+        _audioManager.UnmuteSFX();
+    }
+
 }

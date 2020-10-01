@@ -3511,10 +3511,50 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5853427111119356216, guid: def08f9bfe588df4b920f5013bd45ff8,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853427111119356216, guid: def08f9bfe588df4b920f5013bd45ff8,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853427111119356216, guid: def08f9bfe588df4b920f5013bd45ff8,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853427111119356216, guid: def08f9bfe588df4b920f5013bd45ff8,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6019955202514577777, guid: def08f9bfe588df4b920f5013bd45ff8,
         type: 3}
       propertyPath: m_Name
       value: PauseCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140576115832444417, guid: def08f9bfe588df4b920f5013bd45ff8,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140576115832444417, guid: def08f9bfe588df4b920f5013bd45ff8,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140576115832444417, guid: def08f9bfe588df4b920f5013bd45ff8,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140576115832444417, guid: def08f9bfe588df4b920f5013bd45ff8,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: def08f9bfe588df4b920f5013bd45ff8, type: 3}
