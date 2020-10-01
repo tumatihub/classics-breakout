@@ -14,4 +14,5 @@ public class InitValues : ScriptableObject
     public FloatVariable ChargeMax;
     public FloatVariable PiercingCount;
     public FloatVariable ExplosionRadius;
+    public FloatVariable ExtraCharges;
 }

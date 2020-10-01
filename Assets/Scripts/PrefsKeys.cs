@@ -3,6 +3,7 @@
     public const string BALL_POWER = "BallPowerLevel";
     public const string PIERCING = "PiercingLevel";
     public const string EXPLOSION = "ExplosionLevel";
+    public const string EXTRA_CHARGES = "ExtraCharges";
 
     public const string TOTAL_COMBO = "TotalComboRecord";
     public const string MAX_COMBO = "MaxComboRecord";

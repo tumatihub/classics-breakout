@@ -36,6 +36,10 @@ public class PlayerStats : ScriptableObject
     public UnityAction ChangeSpecialEvent;
     public UnityAction ChargePaddleEvent;
     public UnityAction UnchargePaddleEvent;
+    public UnityAction OnStoreExtraCharge;
+    public UnityAction<int> OnConsumeExtraCharge;
+    public UnityAction<float> OnStartStoringExtraCharge;
+    public UnityAction OnCancelStoringExtraCharge;
 
     public bool CanBulletTime => _charge >= _chargeAmmountConsume;
 
@@ -43,12 +47,22 @@ public class PlayerStats : ScriptableObject
     public List<Special> Specials => _specials;
 
     private Special _special;
-    public bool CanUseSpecial => _charge >= _chargeMax && _special.CanBeUsed;
+
+    public bool IsFullCharged => _charge >= _chargeMax;
+
+    public bool HasStoredCharge => _currentStoredCharges > 0;
+
+    public bool CanStoreCharge => _currentStoredCharges < _extraCharges;
     public Special Special => _special;
     private int _specialIndex = 0;
 
     private float _explosionRadius;
     public float ExplosionRadius => _explosionRadius;
+
+    private int _extraCharges;
+    public int ExtraCharges => _extraCharges;
+
+    private int _currentStoredCharges;
 
     [SerializeField] private Upgrades _upgrades;
 
@@ -58,6 +72,7 @@ public class PlayerStats : ScriptableObject
         ResetCharge();
         ChangeSpecial(0);
         _isPaddleCharged = false;
+        _currentStoredCharges = 0;
 
         _ballPower = (int)_initValues.BallPower.Value;
         _chargeAmmountPerHit = (int)_initValues.ChargeAmmountPerHit.Value;
@@ -68,6 +83,15 @@ public class PlayerStats : ScriptableObject
         _chargeMax = (int)_initValues.ChargeMax.Value;
         _piercingCount = (int)_initValues.PiercingCount.Value;
         _explosionRadius = _initValues.ExplosionRadius.Value;
+        _extraCharges = (int)_initValues.ExtraCharges.Value;
+    }
+
+    public bool CanUseSpecial()
+    {
+        if (!_special.CanBeUsed) return false;
+        var currentCharge = _currentStoredCharges;
+        currentCharge += IsFullCharged ? 1 : 0;
+        return currentCharge >= _special.ChargeCost;
     }
 
     public void ClearSpecials()
@@ -132,10 +156,33 @@ public class PlayerStats : ScriptableObject
         ChargeConsumeEvent?.Invoke();
     }
 
+    
+    public void StoreExtraCharge()
+    {
+        _currentStoredCharges = Mathf.Min(_currentStoredCharges + 1, _extraCharges);
+        ResetCharge();
+        OnStoreExtraCharge?.Invoke();
+    }
+
     public void ResetCharge()
     {
         _charge = 0;
         ChargeResetEvent?.Invoke();
+    }
+
+    public void ConsumeSpecial()
+    {
+        if (_special.ChargeCost > _currentStoredCharges)
+        {
+            ResetCharge();
+            _currentStoredCharges = Mathf.Max(_currentStoredCharges - _special.ChargeCost-1, 0);
+            OnConsumeExtraCharge?.Invoke(_special.ChargeCost-1);
+        }
+        else
+        {
+            _currentStoredCharges = Mathf.Max(_currentStoredCharges - _special.ChargeCost, 0);
+            OnConsumeExtraCharge?.Invoke(_special.ChargeCost);
+        }
     }
 
     public void ChargePaddle()

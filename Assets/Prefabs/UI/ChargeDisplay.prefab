@@ -599,6 +599,9 @@ MonoBehaviour:
   _specialSelectionGroup: {fileID: 7837200857418681899}
   _specialOptionPrefab: {fileID: 3073366148442679955, guid: 6ef68170720f226499da81054a3a4894,
     type: 3}
+  _extraChargeGroup: {fileID: 5810589111244141148}
+  _extraChargePrefab: {fileID: 2829710426110853158, guid: 9bb7d8abef3802345916a4a10e35f89b,
+    type: 3}
 --- !u!1 &7481801877012347831
 GameObject:
   m_ObjectHideFlags: 0

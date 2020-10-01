@@ -16,3 +16,4 @@ MonoBehaviour:
   _ballPower: {fileID: 11400000, guid: 6bf8f6e7fa7d7194e924c1427639a47a, type: 2}
   _piercing: {fileID: 11400000, guid: 25bae65506dd6124b830c4c31492bbfb, type: 2}
   _explosion: {fileID: 11400000, guid: 77994753fa523374e93b7347407493a2, type: 2}
+  _extraCharges: {fileID: 11400000, guid: f379eef7f7e2299448108190fc2658b3, type: 2}

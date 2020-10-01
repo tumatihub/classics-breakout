@@ -17,6 +17,7 @@ MonoBehaviour:
   _ballPower: {fileID: 11400000, guid: 6bf8f6e7fa7d7194e924c1427639a47a, type: 2}
   _piercingCount: {fileID: 11400000, guid: 25bae65506dd6124b830c4c31492bbfb, type: 2}
   _explosionRadius: {fileID: 11400000, guid: 77994753fa523374e93b7347407493a2, type: 2}
+  _extraCharges: {fileID: 11400000, guid: f379eef7f7e2299448108190fc2658b3, type: 2}
   _piercingSpecial: {fileID: 11400000, guid: 49ab6cdaaaad4fc41a2c3106e15b2598, type: 2}
   _explosionSpecial: {fileID: 11400000, guid: af64004bfcdfd9944825867a464f5e5c, type: 2}
   _emptySpecial: {fileID: 11400000, guid: 9b66fd24a60a5a54a8951a4f4358407e, type: 2}
@@ -24,4 +25,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6bf8f6e7fa7d7194e924c1427639a47a, type: 2}
   - {fileID: 11400000, guid: 77994753fa523374e93b7347407493a2, type: 2}
   - {fileID: 11400000, guid: 25bae65506dd6124b830c4c31492bbfb, type: 2}
+  - {fileID: 11400000, guid: f379eef7f7e2299448108190fc2658b3, type: 2}
   _save: {fileID: 11400000, guid: 6efe3bfb1b11e3747a296dbd0b13e985, type: 2}

@@ -9,6 +9,7 @@ public abstract class Special : ScriptableObject
     public Sprite Icon;
     public bool ChargesPaddle;
     public bool CanBeUsed = true;
+    public int ChargeCost = 1;
     public GameObject ChargeParticles;
     public GameObject ActivateSpecialParticles;
     public GameObject BallTrail;

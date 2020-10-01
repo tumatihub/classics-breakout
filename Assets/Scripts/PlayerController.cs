@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private ScoreManager _scoreManager;
 
+    [SerializeField] private float _timeToStoreCharge;
+
     private AudioManager _audioManager;
 
     private Action Move;
@@ -83,6 +85,7 @@ public class PlayerController : MonoBehaviour
     public UnityEvent OnSpecialCycleDown;
     public UnityEvent OnEnterSpecialSelection;
     public UnityEvent OnExitSpecialSelection;
+    
 
     #endregion
 
@@ -160,15 +163,21 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown(InputKeys.SPECIAL))
         {
-            if (!_playerStats.CanUseSpecial) return;
-            _playerStats.ResetCharge();
-            if (_playerStats.Special.ChargesPaddle)
+            if (_playerStats.IsFullCharged)
             {
-                _playerStats.ChargePaddle();
-                ActivateChargeParticles();
-                return;
+                if (_playerStats.CanStoreCharge)
+                {
+                    StartCoroutine(HandleSpecialButtonPressed());
+                }
+                else if (_playerStats.CanUseSpecial())
+                {
+                    ActivateSpecial();
+                }
             }
-            ExecuteSpecial();
+            else if (_playerStats.CanUseSpecial())
+            {
+                ActivateSpecial();
+            }
         
         }
         if (Input.GetButtonDown(InputKeys.PAUSE))
@@ -187,6 +196,38 @@ public class PlayerController : MonoBehaviour
         }
 
         UpdateArrowDirection();
+    }
+
+    IEnumerator HandleSpecialButtonPressed()
+    {
+        var cooldown = _timeToStoreCharge;
+        _playerStats.OnStartStoringExtraCharge?.Invoke(_timeToStoreCharge);
+        while (Input.GetButton(InputKeys.SPECIAL) && cooldown > 0)
+        {
+            yield return new WaitForEndOfFrame();
+            cooldown -= Time.deltaTime;
+        }
+        if (cooldown <= 0)
+        {
+            _playerStats.StoreExtraCharge();
+        }
+        else
+        {
+            _playerStats.OnCancelStoringExtraCharge?.Invoke();
+            if (_playerStats.CanUseSpecial()) ActivateSpecial();
+        }
+    }
+
+    private void ActivateSpecial()
+    {
+        _playerStats.ConsumeSpecial();
+        if (_playerStats.Special.ChargesPaddle)
+        {
+            _playerStats.ChargePaddle();
+            ActivateChargeParticles();
+            return;
+        }
+        ExecuteSpecial();
     }
 
     private void EnterPauseMode()

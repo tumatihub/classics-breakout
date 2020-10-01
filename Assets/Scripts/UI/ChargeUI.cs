@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class ChargeUI : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class ChargeUI : MonoBehaviour
     private float _slideBarMaxWidth;
     [SerializeField] private Transform _specialSelectionGroup;
     [SerializeField] private SpecialOption _specialOptionPrefab;
+    [SerializeField] private GameObject _extraChargeGroup;
+    [SerializeField] private ExtraCharge _extraChargePrefab;
+    private List<ExtraCharge> _extraCharges = new List<ExtraCharge>();
+
     
 
     private void OnEnable()
@@ -22,6 +27,9 @@ public class ChargeUI : MonoBehaviour
         _playerStats.ChargeConsumeEvent += UpdateChargeValue;
         _playerStats.ChangeSpecialEvent += ChangeSpecial;
         _playerStats.ChargeResetEvent += UpdateChargeValue;
+        _playerStats.OnConsumeExtraCharge += HandleConsumeExtraCharge;
+        _playerStats.OnStartStoringExtraCharge += HandleStartStoringExtraCharge;
+        _playerStats.OnCancelStoringExtraCharge += HandleCancelStoringExtraCharge;
     }
 
     private void Awake()
@@ -34,6 +42,16 @@ public class ChargeUI : MonoBehaviour
     {
         _specialSelectionGroup.gameObject.SetActive(false);
         CreateSelectionOptions();
+        CreateExtraChargesList();
+    }
+
+    private void CreateExtraChargesList()
+    {
+        for (var i = 0; i<_playerStats.ExtraCharges; i++)
+        {
+            var charge = Instantiate(_extraChargePrefab, _extraChargeGroup.transform);
+            _extraCharges.Add(charge);
+        }
     }
 
     private void CreateSelectionOptions()
@@ -57,7 +75,22 @@ public class ChargeUI : MonoBehaviour
         _specialName.text = _playerStats.Special.Name;
         _progressBar.color = _playerStats.Special.Color;
         _centerProgressBar.material.SetColor("_Color", _playerStats.Special.Color);
+        foreach (var charge in _extraCharges) charge.ChangeColor(_playerStats.Special.Color);
         _icon.sprite = _playerStats.Special.Icon;
+    }
+
+    public void HandleConsumeExtraCharge(int charges)
+    {
+        int removedCharges = 0;
+        for(var i = _extraCharges.Count-1; i>=0; i--)
+        {
+            if (_extraCharges[i].IsActive)
+            {
+                _extraCharges[i].Consume();
+                removedCharges++;
+                if (removedCharges >= charges) return;
+            }
+        }
     }
 
     public void HandleEnterBulletTime()
@@ -89,6 +122,29 @@ public class ChargeUI : MonoBehaviour
     {
         _specialSelectionGroup.gameObject.SetActive(false);
     }
+    private void HandleCancelStoringExtraCharge()
+    {
+        foreach (var charge in _extraCharges)
+        {
+            if (!charge.IsActive)
+            {
+                charge.CancelStoring();
+                return;
+            }
+        }
+    }
+
+    private void HandleStartStoringExtraCharge(float timeToStore)
+    {
+        foreach (var charge in _extraCharges)
+        {
+            if (!charge.IsActive)
+            {
+                charge.StartStoring(timeToStore);
+                return;
+            }
+        }
+    }
 
     private void OnDisable()
     {
@@ -96,5 +152,9 @@ public class ChargeUI : MonoBehaviour
         _playerStats.ChargeConsumeEvent -= UpdateChargeValue;
         _playerStats.ChangeSpecialEvent -= ChangeSpecial;
         _playerStats.ChargeResetEvent -= UpdateChargeValue;
+        _playerStats.OnConsumeExtraCharge -= HandleConsumeExtraCharge;
+        _playerStats.OnStartStoringExtraCharge -= HandleStartStoringExtraCharge;
+        _playerStats.OnCancelStoringExtraCharge -= HandleCancelStoringExtraCharge;
     }
+
 }

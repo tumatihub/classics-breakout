@@ -25,3 +25,4 @@ MonoBehaviour:
   ChargeMax: {fileID: 11400000, guid: c8e9393b3d01c6f42972a94003740ffe, type: 2}
   PiercingCount: {fileID: 11400000, guid: 0f638a07e8c38974995544cef9bd251d, type: 2}
   ExplosionRadius: {fileID: 11400000, guid: 4bec4bb0614fc3c4682e6eef58c209d0, type: 2}
+  ExtraCharges: {fileID: 11400000, guid: 34c9a07e0caab1d49936b2302a0a4430, type: 2}
