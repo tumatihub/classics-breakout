@@ -44,6 +44,7 @@ public class SceneController : MonoBehaviour
 
     public void TransitionToMainMenu()
     {
+        _audioManager.TransitionToMainMenu();
         _transition.RunExit(LoadMainMenu);
     }
 
@@ -61,5 +62,10 @@ public class SceneController : MonoBehaviour
     public void LoadScoreScreen()
     {
         SceneManager.LoadScene(SceneNames.Score);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

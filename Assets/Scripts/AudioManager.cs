@@ -57,6 +57,32 @@ public class AudioManager : MonoBehaviour
         else MuteSFX();
     }
 
+    public void StartIntroMusic()
+    {
+        _audioSource.clip = _menuMusic;
+        _audioSource.Play();
+    }
+
+    public void TransitionToMainMenu()
+    {
+        FadeOut(.5f);
+    }
+
+    private void FadeOut(float fadeOutTime)
+    {
+        var currentVolume = (_isMusicOn.Value) ? _musicVolume : MIN_VOLUME;
+        var seq = LeanTween.sequence();
+        seq.append(
+            LeanTween.value(gameObject, UpdateVolume, currentVolume, MIN_VOLUME, fadeOutTime).setIgnoreTimeScale(true)
+        );
+        seq.append(() =>
+        {
+            _audioSource.Stop();
+            if (_isMusicOn.Value) RestoreMusicVolume();
+        }
+        );
+    }
+
     public void TransitionToMenu()
     {
         TransitionToMusic(_menuMusic, 1f, .5f);
