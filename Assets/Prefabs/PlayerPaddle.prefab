@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6420929054478192818}
   - component: {fileID: 6420929054478192817}
   - component: {fileID: 280517475}
+  - component: {fileID: 1679013138687659962}
+  - component: {fileID: 874641457711983061}
   m_Layer: 11
   m_Name: PlayerPaddle
   m_TagString: Player
@@ -107,16 +109,15 @@ MonoBehaviour:
   _ballPrefab: {fileID: 1599469807, guid: 64e229cedf22a6b4b8a07f9435d7feac, type: 3}
   _bulletTimeParticles: {fileID: 6521385030078103447}
   _bulletTimeTrail: {fileID: 6965587386843730306}
-  _bulletTimeProfile: {fileID: 0}
-  _chromaticValue: 0.17
-  _chromaticDelay: 0.5
+  _bulletTimeVolume: {fileID: 0}
+  _bulletVolumeDelay: 0.5
   _saturationVolume: {fileID: 0}
   _specialSelectionTimeScale: 0.05
   _pauseScreen: {fileID: 0}
   _crossair: {fileID: 2800000, guid: 9ee6024f22568ed4db7b45096afa8b06, type: 3}
   _transition: {fileID: 0}
   _scoreManager: {fileID: 0}
-  _audioMixer: {fileID: 24100000, guid: 80b3c4d1b1bd7ea4ca4a8e68012dc0ba, type: 2}
+  _timeToStoreCharge: 0
   BallCollisionWithPaddle:
     m_PersistentCalls:
       m_Calls: []
@@ -188,6 +189,140 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 0.28}
   m_EdgeRadius: 0
+--- !u!114 &1679013138687659962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420929054478192821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Trigger:
+    m_IsTriggerExpanded: 1
+    m_Type: 0
+    m_LifecycleEvent: 2
+    m_ApplyRules: 0
+    m_Rules:
+      m_Rules: []
+    m_TriggerBool: 0
+    m_InitTime: 5
+    m_RepeatTime: 5
+    m_Repetitions: 0
+    repetitionCount: 0
+  m_EventPayload:
+    m_IsEventExpanded: 1
+    m_StandardEventType: GameStart
+    m_Parameters:
+      m_Parameters: []
+    m_Name: game_start
+--- !u!114 &874641457711983061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420929054478192821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Trigger:
+    m_IsTriggerExpanded: 1
+    m_Type: 0
+    m_LifecycleEvent: 7
+    m_ApplyRules: 0
+    m_Rules:
+      m_Rules: []
+    m_TriggerBool: 0
+    m_InitTime: 5
+    m_RepeatTime: 5
+    m_Repetitions: 0
+    repetitionCount: 0
+  m_EventPayload:
+    m_IsEventExpanded: 1
+    m_StandardEventType: GameOver
+    m_Parameters:
+      m_Parameters:
+      - m_RequirementType: 2
+        m_GroupID: 
+        m_Tooltip: The order of this level within the game.
+        m_Name: level_index
+        m_Value:
+          m_EditingCustomValue: 0
+          m_PopupIndex: 0
+          m_CustomValue: 
+          m_FixedType: 1
+          m_EnumType: 
+          m_EnumTypeIsCustomizable: 0
+          m_CanDisable: 1
+          m_PropertyType: 0
+          m_ValueType: System.Int32
+          m_Value: 
+          m_Target:
+            m_Target: {fileID: 0}
+            m_Path: 
+            m_ValidTypeNames:
+            - System.Int32
+            m_Type: System.Int32
+            m_EnumType: 
+      - m_RequirementType: 2
+        m_GroupID: 
+        m_Tooltip: The level name.
+        m_Name: level_name
+        m_Value:
+          m_EditingCustomValue: 0
+          m_PopupIndex: 0
+          m_CustomValue: 
+          m_FixedType: 1
+          m_EnumType: 
+          m_EnumTypeIsCustomizable: 0
+          m_CanDisable: 1
+          m_PropertyType: 1
+          m_ValueType: System.String
+          m_Value: 
+          m_Target:
+            m_Target: {fileID: 0}
+            m_Path: 
+            m_ValidTypeNames:
+            - System.String
+            m_Type: System.String
+            m_EnumType: 
+      - m_RequirementType: 0
+        m_GroupID: 
+        m_Tooltip: 
+        m_Name: combo_points
+        m_Value:
+          m_EditingCustomValue: 0
+          m_PopupIndex: 0
+          m_CustomValue: 
+          m_FixedType: 0
+          m_EnumType: 
+          m_EnumTypeIsCustomizable: 0
+          m_CanDisable: 0
+          m_PropertyType: 2
+          m_ValueType: System.String
+          m_Value: 
+          m_Target:
+            m_Target: {fileID: 11400000, guid: 612cbfb6733210b42b0f04094eec5dc9, type: 2}
+            m_Path: 
+            m_ValidTypeNames:
+            - System.Int32
+            - System.Boolean
+            - System.Decimal
+            - System.Double
+            - System.Single
+            - System.Int64
+            - System.Int16
+            - System.String
+            - enum
+            m_Type: System.String
+            m_EnumType: 
+    m_Name: game_over
 --- !u!1 &7038262326276311478
 GameObject:
   m_ObjectHideFlags: 0
