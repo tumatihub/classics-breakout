@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Audio;
+using UnityEngine.Analytics;
 
 
 
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transition _transition;
 
     [SerializeField] private ScoreManager _scoreManager;
+    [SerializeField] private Score _score;
 
     [SerializeField] private float _timeToStoreCharge;
 
@@ -97,6 +99,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        AnalyticsEvent.GameStart();
         _playerStats.Init();
         _rigidbody = GetComponent<Rigidbody2D>();
         _sceneController = FindObjectOfType<SceneController>();
@@ -499,5 +502,13 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         SetDefaultCursor();
+        Dictionary<string, object> customParams = new Dictionary<string, object>();
+        customParams.Add("combo_points", _score.ComboTotalScore);
+        customParams.Add("max_combo", _score.MaxCombo);
+        customParams.Add("total_score", _score.TotalScore);
+        customParams.Add("combo_record", _score.ComboTotalRecord);
+        customParams.Add("max_combo_record", _score.MaxComboRecord);
+
+        AnalyticsEvent.GameOver(null, customParams);
     }
 }
