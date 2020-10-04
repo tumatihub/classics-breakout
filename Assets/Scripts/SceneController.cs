@@ -9,6 +9,7 @@ public class SceneNames
     public const string MainMenu = "MainMenu";
     public const string Upgrades = "Upgrades";
     public const string Score = "Score";
+    public const string Leaderboard = "Leaderboard";
 }
 
 public class SceneController : MonoBehaviour
@@ -40,6 +41,16 @@ public class SceneController : MonoBehaviour
     public void LoadUpgradesScreen()
     {
         SceneManager.LoadScene(SceneNames.Upgrades);
+    }
+
+    public void TransitionToLeaderboard()
+    {
+        _transition.RunExit(LoadLeaderboard);
+    }
+
+    public void LoadLeaderboard()
+    {
+        SceneManager.LoadScene(SceneNames.Leaderboard);
     }
 
     public void TransitionToMainMenu()
