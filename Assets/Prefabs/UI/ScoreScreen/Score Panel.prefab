@@ -207,30 +207,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8935874895515892870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6343207497555365283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d3ea8ec75deb34a9af868d39de8216, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _upgradesNotification: {fileID: 0}
-  _score: {fileID: 11400000, guid: 612cbfb6733210b42b0f04094eec5dc9, type: 2}
-  _save: {fileID: 11400000, guid: 6efe3bfb1b11e3747a296dbd0b13e985, type: 2}
-  _upgrades: {fileID: 11400000, guid: 1478f9412f5ca1a45b4631b516c31c8f, type: 2}
-  _comboPointsValue: {fileID: 5023064715785784613}
-  _totalScoreValue: {fileID: 5782179100264255277}
-  _maxCombo: {fileID: 8628560129274608172}
-  _maxComboRecord: {fileID: 8790131304588210571}
-  _comboTotalRecord: {fileID: 6076237110168317767}
-  _recordImage: {fileID: 5518066597147487602}
-  _recordColor: {r: 1, g: 0.91106665, b: 0.333, a: 1}
-  _leaderboardInput: {fileID: 5744377006045445266}
 --- !u!1 &2418398513962067734
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +389,7 @@ MonoBehaviour:
   _saveRecordSuccessMsg: Record saved with success to the leaderboard.
   _saveRecordFailureMsg: "Can\xB4t connect to the server. Your record will be stored
     locally to try again later."
+  _savePendingRecordMsg: Your pending record was saved with success to the leaderboard.
   _showPos: {fileID: 7664292747262643828}
   _hidePos: {fileID: 6328033769643863061}
   _moveDelay: 0.5
@@ -850,6 +827,30 @@ RectTransform:
   m_AnchoredPosition: {x: 276.86865, y: 3.392456}
   m_SizeDelta: {x: 193.8, y: 49.93}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8935874895515892870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343207497555365283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d3ea8ec75deb34a9af868d39de8216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upgradesNotification: {fileID: 0}
+  _score: {fileID: 11400000, guid: 612cbfb6733210b42b0f04094eec5dc9, type: 2}
+  _save: {fileID: 11400000, guid: 6efe3bfb1b11e3747a296dbd0b13e985, type: 2}
+  _upgrades: {fileID: 11400000, guid: 1478f9412f5ca1a45b4631b516c31c8f, type: 2}
+  _comboPointsValue: {fileID: 5023064715785784613}
+  _totalScoreValue: {fileID: 5782179100264255277}
+  _maxCombo: {fileID: 8628560129274608172}
+  _maxComboRecord: {fileID: 8790131304588210571}
+  _comboTotalRecord: {fileID: 6076237110168317767}
+  _recordImage: {fileID: 5518066597147487602}
+  _recordColor: {r: 1, g: 0.91106665, b: 0.333, a: 1}
+  _leaderboardInput: {fileID: 5744377006045445266}
 --- !u!1 &6466921060092739406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,6 +1659,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3d18617d3a85aa409a08eea4b683cd7, type: 3}
+--- !u!224 &6343207497555365284 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4863850766767952188, guid: c3d18617d3a85aa409a08eea4b683cd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1979410225401617560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6343207497555365283 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4863850766767952187, guid: c3d18617d3a85aa409a08eea4b683cd7,
@@ -1667,12 +1674,6 @@ GameObject:
 --- !u!224 &4344993995738033706 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2825096276331033266, guid: c3d18617d3a85aa409a08eea4b683cd7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1979410225401617560}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &6343207497555365284 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4863850766767952188, guid: c3d18617d3a85aa409a08eea4b683cd7,
     type: 3}
   m_PrefabInstance: {fileID: 1979410225401617560}
   m_PrefabAsset: {fileID: 0}
