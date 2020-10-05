@@ -15,6 +15,7 @@ public class LeaderboardInput : MonoBehaviour
     [SerializeField] private Transform _showPos;
     [SerializeField] private Transform _hidePos;
     [SerializeField] private float _moveDelay = .5f;
+    [SerializeField] private GameObject _loadingImg;
     private PanelNotification _panelNotification;
 
     void Start()
@@ -41,6 +42,7 @@ public class LeaderboardInput : MonoBehaviour
 
     public void SaveRecord()
     {
+        _loadingImg.SetActive(true);
         var entry = new LeaderboardEntry(_input.text, _score.ComboTotalScore, _score.MaxCombo, _score.TotalScore);
         _button.interactable = false;
         _button.image.raycastTarget = false;
@@ -49,12 +51,14 @@ public class LeaderboardInput : MonoBehaviour
 
     private void HandleInsertSuccess()
     {
+        _loadingImg.SetActive(false);
         _panelNotification?.NotifySuccess(_saveRecordSuccessMsg);
         HideInput();
     }
 
     private void HandleInsertFailure(string error)
     {
+        _loadingImg.SetActive(false);
         _panelNotification?.NotifyFailure(_saveRecordFailureMsg);
         HideInput();
         Debug.LogError(error);

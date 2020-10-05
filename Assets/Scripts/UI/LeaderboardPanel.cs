@@ -9,6 +9,7 @@ public class LeaderboardPanel : MonoBehaviour
     [SerializeField] private GameObject _errorMsg;
     [SerializeField] private GameObject _entriesGroup;
     [SerializeField] private string _failToConnectMsg;
+    [SerializeField] private GameObject _loadingImg;
     private PanelNotification _panelNotification;
 
 
@@ -17,10 +18,12 @@ public class LeaderboardPanel : MonoBehaviour
         _panelNotification = FindObjectOfType<PanelNotification>();
         _leaderboard = FindObjectOfType<Leaderboard>();
         _leaderboard.RequestEntriesOrderByCombo(UpdateEntries, DisplayServerError);
+        _loadingImg.SetActive(true);
     }
 
     private void UpdateEntries(LeaderboardEntry[] entries)
     {
+        _loadingImg.SetActive(false);
         foreach(var entry in entries)
         {
             var row = Instantiate(_entryDisplayPrefab, _entriesGroup.transform);
@@ -30,6 +33,7 @@ public class LeaderboardPanel : MonoBehaviour
 
     private void DisplayServerError(string error)
     {
+        _loadingImg.SetActive(false);
         Instantiate(_errorMsg, _entriesGroup.transform);
         _panelNotification?.NotifyFailure(_failToConnectMsg);
     }
