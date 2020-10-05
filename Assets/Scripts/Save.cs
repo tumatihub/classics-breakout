@@ -16,6 +16,11 @@ public class Save : ScriptableObject
         return PlayerPrefs.HasKey(PrefsKeys.BALL_POWER);
     }
 
+    public void ClearSave()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     public void InitPrefs()
     {
         PlayerPrefs.SetInt(PrefsKeys.BALL_POWER, 0);

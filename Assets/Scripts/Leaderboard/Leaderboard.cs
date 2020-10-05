@@ -65,7 +65,7 @@ public class Leaderboard : MonoBehaviour
 
     public void InsertEntry(LeaderboardEntry entry, UnityAction callbackOnSuccess, UnityAction<string> callbackOnFail)
     {
-        InsertEntryCoroutine(entry, callbackOnSuccess, callbackOnFail);
+        StartCoroutine(InsertEntryCoroutine(entry, callbackOnSuccess, callbackOnFail));
     }
 
     private IEnumerator InsertEntryCoroutine(LeaderboardEntry entry, UnityAction callbackOnSuccess, UnityAction<string> callbackOnFail)
