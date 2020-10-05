@@ -124,6 +124,24 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1631270199112615454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112255543004572891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e631e30c1d4ba46a811873c7824d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entryDisplayPrefab: {fileID: 442157836546146198, guid: 8d645ac0d5235694ab25507b54e0d2ed,
+    type: 3}
+  _errorMsg: {fileID: 7903215167448024339, guid: a4baf3b8e5a7b1b4ab8645597a4eff80,
+    type: 3}
+  _entriesGroup: {fileID: 2747452354971993155}
+  _failToConnectMsg: "Can\xB4t connect to server. Please try again later."
 --- !u!1 &2747452354971993155
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,23 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1631270199112615454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112255543004572891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e631e30c1d4ba46a811873c7824d52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _entryDisplayPrefab: {fileID: 442157836546146198, guid: 8d645ac0d5235694ab25507b54e0d2ed,
-    type: 3}
-  _errorMsg: {fileID: 7903215167448024339, guid: a4baf3b8e5a7b1b4ab8645597a4eff80,
-    type: 3}
-  _entriesGroup: {fileID: 2747452354971993155}
 --- !u!1 &5481173715233484598
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +741,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 493.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214519853549032429, guid: c3d18617d3a85aa409a08eea4b683cd7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3d18617d3a85aa409a08eea4b683cd7, type: 3}

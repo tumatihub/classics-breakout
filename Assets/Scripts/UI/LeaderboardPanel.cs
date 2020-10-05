@@ -8,9 +8,13 @@ public class LeaderboardPanel : MonoBehaviour
     [SerializeField] private LeaderboardEntryDisplay _entryDisplayPrefab;
     [SerializeField] private GameObject _errorMsg;
     [SerializeField] private GameObject _entriesGroup;
+    [SerializeField] private string _failToConnectMsg;
+    private PanelNotification _panelNotification;
+
 
     void Start()
     {
+        _panelNotification = FindObjectOfType<PanelNotification>();
         _leaderboard = FindObjectOfType<Leaderboard>();
         _leaderboard.RequestEntriesOrderByCombo(UpdateEntries, DisplayServerError);
     }
@@ -27,5 +31,6 @@ public class LeaderboardPanel : MonoBehaviour
     private void DisplayServerError(string error)
     {
         Instantiate(_errorMsg, _entriesGroup.transform);
+        _panelNotification?.NotifyFailure(_failToConnectMsg);
     }
 }

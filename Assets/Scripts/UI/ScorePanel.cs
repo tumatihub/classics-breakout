@@ -64,7 +64,7 @@ public class ScorePanel : MonoBehaviour
 
     private void ShowLeaderboardInput()
     {
-        _leaderboardInput.gameObject.SetActive(true);
+        _leaderboardInput.ShowInput();
     }
 
     public void ClearSave()

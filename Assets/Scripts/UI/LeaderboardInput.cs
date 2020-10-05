@@ -10,9 +10,16 @@ public class LeaderboardInput : MonoBehaviour
     [SerializeField] private TMP_InputField _input;
     [SerializeField] private Button _button;
     [SerializeField] private Score _score;
+    [SerializeField] private string _saveRecordSuccessMsg;
+    [SerializeField] private string _saveRecordFailureMsg;
+    [SerializeField] private Transform _showPos;
+    [SerializeField] private Transform _hidePos;
+    [SerializeField] private float _moveDelay = .5f;
+    private PanelNotification _panelNotification;
 
     void Start()
     {
+        _panelNotification = FindObjectOfType<PanelNotification>();
         _leaderboard = FindObjectOfType<Leaderboard>();
         _button.interactable = false;
         _button.image.raycastTarget = false;
@@ -35,16 +42,31 @@ public class LeaderboardInput : MonoBehaviour
     public void SaveRecord()
     {
         var entry = new LeaderboardEntry(_input.text, _score.ComboTotalScore, _score.MaxCombo, _score.TotalScore);
+        _button.interactable = false;
+        _button.image.raycastTarget = false;
         _leaderboard.InsertEntry(entry, HandleInsertSuccess, HandleInsertFailure);
     }
 
     private void HandleInsertSuccess()
     {
-        gameObject.SetActive(false);
+        _panelNotification?.NotifySuccess(_saveRecordSuccessMsg);
+        HideInput();
     }
 
     private void HandleInsertFailure(string error)
     {
+        _panelNotification?.NotifyFailure(_saveRecordFailureMsg);
+        HideInput();
         Debug.LogError(error);
+    }
+
+    public void ShowInput()
+    {
+        LeanTween.move(gameObject, _showPos, _moveDelay).setEase(LeanTweenType.easeOutCirc);
+    }
+
+    public void HideInput()
+    {
+        LeanTween.move(gameObject, _hidePos, _moveDelay).setEase(LeanTweenType.easeInCirc);
     }
 }
