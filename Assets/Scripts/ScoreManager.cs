@@ -36,6 +36,7 @@ public class ScoreManager : MonoBehaviour
     public void ScoreComboCounter()
     {
         _scoreDisplay.UpdateTotalComboDisplay(_score.ComboCounter);
+        _scoreDisplay.ShowHighComboMessage(_score.ComboCounter);
         _score.ScoreComboCouter();
         _scoreDisplay.HideComboCounter();
         _comboCooldown = 0;

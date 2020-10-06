@@ -18,6 +18,11 @@ public class ScoreDisplay : MonoBehaviour
     [SerializeField] private float _addScoreDelay = .2f;
     [SerializeField] private float _comboAddFadeDelay = 1.5f;
     [SerializeField] private TMP_Text _totalScoreValue;
+    [SerializeField] private List<HighComboMessage> _highComboMessages = new List<HighComboMessage>();
+    [SerializeField] private GameObject _highComboMsgGroup;
+    [SerializeField] private TMP_Text _highComboMsg;
+    [SerializeField] private Transform _showMsgPos;
+    [SerializeField] private Transform _hideMsgPos;
 
     private int _moveTweenId;
 
@@ -79,5 +84,42 @@ public class ScoreDisplay : MonoBehaviour
     public void UpdateTotalScoreDisplay()
     {
         _totalScoreValue.text = _score.TotalScore.ToString();
+    }
+
+    public void ShowHighComboMessage(int combo)
+    {
+        if (combo < _score.MinComboToStartCount) return;
+
+        var msg = GetMessageForCombo(combo);
+        
+        if (msg == "") return;
+        
+        Debug.Log(msg);
+        _highComboMsg.text = msg;
+
+        var seq = LeanTween.sequence();
+        seq.append(
+            LeanTween.move(_highComboMsgGroup, _showMsgPos, _timeToShowCombo).setEase(LeanTweenType.easeOutCirc).setIgnoreTimeScale(true)
+        );
+        seq.append(
+            LeanTween.delayedCall(1f, HideHighComboMessage)
+        );
+    }
+
+    public void HideHighComboMessage()
+    {
+        LeanTween.move(_highComboMsgGroup, _hideMsgPos, _timeToShowCombo).setEase(LeanTweenType.easeInCirc).setIgnoreTimeScale(true);
+    }
+
+    private string GetMessageForCombo(int combo)
+    {
+        for(var i=0; i<_highComboMessages.Count; i++)
+        {
+            if (combo >= _highComboMessages[i].MinCombo && (i+1 == _highComboMessages.Count || combo < _highComboMessages[i + 1].MinCombo))
+            {
+                return _highComboMessages[i].Message;
+            }
+        }
+        return "";
     }
 }
