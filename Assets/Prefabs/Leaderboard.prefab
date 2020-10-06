@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tokenFile: {fileID: 4900000, guid: 4d72dafe2bc97e6458f5003ce8c3c776, type: 3}
+  _pubKey: {fileID: 4900000, guid: 6303688a800d0104e8e046687d13f5f8, type: 3}

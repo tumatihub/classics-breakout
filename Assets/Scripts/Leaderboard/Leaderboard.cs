@@ -9,13 +9,14 @@ using System.Text;
 
 public class Leaderboard : MonoBehaviour
 {
-    private const string BASE_API_URL = "http://192.168.0.201:8000/api/leaderboard/";
+    private const string BASE_API_URL = "https://tumati.ddns.net:10443/api/leaderboard/";
     private const string ORDER_BY_COMBO = "combo/";
     private const string ORDER_BY_MAX_COMBO = "max-combo/";
     private const string ORDER_BY_SCORE = "score/";
     private const string API_POST = "entries/";
 
     [SerializeField] private TextAsset _tokenFile;
+    [SerializeField] private TextAsset _pubKey;
 
     private string GetToken()
     {
@@ -45,6 +46,7 @@ public class Leaderboard : MonoBehaviour
     private IEnumerator RequestCoroutine(string url, UnityAction<LeaderboardEntry[]> callbackOnSuccess, UnityAction<string> callbackOnFail)
     {
         var www = UnityWebRequest.Get(url);
+        www.certificateHandler = new AcceptAllCertificatesSignedWithASpecificPublicKey(_pubKey.text);
         yield return www.SendWebRequest();
         if (www.isNetworkError || www.isHttpError)
         {
@@ -73,6 +75,7 @@ public class Leaderboard : MonoBehaviour
         string json = JsonUtility.ToJson(entry);
         byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
         var www = new UnityWebRequest(BASE_API_URL+API_POST, "POST");
+        www.certificateHandler = new AcceptAllCertificatesSignedWithASpecificPublicKey(_pubKey.text);
         www.uploadHandler = new UploadHandlerRaw(bodyRaw);
         www.SetRequestHeader("Authorization", "Token " + GetToken());
         www.SetRequestHeader("Content-Type", "application/json");
