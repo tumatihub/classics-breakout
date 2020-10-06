@@ -2529,6 +2529,11 @@ PrefabInstance:
       propertyPath: _isInteger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2864553572871696023, guid: 7c127b8e7a2ecce4b80a1fc3915af36c,
+        type: 3}
+      propertyPath: _maxValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4162712376655892480, guid: 7c127b8e7a2ecce4b80a1fc3915af36c,
         type: 3}
       propertyPath: m_LocalPosition.x

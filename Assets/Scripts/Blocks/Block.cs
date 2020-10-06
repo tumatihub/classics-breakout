@@ -80,7 +80,7 @@ public class Block : MonoBehaviour
     public void RemoveBlock()
     {
         Instantiate(_blockTypes.Configs[_hitPoints-1].DestroyParticles, transform.position, Quaternion.identity);
-        _playerStats.ChargePerRemovedBlock();
+        _playerStats.ChargePerRemovedBlock(_hitPoints);
         _collider.enabled = false;
         Dissolve();
     }

@@ -136,12 +136,12 @@ public class PlayerStats : ScriptableObject
 
     public void ChargePerHit()
     {
-        ChargeUp(_chargeAmmountPerHit);
+        ChargeUp(_ballPower + _chargeAmmountPerHit);
     }
 
-    public void ChargePerRemovedBlock()
+    public void ChargePerRemovedBlock(int hitPoints)
     {
-        ChargeUp(_chargeAmmountPerRemovedBlock);
+        ChargeUp(_chargeAmmountPerRemovedBlock + hitPoints);
     }
     private void ChargeUp(int ammount)
     {
