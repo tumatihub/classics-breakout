@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3bad33feadaf4dad7a5b2d1148f26, type: 3}
   m_Name: BulletTimeCost
   m_EditorClassIdentifier: 
-  _level: 0
+  _level: 2
   _upgrades:
   - Price: 0
     Value: 20
-    Description: Cost of bullet time
-    NextLevelDescription: Decrease cost of bullet time
+    Description: Bullet time cost 20
+    NextLevelDescription: Decrease to 15 the cost of bullet time
   - Price: 0
     Value: 15
-    Description: Cost of bullet time
-    NextLevelDescription: Decrease cost of bullet time
+    Description: Bullet time cost 15
+    NextLevelDescription: Decrease to 10 the cost of bullet time
   - Price: 0
     Value: 10
-    Description: Cost of bullet time
-    NextLevelDescription: Decrease cost of bullet time
+    Description: Bullet time cost 10
+    NextLevelDescription: --
   _upgradeName: Bullet Time
   _icon: {fileID: 21300000, guid: 8ae2b41827d200444893a88b359818e1, type: 3}
