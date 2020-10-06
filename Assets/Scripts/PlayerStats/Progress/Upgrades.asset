@@ -18,6 +18,7 @@ MonoBehaviour:
   _piercingCount: {fileID: 11400000, guid: 25bae65506dd6124b830c4c31492bbfb, type: 2}
   _explosionRadius: {fileID: 11400000, guid: 77994753fa523374e93b7347407493a2, type: 2}
   _extraCharges: {fileID: 11400000, guid: f379eef7f7e2299448108190fc2658b3, type: 2}
+  _bulletTimeCost: {fileID: 11400000, guid: 9ee7f3cd9f6a2634aabd796483397aba, type: 2}
   _piercingSpecial: {fileID: 11400000, guid: 49ab6cdaaaad4fc41a2c3106e15b2598, type: 2}
   _explosionSpecial: {fileID: 11400000, guid: af64004bfcdfd9944825867a464f5e5c, type: 2}
   _emptySpecial: {fileID: 11400000, guid: 9b66fd24a60a5a54a8951a4f4358407e, type: 2}

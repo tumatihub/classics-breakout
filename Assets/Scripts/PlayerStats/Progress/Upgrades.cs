@@ -13,6 +13,7 @@ public class Upgrades : ScriptableObject
     [SerializeField] private UpgradeProgress _piercingCount;
     [SerializeField] private UpgradeProgress _explosionRadius;
     [SerializeField] private UpgradeProgress _extraCharges;
+    [SerializeField] private UpgradeProgress _bulletTimeCost;
 
     [SerializeField] private PiercingSpecial _piercingSpecial;
     [SerializeField] private ExplosionSpecial _explosionSpecial;
@@ -31,6 +32,8 @@ public class Upgrades : ScriptableObject
         _initValues.BallPower.Value = _ballPower.Value;
 
         _initValues.ExtraCharges.Value = _extraCharges.Value;
+
+        _initValues.ChargeAmmountConsume.Value = _bulletTimeCost.Value;
 
         _playerStats.ClearSpecials();
 
@@ -55,6 +58,7 @@ public class Upgrades : ScriptableObject
         _piercingCount.Reset();
         _explosionRadius.Reset();
         _extraCharges.Reset();
+        _bulletTimeCost.Reset();
         _save.SavePlayerPrefs();
     }
 
