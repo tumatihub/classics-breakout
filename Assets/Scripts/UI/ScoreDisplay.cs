@@ -94,7 +94,6 @@ public class ScoreDisplay : MonoBehaviour
         
         if (msg == "") return;
         
-        Debug.Log(msg);
         _highComboMsg.text = msg;
 
         var seq = LeanTween.sequence();
