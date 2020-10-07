@@ -14,9 +14,11 @@ public class Upgrades : ScriptableObject
     [SerializeField] private UpgradeProgress _explosionRadius;
     [SerializeField] private UpgradeProgress _extraCharges;
     [SerializeField] private UpgradeProgress _bulletTimeCost;
+    [SerializeField] private UpgradeProgress _barrier;
 
     [SerializeField] private PiercingSpecial _piercingSpecial;
     [SerializeField] private ExplosionSpecial _explosionSpecial;
+    [SerializeField] private BarrierSpecial _barrierSpecial;
     [SerializeField] private EmptySpecial _emptySpecial;
     
 
@@ -50,6 +52,12 @@ public class Upgrades : ScriptableObject
             _playerStats.AddSpecial(_piercingSpecial);
         }
         _initValues.PiercingCount.Value = _piercingCount.Value;
+
+        if (_barrier.Level > 0)
+        {
+            _playerStats.AddSpecial(_barrierSpecial);
+        }
+
     }
 
     public void ResetUpgrades()
@@ -59,6 +67,7 @@ public class Upgrades : ScriptableObject
         _explosionRadius.Reset();
         _extraCharges.Reset();
         _bulletTimeCost.Reset();
+        _barrier.Reset();
         _save.SavePlayerPrefs();
     }
 

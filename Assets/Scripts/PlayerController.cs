@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _timeToStoreCharge;
 
+    [SerializeField] private Barrier _barrier;
+    
     private AudioManager _audioManager;
 
     private Action Move;
@@ -300,7 +302,7 @@ public class PlayerController : MonoBehaviour
 
     private void ChangePaddleChargeVFX()
     {
-        if (!_playerStats.Special.CanBeUsed) return;
+        if (!_playerStats.Special.CanBeUsed || _playerStats.Special.PaddleChargeVFX == null) return;
         if (_paddleChargeVFX != null) Destroy(_paddleChargeVFX.gameObject);
         _paddleChargeVFX = Instantiate(_playerStats.Special.PaddleChargeVFX, transform.position, Quaternion.identity, transform);
     }
@@ -460,7 +462,12 @@ public class PlayerController : MonoBehaviour
 
     private void ExecuteSpecial()
     {
-        _playerStats.Special.Action();
+        _playerStats.Special.Action(this);
+    }
+
+    public void ActivateBarrier()
+    {
+        _barrier.gameObject.SetActive(true);
     }
 
     public void BallSpawn()

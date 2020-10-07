@@ -6089,6 +6089,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Border
       objectReference: {fileID: 0}
+    - target: {fileID: 7755237726334259292, guid: 0d0cb3e84daab524ea0d66b659f4a12f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Border
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d0cb3e84daab524ea0d66b659f4a12f, type: 3}
 --- !u!1001 &9124287851615004718

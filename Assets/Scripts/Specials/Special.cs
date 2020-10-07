@@ -27,7 +27,7 @@ public abstract class Special : ScriptableObject
         _playerStats.UnchargePaddle();
     }
 
-    public virtual void Action()
+    public virtual void Action(PlayerController playerController)
     {
     }
 }

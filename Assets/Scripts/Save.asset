@@ -18,3 +18,4 @@ MonoBehaviour:
   _explosion: {fileID: 11400000, guid: 77994753fa523374e93b7347407493a2, type: 2}
   _extraCharges: {fileID: 11400000, guid: f379eef7f7e2299448108190fc2658b3, type: 2}
   _bulletTimeCost: {fileID: 11400000, guid: 9ee7f3cd9f6a2634aabd796483397aba, type: 2}
+  _barrier: {fileID: 11400000, guid: 264ffff603c0cf645a88beb0293d8c23, type: 2}

@@ -5,6 +5,7 @@
     public const string EXPLOSION = "ExplosionLevel";
     public const string EXTRA_CHARGES = "ExtraCharges";
     public const string BULLET_TIME_COST = "BulletTimeCost";
+    public const string BARRIER = "Barrier";
 
     public const string TOTAL_COMBO = "TotalComboRecord";
     public const string MAX_COMBO = "MaxComboRecord";
