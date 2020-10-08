@@ -40,4 +40,4 @@ MonoBehaviour:
     Description: Take 6 hitpoint from a block
     NextLevelDescription: --
   _upgradeName: Ball Power
-  _icon: {fileID: 21300000, guid: 1ad839a9fec0d96409c5b02baee82cf8, type: 3}
+  _icon: {fileID: 21300000, guid: 0435765316b837948b67cdb64655079b, type: 3}

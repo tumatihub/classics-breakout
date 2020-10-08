@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Explosion
   Color: {r: 0.9686275, g: 0.4431373, b: 0.45098042, a: 1}
-  Icon: {fileID: 21300000, guid: 4fc9d84141707f0448830a960d881255, type: 3}
+  Icon: {fileID: 21300000, guid: eb4b655ff818a2943980de75789a44ac, type: 3}
   ChargesPaddle: 1
   CanBeUsed: 1
   ChargeCost: 1

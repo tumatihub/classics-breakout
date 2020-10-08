@@ -32,4 +32,4 @@ MonoBehaviour:
     Description: Pierce through 10 block
     NextLevelDescription: --
   _upgradeName: Piercing
-  _icon: {fileID: 21300000, guid: 267301eedf0898b41bbb17ffcec1a848, type: 3}
+  _icon: {fileID: 21300000, guid: ca8d0a5ece4839646bbc766dadb356bd, type: 3}
