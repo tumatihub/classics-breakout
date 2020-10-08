@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BulletTimeCost
   m_EditorClassIdentifier: 
   _level: 2
+  Special: {fileID: 0}
   _upgrades:
   - Price: 0
     Value: 20
@@ -27,4 +28,4 @@ MonoBehaviour:
     Description: Bullet time cost 10
     NextLevelDescription: --
   _upgradeName: Bullet Time
-  _icon: {fileID: 21300000, guid: 8ae2b41827d200444893a88b359818e1, type: 3}
+  _icon: {fileID: 21300000, guid: 1ad839a9fec0d96409c5b02baee82cf8, type: 3}

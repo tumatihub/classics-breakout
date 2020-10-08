@@ -17,7 +17,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 8ae2b41827d200444893a88b359818e1, type: 3}
   ChargesPaddle: 0
   CanBeUsed: 1
-  ChargeCost: 1
+  ChargeCost: 3
   ChargeParticles: {fileID: 0}
   ActivateSpecialParticles: {fileID: 0}
   BallTrail: {fileID: 0}

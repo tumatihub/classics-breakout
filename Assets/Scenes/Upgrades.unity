@@ -442,7 +442,7 @@ PrefabInstance:
     - target: {fileID: 2445303661429733392, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_Name
-      value: UpgradeRow (2)
+      value: Explosion
       objectReference: {fileID: 0}
     - target: {fileID: 2445303661429733423, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
@@ -591,6 +591,31 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4927006789002280466, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
@@ -1145,7 +1170,7 @@ PrefabInstance:
     - target: {fileID: 2445303661429733392, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_Name
-      value: UpgradeRow (1)
+      value: Piercing
       objectReference: {fileID: 0}
     - target: {fileID: 2445303661429733423, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
@@ -1294,6 +1319,31 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4927006789002280466, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
@@ -1747,7 +1797,7 @@ PrefabInstance:
     - target: {fileID: 2445303661429733392, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_Name
-      value: UpgradeRow (4)
+      value: BulletTimeCost
       objectReference: {fileID: 0}
     - target: {fileID: 2445303661429733423, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
@@ -1896,6 +1946,31 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4927006789002280466, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
@@ -2192,7 +2267,7 @@ PrefabInstance:
     - target: {fileID: 2445303661429733392, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_Name
-      value: UpgradeRow
+      value: Ball Power
       objectReference: {fileID: 0}
     - target: {fileID: 2445303661429733423, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
@@ -2323,6 +2398,31 @@ PrefabInstance:
     - target: {fileID: 3227392432485841243, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6891261137804734240, guid: a55385a3bbb203645b5da1c660e0f013,
@@ -2764,7 +2864,7 @@ PrefabInstance:
     - target: {fileID: 2445303661429733392, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_Name
-      value: UpgradeRow (3)
+      value: ExtraCharges
       objectReference: {fileID: 0}
     - target: {fileID: 2445303661429733423, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
@@ -2913,6 +3013,31 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4927006789002280466, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
@@ -3261,7 +3386,7 @@ PrefabInstance:
     - target: {fileID: 2445303661429733392, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_Name
-      value: UpgradeRow (5)
+      value: Barrier
       objectReference: {fileID: 0}
     - target: {fileID: 2445303661429733423, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
@@ -3410,6 +3535,31 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4927006789002280466, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866622107211901272, guid: a55385a3bbb203645b5da1c660e0f013,
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0

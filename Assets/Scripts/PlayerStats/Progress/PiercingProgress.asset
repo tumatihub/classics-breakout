@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PiercingProgress
   m_EditorClassIdentifier: 
   _level: 3
+  Special: {fileID: 11400000, guid: 49ab6cdaaaad4fc41a2c3106e15b2598, type: 2}
   _upgrades:
   - Price: 0
     Value: 0
@@ -30,5 +31,5 @@ MonoBehaviour:
     Value: 10
     Description: Pierce through 10 block
     NextLevelDescription: --
-  _upgradeName: Piercing Special
+  _upgradeName: Piercing
   _icon: {fileID: 21300000, guid: 267301eedf0898b41bbb17ffcec1a848, type: 3}

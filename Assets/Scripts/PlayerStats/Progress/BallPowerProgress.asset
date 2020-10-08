@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BallPowerProgress
   m_EditorClassIdentifier: 
   _level: 5
+  Special: {fileID: 0}
   _upgrades:
   - Price: 0
     Value: 1
@@ -39,4 +40,4 @@ MonoBehaviour:
     Description: Take 6 hitpoint from a block
     NextLevelDescription: --
   _upgradeName: Ball Power
-  _icon: {fileID: 21300000, guid: 8ae2b41827d200444893a88b359818e1, type: 3}
+  _icon: {fileID: 21300000, guid: 1ad839a9fec0d96409c5b02baee82cf8, type: 3}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ExplosionProgress
   m_EditorClassIdentifier: 
   _level: 2
+  Special: {fileID: 11400000, guid: af64004bfcdfd9944825867a464f5e5c, type: 2}
   _upgrades:
   - Price: 0
     Value: 0
@@ -26,5 +27,5 @@ MonoBehaviour:
     Value: 1.5
     Description: Explodes nearby blocks
     NextLevelDescription: --
-  _upgradeName: Explosion Special
+  _upgradeName: Explosion
   _icon: {fileID: 21300000, guid: 4fc9d84141707f0448830a960d881255, type: 3}

@@ -12,6 +12,8 @@ public class UpgradeDisplay : MonoBehaviour
     [SerializeField] private TMP_Text _price;
     [SerializeField] private Image _thumbnail;
     [SerializeField] private Button _upgradeButton;
+    [SerializeField] private TMP_Text _cost;
+    [SerializeField] private Image _costBG;
 
     [SerializeField] private UpgradeProgress _upgradeProgress;
     [SerializeField] private Save _save;
@@ -26,6 +28,8 @@ public class UpgradeDisplay : MonoBehaviour
         }
 
         _upgradesPanel = FindObjectOfType<UpgradesPanel>();
+
+        if (_upgradeProgress.Special == null) _costBG.gameObject.SetActive(false);
     }
 
     public void UpdateInfo()
@@ -35,6 +39,7 @@ public class UpgradeDisplay : MonoBehaviour
         _nextLevelDescription.text = _upgradeProgress.NextLevelDescription;
         _price.text = _upgradeProgress.IsMaxed ? "Max" : _upgradeProgress.GetNextPrice().ToString();
         _thumbnail.sprite = _upgradeProgress.Icon;
+        _cost.text = _upgradeProgress.Special == null ? "--" : $"Cost: {_upgradeProgress.Special.ChargeCost}";
         if (!_upgradeProgress.IsMaxed && _score.ComboTotalScore >= _upgradeProgress.GetNextPrice())
         {
             EnableButton();
