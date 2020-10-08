@@ -16,18 +16,7 @@ public class DebugPainel : MonoBehaviour
     }
 
     private void Update()
-    {
-        if (Input.GetKeyDown(InputKeys.DEBUG_PANEL))
-        {
-            if (_hiding)
-            {
-                ShowPanel();
-            }
-            else
-            {
-                HidePanel();
-            }
-        }    
+    {   
     }
 
     void ShowPanel()

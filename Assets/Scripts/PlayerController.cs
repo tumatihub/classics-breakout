@@ -18,10 +18,8 @@ public class InputKeys
     public const string SPECIAL_SELECTION = "Special Selection";
     public const string MOUSE_SCROLLWHEEL_AXIS = "Mouse ScrollWheel";
     public const string SPECIAL = "Special";
-    public const string RESTART = "Restart";
     public const string LAUNCH_BALL = "Launch";
     public const string PAUSE = "Pause";
-    public const KeyCode DEBUG_PANEL = KeyCode.O;
 }
 
 public class PlayerController : MonoBehaviour
@@ -193,16 +191,12 @@ public class PlayerController : MonoBehaviour
             {
                 ActivateSpecial();
             }
-        
+
         }
+
         if (Input.GetButtonDown(InputKeys.PAUSE))
         {
             EnterPauseMode();
-        }
-
-        if (Input.GetButtonDown(InputKeys.RESTART))
-        {
-            _sceneController.StartGame();
         }
 
         if (Input.GetButtonDown(InputKeys.LAUNCH_BALL) && _ball != null)
@@ -212,6 +206,7 @@ public class PlayerController : MonoBehaviour
 
         UpdateArrowDirection();
     }
+
     IEnumerator HandleSpecialButtonPressed()
     {
         var cooldown = _timeToStoreCharge;
