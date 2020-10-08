@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e744b4ebb032c44917b4c4308fdcc2, type: 3}
   m_Name: ChargeAmmountPerRemovedBlock
   m_EditorClassIdentifier: 
-  Value: 6
+  Value: 9
