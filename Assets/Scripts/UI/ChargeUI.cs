@@ -20,6 +20,7 @@ public class ChargeUI : MonoBehaviour
     private List<ExtraCharge> _extraCharges = new List<ExtraCharge>();
     private AudioSource _audioSource;
     [SerializeField] private AudioClip _fullChargeClip;
+    [SerializeField] private TMP_Text _chargeCost;
     
 
     private void OnEnable()
@@ -78,6 +79,7 @@ public class ChargeUI : MonoBehaviour
         _specialName.text = _playerStats.Special.Name;
         _progressBar.color = _playerStats.Special.Color;
         _centerProgressBar.material.SetColor("_Color", _playerStats.Special.Color);
+        _chargeCost.text = _playerStats.Special.ChargeCost.ToString();
         foreach (var charge in _extraCharges) charge.ChangeColor(_playerStats.Special.Color);
         _icon.sprite = _playerStats.Special.Icon;
     }
