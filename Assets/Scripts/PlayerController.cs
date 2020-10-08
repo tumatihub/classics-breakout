@@ -212,7 +212,6 @@ public class PlayerController : MonoBehaviour
 
         UpdateArrowDirection();
     }
-
     IEnumerator HandleSpecialButtonPressed()
     {
         var cooldown = _timeToStoreCharge;
@@ -235,14 +234,19 @@ public class PlayerController : MonoBehaviour
 
     private void ActivateSpecial()
     {
-        _playerStats.ConsumeSpecial();
-        if (_playerStats.Special.ChargesPaddle)
+        if (_playerStats.Special.ChargesPaddle && !_playerStats.IsPaddleCharged)
         {
+            _playerStats.ConsumeSpecial();
             _playerStats.ChargePaddle();
             ActivateChargeParticles();
             return;
         }
-        ExecuteSpecial();
+        else if (!_playerStats.Special.ChargesPaddle && !_barrier.isActiveAndEnabled)
+        {
+            _playerStats.ConsumeSpecial();
+            ExecuteSpecial();
+        }
+        
     }
 
     private void EnterPauseMode()
