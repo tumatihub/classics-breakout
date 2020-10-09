@@ -95,12 +95,12 @@ public class PlayerController : MonoBehaviour
     {
         _bulletTime = BulletTime();
         SetCrossairCursor();
-        _audioManager = AudioManager.Instance;
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Start()
     {
+        _audioManager = AudioManager.Instance;
         AnalyticsEvent.GameStart();
         _playerStats.Init();
         _sceneController = FindObjectOfType<SceneController>();
