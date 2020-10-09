@@ -5244,6 +5244,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5886393374122583056, guid: 842d6a75aac673645a12b875bfe6259e,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.098
+      objectReference: {fileID: 0}
     - target: {fileID: 6029622313185690049, guid: 842d6a75aac673645a12b875bfe6259e,
         type: 3}
       propertyPath: m_AnchorMin.y
