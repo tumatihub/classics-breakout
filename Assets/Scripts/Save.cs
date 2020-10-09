@@ -34,6 +34,10 @@ public class Save : ScriptableObject
 
         PlayerPrefs.SetInt(PrefsKeys.TOTAL_COMBO, 0);
         PlayerPrefs.SetInt(PrefsKeys.MAX_COMBO, 0);
+
+        PlayerPrefs.SetInt(PrefsKeys.IS_FIRST_RUN, 1);
+        PlayerPrefs.SetInt(PrefsKeys.GOT_ONE_SPECIAL, 0);
+        PlayerPrefs.SetInt(PrefsKeys.GOT_EXTRA_CHARGE, 0);
     }
 
     public void LoadPlayerPrefs()
@@ -49,6 +53,10 @@ public class Save : ScriptableObject
 
         _score.MaxComboRecord = PlayerPrefs.GetInt(PrefsKeys.MAX_COMBO);
         _score.ComboTotalRecord = PlayerPrefs.GetInt(PrefsKeys.TOTAL_COMBO);
+
+        TutorialManager.IsFirstRun = PlayerPrefs.GetInt(PrefsKeys.IS_FIRST_RUN) == 1 ? true : false;
+        TutorialManager.GotOneSpecial = PlayerPrefs.GetInt(PrefsKeys.GOT_ONE_SPECIAL) == 1 ? true : false;
+        TutorialManager.GotExtraCharge = PlayerPrefs.GetInt(PrefsKeys.GOT_EXTRA_CHARGE) == 1 ? true : false;
     }
 
     public void SavePlayerPrefs()
@@ -62,6 +70,10 @@ public class Save : ScriptableObject
 
         PlayerPrefs.SetInt(PrefsKeys.TOTAL_COMBO, _score.ComboTotalRecord);
         PlayerPrefs.SetInt(PrefsKeys.MAX_COMBO, _score.MaxComboRecord);
+
+        PlayerPrefs.SetInt(PrefsKeys.IS_FIRST_RUN, TutorialManager.IsFirstRun ? 1 : 0);
+        PlayerPrefs.SetInt(PrefsKeys.GOT_ONE_SPECIAL, TutorialManager.GotOneSpecial ? 1 : 0);
+        PlayerPrefs.SetInt(PrefsKeys.GOT_EXTRA_CHARGE, TutorialManager.GotExtraCharge ? 1 : 0);
 
         PlayerPrefs.Save();
     }

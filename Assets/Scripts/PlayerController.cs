@@ -95,18 +95,18 @@ public class PlayerController : MonoBehaviour
     {
         _bulletTime = BulletTime();
         SetCrossairCursor();
+        _audioManager = AudioManager.Instance;
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Start()
     {
         AnalyticsEvent.GameStart();
         _playerStats.Init();
-        _rigidbody = GetComponent<Rigidbody2D>();
         _sceneController = FindObjectOfType<SceneController>();
         BallSpawn();
         Move = MoveUnscaled;
         HandleInput = HandleInputWhenInControll;
-        _audioManager = AudioManager.Instance;
     }
 
     void Update()
@@ -242,6 +242,24 @@ public class PlayerController : MonoBehaviour
             ExecuteSpecial();
         }
         
+    }
+
+    public void EnterTutorialMode()
+    {
+        _audioManager.MasterVolumeDown();
+        StopControllers();
+        ExitBulletTime();
+        HandleInput = HandleInputWhenPaused;
+        EnterSaturationMode(0);
+        SetDefaultCursor();
+    }
+
+    public void ExitTutorialMode()
+    {
+        _audioManager.RestoreMasterVolume();
+        ExitSaturationMode();
+        HandleInput = HandleInputWhenInControll;
+        SetCrossairCursor();
     }
 
     private void EnterPauseMode()

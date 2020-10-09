@@ -15,4 +15,8 @@
     public const string PENDING_MAX_COMBO = "PendingMaxCombo";
     public const string PENDING_SCORE = "PendingScore";
     public const string PENDING_NAME = "PendingName";
+
+    public const string IS_FIRST_RUN = "IsFirstRun";
+    public const string GOT_ONE_SPECIAL = "GotOneSpecial";
+    public const string GOT_EXTRA_CHARGE = "GotExtraCharge";
 }
