@@ -22,14 +22,14 @@ MonoBehaviour:
   - Price: 0
     Value: 1
     Description: Store 1 extra charge
-    NextLevelDescription: Store 2 extra charge
+    NextLevelDescription: Store 2 extra charges
   - Price: 0
     Value: 2
-    Description: Store 2 extra charge
-    NextLevelDescription: Store 3 extra charge
+    Description: Store 2 extra charges
+    NextLevelDescription: Store 3 extra charges
   - Price: 0
     Value: 3
-    Description: Store 3 extra charge
+    Description: Store 3 extra charges
     NextLevelDescription: --
   _upgradeName: Extra Charges
   _icon: {fileID: 21300000, guid: 4a48e7339d5183a4eae204f79bd23c44, type: 3}

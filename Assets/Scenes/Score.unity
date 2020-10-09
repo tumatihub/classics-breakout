@@ -2421,6 +2421,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5744377006045445266, guid: 16ceb4e65a9d84b409d6d580095559c2,
+        type: 3}
+      propertyPath: _saveRecordFailureMsg
+      value: Can't connect to the server. Your record will be stored locally to try
+        again later.
+      objectReference: {fileID: 0}
     - target: {fileID: 5782179100264255277, guid: 16ceb4e65a9d84b409d6d580095559c2,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2845,6 +2851,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749468089599548645, guid: 16ceb4e65a9d84b409d6d580095559c2,
+        type: 3}
+      propertyPath: m_text
+      value: Save Record
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749468089599548645, guid: 16ceb4e65a9d84b409d6d580095559c2,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6750309542347417265, guid: 16ceb4e65a9d84b409d6d580095559c2,
         type: 3}

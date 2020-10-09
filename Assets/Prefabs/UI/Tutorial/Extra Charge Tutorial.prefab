@@ -452,7 +452,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: When your charge is full, hold right mouse button to store one extra charge.
+  m_text: When your charge is full, hold the right mouse button to store one extra
+    charge.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 05409a2507edf2b4ea41cda106f7c044, type: 2}
   m_sharedMaterial: {fileID: -7355808795350906974, guid: 05409a2507edf2b4ea41cda106f7c044,
@@ -522,10 +523,10 @@ MonoBehaviour:
   m_margin: {x: 16.487787, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 455908519920413057}
-    characterCount: 76
+    characterCount: 80
     spriteCount: 0
-    spaceCount: 13
-    wordCount: 14
+    spaceCount: 14
+    wordCount: 15
     linkCount: 0
     lineCount: 3
     pageCount: 1

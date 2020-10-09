@@ -1435,6 +1435,11 @@ PrefabInstance:
       propertyPath: _loadingImg
       value: 
       objectReference: {fileID: 19279562}
+    - target: {fileID: 1631270199112615454, guid: 66a5f189094d8f94a98305ab611f30e1,
+        type: 3}
+      propertyPath: _failToConnectMsg
+      value: Can't connect to the server. Please try again later.
+      objectReference: {fileID: 0}
     - target: {fileID: 1651625170344967229, guid: 66a5f189094d8f94a98305ab611f30e1,
         type: 3}
       propertyPath: m_AnchoredPosition.x

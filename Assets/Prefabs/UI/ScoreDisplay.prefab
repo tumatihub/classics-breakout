@@ -1128,6 +1128,8 @@ MonoBehaviour:
     Message: Great!
   - MinCombo: 400
     Message: Awesome!
+  - MinCombo: 800
+    Message: Marvelous!
   _highComboMsgGroup: {fileID: 7977534038021494760}
   _highComboMsg: {fileID: 7256159121777073805}
   _showMsgPos: {fileID: 8632991673257682071}
