@@ -10,6 +10,7 @@ public class SceneNames
     public const string Upgrades = "Upgrades";
     public const string Score = "Score";
     public const string Leaderboard = "Leaderboard";
+    public const string Credits = "Credits";
 }
 
 public class SceneController : MonoBehaviour
@@ -51,6 +52,16 @@ public class SceneController : MonoBehaviour
     public void LoadLeaderboard()
     {
         SceneManager.LoadScene(SceneNames.Leaderboard);
+    }
+
+    public void TransitionToCredits()
+    {
+        _transition.RunExit(LoadCredits);
+    }
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene(SceneNames.Credits);
     }
 
     public void TransitionToMainMenu()
