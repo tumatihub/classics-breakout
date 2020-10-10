@@ -19,11 +19,11 @@ MonoBehaviour:
     Value: 20
     Description: Bullet time cost 20
     NextLevelDescription: Decrease to 15 the cost of bullet time
-  - Price: 0
+  - Price: 1000
     Value: 15
     Description: Bullet time cost 15
     NextLevelDescription: Decrease to 10 the cost of bullet time
-  - Price: 0
+  - Price: 3000
     Value: 10
     Description: Bullet time cost 10
     NextLevelDescription: --

@@ -19,7 +19,7 @@ MonoBehaviour:
     Value: 0
     Description: Upgrade to unlock
     NextLevelDescription: Create a barrier to avoid losing the ball
-  - Price: 0
+  - Price: 3000
     Value: 0
     Description: Create a barrier to avoid losing the ball
     NextLevelDescription: --

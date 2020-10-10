@@ -19,23 +19,23 @@ MonoBehaviour:
     Value: 1
     Description: Take 1 hitpoint from a block
     NextLevelDescription: Take 2 hitpoints from a block
-  - Price: 0
+  - Price: 200
     Value: 2
     Description: Take 2 hitpoints from a block
     NextLevelDescription: Take 3 hitpoints from a block
-  - Price: 0
+  - Price: 400
     Value: 3
     Description: Take 3 hitpoints from a block
     NextLevelDescription: Take 4 hitpoints from a block
-  - Price: 0
+  - Price: 1000
     Value: 4
     Description: Take 4 hitpoints from a block
     NextLevelDescription: Take 5 hitpoints from a block
-  - Price: 0
+  - Price: 2000
     Value: 5
     Description: Take 5 hitpoints from a block
     NextLevelDescription: Take 6 hitpoints from a block
-  - Price: 0
+  - Price: 3000
     Value: 6
     Description: Take 6 hitpoints from a block
     NextLevelDescription: --

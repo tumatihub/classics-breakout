@@ -19,15 +19,15 @@ MonoBehaviour:
     Value: 0
     Description: Upgrade to unlock
     NextLevelDescription: Store 1 extra charge
-  - Price: 0
+  - Price: 1000
     Value: 1
     Description: Store 1 extra charge
     NextLevelDescription: Store 2 extra charges
-  - Price: 0
+  - Price: 2000
     Value: 2
     Description: Store 2 extra charges
     NextLevelDescription: Store 3 extra charges
-  - Price: 0
+  - Price: 3000
     Value: 3
     Description: Store 3 extra charges
     NextLevelDescription: --

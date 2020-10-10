@@ -67,3 +67,12 @@ MonoBehaviour:
       HitPoints: 05000000
     - Chance: 50
       HitPoints: 06000000
+  - MinSpawnedRows: 35
+    SecondsToSpawnNewRow: 5
+    Chances:
+    - Chance: 10
+      HitPoints: 04000000
+    - Chance: 40
+      HitPoints: 05000000
+    - Chance: 50
+      HitPoints: 06000000
