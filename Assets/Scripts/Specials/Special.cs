@@ -19,15 +19,18 @@ public abstract class Special : ScriptableObject
     [ColorUsageAttribute(true, true)]
     public Color BackgroundHDRColorActivated;
     public PaddleChargeVFX PaddleChargeVFX;
+    public int Usage;
 
     [SerializeField] protected PlayerStats _playerStats;
 
     public virtual void BallActivatedAction(BallMovement ball)
     {
         _playerStats.UnchargePaddle();
+        Usage++;
     }
 
     public virtual void Action(PlayerController playerController)
     {
+        Usage++;
     }
 }

@@ -84,6 +84,11 @@ public class PlayerStats : ScriptableObject
         _piercingCount = (int)_initValues.PiercingCount.Value;
         _explosionRadius = _initValues.ExplosionRadius.Value;
         _extraCharges = (int)_initValues.ExtraCharges.Value;
+
+        foreach(var special in _specials)
+        {
+            special.Usage = 0;
+        }
     }
 
     public bool CanUseSpecial()

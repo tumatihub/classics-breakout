@@ -74,6 +74,8 @@ public class PlayerController : MonoBehaviour
     
     private AudioManager _audioManager;
 
+    [SerializeField] private Upgrades _upgrades;
+
     private Action Move;
     private Action HandleInput;
 
@@ -532,7 +534,20 @@ public class PlayerController : MonoBehaviour
         customParams.Add("total_score", _score.TotalScore);
         customParams.Add("combo_record", _score.ComboTotalRecord);
         customParams.Add("max_combo_record", _score.MaxComboRecord);
-
         AnalyticsEvent.GameOver(null, customParams);
+
+        Dictionary<string, object> specialParams = new Dictionary<string, object>();
+        foreach(var special in _playerStats.Specials)
+        {
+            specialParams.Add(special.Name, special.Usage);
+        }
+        AnalyticsEvent.Custom("specials_usage", specialParams);
+
+        Dictionary<string, object> upgradesParams = new Dictionary<string, object>();
+        foreach (var upgrade in _upgrades.AllUpgrades)
+        {
+            upgradesParams.Add(upgrade.UpgradeName, upgrade.Level);
+        }
+        AnalyticsEvent.Custom("upgrades_level", upgradesParams);
     }
 }
