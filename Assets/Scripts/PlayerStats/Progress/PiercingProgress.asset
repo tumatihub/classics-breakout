@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3bad33feadaf4dad7a5b2d1148f26, type: 3}
   m_Name: PiercingProgress
   m_EditorClassIdentifier: 
-  _level: 3
+  _level: 2
   Special: {fileID: 11400000, guid: 49ab6cdaaaad4fc41a2c3106e15b2598, type: 2}
   _upgrades:
   - Price: 0
     Value: 0
     Description: Upgrade to unlock
     NextLevelDescription: Pierce through 3 blocks
-  - Price: 100
+  - Price: 50
     Value: 3
     Description: Pierce through 3 blocks
     NextLevelDescription: Pierce through 6 blocks
-  - Price: 1000
+  - Price: 500
     Value: 6
     Description: Pierce through 6 blocks
     NextLevelDescription: Pierce through 10 blocks

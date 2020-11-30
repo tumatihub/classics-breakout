@@ -19,11 +19,11 @@ MonoBehaviour:
     Value: 0
     Description: Upgrade to unlock
     NextLevelDescription: Explodes nearby blocks
-  - Price: 200
+  - Price: 100
     Value: 1
     Description: Explodes nearby blocks
     NextLevelDescription: Increase explosion radius
-  - Price: 400
+  - Price: 200
     Value: 1.5
     Description: Explodes nearby blocks
     NextLevelDescription: --

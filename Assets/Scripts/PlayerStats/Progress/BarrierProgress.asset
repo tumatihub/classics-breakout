@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3bad33feadaf4dad7a5b2d1148f26, type: 3}
   m_Name: BarrierProgress
   m_EditorClassIdentifier: 
-  _level: 1
+  _level: 0
   Special: {fileID: 11400000, guid: 99c3d51663720f94998d4e85a4924d6e, type: 2}
   _upgrades:
   - Price: 0
     Value: 0
     Description: Upgrade to unlock
     NextLevelDescription: Create a barrier to avoid losing the ball
-  - Price: 3000
+  - Price: 1000
     Value: 0
     Description: Create a barrier to avoid losing the ball
     NextLevelDescription: --
