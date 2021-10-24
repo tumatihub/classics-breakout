@@ -71,4 +71,9 @@ public class UpgradeProgress : ScriptableObject
     {
         _level = Mathf.Clamp(level, 0, _upgrades.Count - 1);
     }
+
+    public void MaxLevel()
+    {
+        SetLevel(_upgrades.Count - 1);
+    }
 }

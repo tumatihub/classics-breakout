@@ -71,5 +71,16 @@ public class Upgrades : ScriptableObject
         _save.SavePlayerPrefs();
     }
 
-    
+    public void MaxUpgrades()
+    {
+        _ballPower.MaxLevel();
+        _piercingCount.MaxLevel();
+        _explosionRadius.MaxLevel();
+        _extraCharges.MaxLevel();
+        _bulletTimeCost.MaxLevel();
+        _barrier.MaxLevel();
+        _save.SavePlayerPrefs();
+    }
+
+
 }
