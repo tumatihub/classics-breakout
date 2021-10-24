@@ -55,4 +55,11 @@ public class UpgradesPanel : MonoBehaviour
         UpdateAllUpgradeDisplays();
         UpdateComboPointsDisplay();
     }
+
+    public void MaxUpgrades()
+    {
+        _upgrades.MaxUpgrades();
+        UpdateAllUpgradeDisplays();
+        UpdateComboPointsDisplay();
+    }
 }
