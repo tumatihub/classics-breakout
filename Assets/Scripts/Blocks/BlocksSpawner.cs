@@ -6,7 +6,10 @@ using UnityEngine;
 public class BlocksSpawner : MonoBehaviour
 {
     [SerializeField] private BlocksRow _blocksRowPrefab;
-    [SerializeField] private int _initialNumberOfRows = 8;
+    [SerializeField] private int _maxNumberOfRows = 8;
+    [SerializeField] private int _initialNumberOfRows = 4;
+    [SerializeField] private float _timeToStartMovingRowsDown = 60f;
+
     private float _spawnCooldown;
     private List<BlocksRow> _spawnedRows = new List<BlocksRow>();
 
@@ -28,6 +31,7 @@ public class BlocksSpawner : MonoBehaviour
     private void Update()
     {
         if (_spawnCooldown > 0) _spawnCooldown -= Time.deltaTime;
+        if (_timeToStartMovingRowsDown > 0) _timeToStartMovingRowsDown -= Time.deltaTime;
     }
 
     public void HandleRemoveRow(BlocksRow blocksRow)
@@ -40,7 +44,9 @@ public class BlocksSpawner : MonoBehaviour
 
     public void HandleBallCollisionWithPaddle()
     {
-        if (_spawnCooldown <= 0 || _spawnedRows.Count < _initialNumberOfRows)
+        if (_timeToStartMovingRowsDown > 0) return;
+
+        if (_spawnCooldown <= 0 || _spawnedRows.Count < _maxNumberOfRows)
         {
             if (_spawnCooldown <= 0) _spawnCooldown = _spawnerProgression.SecondsToSpawnNewRow;
             OnMoveDownRows?.Invoke();
