@@ -44,7 +44,11 @@ public class BlocksSpawner : MonoBehaviour
 
     public void HandleBallCollisionWithPaddle()
     {
-        if (_timeToStartMovingRowsDown > 0) return;
+        if (_timeToStartMovingRowsDown > 0)
+        {
+            if (_spawnedRows.Count <= 1) _timeToStartMovingRowsDown = 0;
+            return;
+        }
 
         if (_spawnCooldown <= 0 || _spawnedRows.Count < _maxNumberOfRows)
         {
