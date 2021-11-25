@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3bad33feadaf4dad7a5b2d1148f26, type: 3}
   m_Name: ExplosionProgress
   m_EditorClassIdentifier: 
-  _level: 2
+  _level: 1
   Special: {fileID: 11400000, guid: af64004bfcdfd9944825867a464f5e5c, type: 2}
   _upgrades:
   - Price: 0
     Value: 0
     Description: Upgrade to unlock
     NextLevelDescription: Explodes nearby blocks
-  - Price: 100
+  - Price: 10
     Value: 1
     Description: Explodes nearby blocks
     NextLevelDescription: Increase explosion radius
-  - Price: 200
+  - Price: 100
     Value: 1.5
     Description: Explodes nearby blocks
     NextLevelDescription: --
