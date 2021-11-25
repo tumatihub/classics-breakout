@@ -2609,6 +2609,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnlockAll
       objectReference: {fileID: 0}
+    - target: {fileID: 2272672012252024566, guid: 3e2366aea812e4643835614146f26074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3019963163696128834, guid: 3e2366aea812e4643835614146f26074,
         type: 3}
       propertyPath: m_textInfo.characterCount
