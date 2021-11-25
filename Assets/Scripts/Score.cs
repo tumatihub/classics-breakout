@@ -13,7 +13,7 @@ public class Score : ScriptableObject
     public int ComboTotalScore => _comboTotalScore;
     private int _comboCounter;
     public int ComboCounter => _comboCounter;
-    private int _minComboToStartCount = 5;
+    [SerializeField] private int _minComboToStartCount = 2;
     public int MinComboToStartCount => _minComboToStartCount;
     private float _comboCounterDurationWithoutHit = 3f;
     public float ComboCounterDurationWithoutHit => _comboCounterDurationWithoutHit;
