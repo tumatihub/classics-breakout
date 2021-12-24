@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _audioManager = AudioManager.Instance;
-        AnalyticsEvent.GameStart();
+        AnalyticsEvent.LevelStart("Main");
         _playerStats.Init();
         _sceneController = FindObjectOfType<SceneController>();
         BallSpawn();
@@ -534,7 +534,8 @@ public class PlayerController : MonoBehaviour
         customParams.Add("total_score", _score.TotalScore);
         customParams.Add("combo_record", _score.ComboTotalRecord);
         customParams.Add("max_combo_record", _score.MaxComboRecord);
-        AnalyticsEvent.GameOver(null, customParams);
+        customParams.Add("level_played_time", Time.timeSinceLevelLoad);
+        AnalyticsEvent.LevelFail("Main", customParams);
 
         Dictionary<string, object> specialParams = new Dictionary<string, object>();
         foreach(var special in _playerStats.Specials)
@@ -542,12 +543,5 @@ public class PlayerController : MonoBehaviour
             specialParams.Add(special.Name, special.Usage);
         }
         AnalyticsEvent.Custom("specials_usage", specialParams);
-
-        Dictionary<string, object> upgradesParams = new Dictionary<string, object>();
-        foreach (var upgrade in _upgrades.AllUpgrades)
-        {
-            upgradesParams.Add(upgrade.UpgradeName, upgrade.Level);
-        }
-        AnalyticsEvent.Custom("upgrades_level", upgradesParams);
     }
 }

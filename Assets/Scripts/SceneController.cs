@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 
 public class SceneNames
@@ -17,6 +18,7 @@ public class SceneController : MonoBehaviour
 {
     [SerializeField] private Transition _transition;
     private AudioManager _audioManager;
+    [SerializeField] private Upgrades _upgrades;
 
     private void Start()
     {
@@ -89,5 +91,15 @@ public class SceneController : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    private void OnApplicationQuit()
+    {
+        Dictionary<string, object> upgradesParams = new Dictionary<string, object>();
+        foreach (var upgrade in _upgrades.AllUpgrades)
+        {
+            upgradesParams.Add(upgrade.UpgradeName, upgrade.Level);
+        }
+        AnalyticsEvent.Custom("upgrades_level", upgradesParams);
     }
 }
